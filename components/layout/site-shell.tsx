@@ -20,7 +20,11 @@ export function SiteShell({ children }: SiteShellProps) {
             </Link>
             <nav className="hidden items-center gap-6 text-[0.72rem] uppercase tracking-[0.18em] text-ink-muted md:flex">
               {navItems.map((item) => (
-                <Link key={item.href} href={item.href} className="transition-colors hover:text-ink">
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="index-nav-link transition-colors hover:text-ink"
+                >
                   {item.label}
                 </Link>
               ))}

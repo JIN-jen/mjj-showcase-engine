@@ -1,5 +1,5 @@
-import { HomeCinematicPage } from "@/components/pages/home-cinematic-page";
+import { HomeProjectIndexPage } from "@/components/pages/home-project-index-page";
 
 export default function HomePage() {
-  return <HomeCinematicPage />;
+  return <HomeProjectIndexPage />;
 }
