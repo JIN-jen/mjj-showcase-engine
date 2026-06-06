@@ -1,0 +1,37 @@
+- generic [ref=e5]:
+  - generic [ref=e6]: Spatial Zone MVP
+  - heading "M-JJ Particle Engine V1" [level=1] [ref=e7]
+  - paragraph [ref=e8]: Step 2 only validates image sampling into a regular particle grid. No stable zone, filter band, scatter, wave, depth, bloom, automask, subject detection, edge detection, or brightness classification are active here.
+  - generic [ref=e9]:
+    - generic [ref=e10]: Three.js
+    - generic [ref=e11]: Vite
+    - generic [ref=e12]: Image → Grid
+  - generic [ref=e13]:
+    - generic [ref=e14] [cursor=pointer]: Upload Image
+    - generic [ref=e15]: Waiting for image upload.
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]: Stable Ratio
+          - generic [ref=e20]: "0.40"
+        - slider [ref=e21]: "0.4"
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]: Filter Ratio
+          - generic [ref=e25]: "0.18"
+        - slider [ref=e26]: "0.18"
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - strong [ref=e29]: Stable
+        - text: "0"
+      - generic [ref=e30]:
+        - strong [ref=e31]: Filter
+        - text: "0"
+      - generic [ref=e32]:
+        - strong [ref=e33]: Outer
+        - text: "0"
+    - generic [ref=e34]:
+      - generic [ref=e35]: Grid output must remain rows × cols.
+      - generic [ref=e36]: Each particle keeps row / col / uv / color / basePosition.
+      - generic [ref=e37]: Each particle keeps left / right / top / bottom neighbors.
+      - generic [ref=e38]: Stable uses source color. Filter = yellow overlay. Outer = red overlay.

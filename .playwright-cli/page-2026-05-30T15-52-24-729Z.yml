@@ -1,0 +1,15 @@
+- generic [ref=e5]:
+  - generic [ref=e6]: Spatial Zone MVP
+  - heading "M-JJ Particle Engine V1" [level=1] [ref=e7]
+  - paragraph [ref=e8]: Step 2 only validates image sampling into a regular particle grid. No stable zone, filter band, scatter, wave, depth, bloom, automask, subject detection, edge detection, or brightness classification are active here.
+  - generic [ref=e9]:
+    - generic [ref=e10]: Three.js
+    - generic [ref=e11]: Vite
+    - generic [ref=e12]: Image → Grid
+  - generic [ref=e13]:
+    - generic [ref=e14] [cursor=pointer]: Upload Image
+    - generic [ref=e15]: Waiting for image upload.
+    - generic [ref=e16]:
+      - generic [ref=e17]: Grid output must remain rows × cols.
+      - generic [ref=e18]: Each particle keeps row / col / uv / color / basePosition.
+      - generic [ref=e19]: Each particle keeps left / right / top / bottom neighbors.

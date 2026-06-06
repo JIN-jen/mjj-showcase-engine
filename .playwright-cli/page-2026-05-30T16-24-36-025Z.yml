@@ -1,0 +1,49 @@
+- generic [ref=e5]:
+  - generic [ref=e6]: Spatial Zone MVP
+  - heading "M-JJ Particle Engine V1" [level=1] [ref=e7]
+  - paragraph [ref=e8]: Step 2 only validates image sampling into a regular particle grid. No stable zone, filter band, scatter, wave, depth, bloom, automask, subject detection, edge detection, or brightness classification are active here.
+  - generic [ref=e9]:
+    - generic [ref=e10]: Three.js
+    - generic [ref=e11]: Vite
+    - generic [ref=e12]: Image → Grid
+  - generic [ref=e13]:
+    - generic [ref=e14] [cursor=pointer]: Upload Image
+    - generic [ref=e15]: Loaded A_00_full.jpg as 120 × 55 grid (6600 particles).
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - generic [ref=e19]: Stable Ratio
+          - generic [ref=e20]: "0.40"
+        - slider [ref=e21]: "0.4"
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - generic [ref=e24]: Filter Ratio
+          - generic [ref=e25]: "0.18"
+        - slider [ref=e26]: "0.18"
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]: Scatter Strength
+          - generic [ref=e30]: "0.00"
+        - slider [ref=e31]: "0"
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - strong [ref=e34]: Stable
+        - text: "1616"
+      - generic [ref=e35]:
+        - strong [ref=e36]: Filter
+        - text: "1790"
+      - generic [ref=e37]:
+        - strong [ref=e38]: Outer
+        - text: "3194"
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - strong [ref=e41]: Debug
+        - text: displacement distance is visualized by whitening.
+      - generic [ref=e42]: Stable stays locked to basePosition.
+      - generic [ref=e43]: Filter max displacement = 15% of scatter budget.
+      - generic [ref=e44]: Outer max displacement = 100% of scatter budget.
+    - generic [ref=e45]:
+      - generic [ref=e46]: Grid output must remain rows × cols.
+      - generic [ref=e47]: Each particle keeps row / col / uv / color / basePosition.
+      - generic [ref=e48]: Each particle keeps left / right / top / bottom neighbors.
+      - generic [ref=e49]: Stable uses source color. Filter = yellow. Outer = red. More white = more displacement.

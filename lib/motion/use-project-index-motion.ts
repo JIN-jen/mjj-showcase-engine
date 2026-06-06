@@ -27,6 +27,8 @@ export function useProjectIndexMotion(
       const previewPanel = document.querySelector<HTMLElement>(".project-preview-panel");
       const previewMedia = document.querySelector<HTMLElement>(".project-preview-media");
       const rows = gsap.utils.toArray<HTMLElement>("[data-project-row]");
+      const previewTitle = document.querySelector<HTMLElement>("[data-preview-title]");
+      const marquees = gsap.utils.toArray<HTMLElement>("[data-marquee]");
 
       gsap.set(introItems, { opacity: 0, y: 36 });
       gsap.timeline({ defaults: { duration: 0.9, ease: "power3.out" } }).to(introItems, {
@@ -41,11 +43,11 @@ export function useProjectIndexMotion(
         opacity: 1,
         y: 0,
         stagger: 0.07,
-        duration: 0.82,
+        duration: 0.86,
         ease: "power3.out",
         scrollTrigger: {
           trigger: rows[0],
-          start: "top 88%",
+          start: "top 92%",
           once: true,
         },
         clearProps: "opacity,transform",
@@ -64,6 +66,44 @@ export function useProjectIndexMotion(
           end: "bottom center",
           onEnter: () => setActiveSlug(slug),
           onEnterBack: () => setActiveSlug(slug),
+        });
+
+        const handleEnter = () => {
+          gsap.to(row, {
+            x: 14,
+            duration: 0.32,
+            ease: "power3.out",
+          });
+        };
+
+        const handleLeave = () => {
+          gsap.to(row, {
+            x: 0,
+            duration: 0.32,
+            ease: "power3.out",
+          });
+        };
+
+        row.addEventListener("mouseenter", handleEnter);
+        row.addEventListener("mouseleave", handleLeave);
+        cleanupCallbacks.push(() => {
+          row.removeEventListener("mouseenter", handleEnter);
+          row.removeEventListener("mouseleave", handleLeave);
+        });
+      });
+
+      marquees.forEach((marquee, index) => {
+        const direction = marquee.dataset.marquee === "reverse" ? -1 : 1;
+        const distance = index === 0 ? 180 : 260;
+        gsap.to(marquee, {
+          x: direction * distance,
+          ease: "none",
+          scrollTrigger: {
+            trigger: marquee,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.8,
+          },
         });
       });
 
@@ -108,6 +148,20 @@ export function useProjectIndexMotion(
             { scale: 1, ease: "none" },
           ),
         });
+
+        if (previewTitle) {
+          ScrollTrigger.create({
+            trigger: previewPanel,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 0.5,
+            animation: gsap.fromTo(
+              previewTitle,
+              { y: 18 },
+              { y: -10, ease: "none" },
+            ),
+          });
+        }
       }
 
       gsap.set(outroItems, { opacity: 0, y: 40 });
