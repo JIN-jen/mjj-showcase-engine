@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Mining and energy template visual placeholder">
+  <rect width="1000" height="1400" fill="#eaebe6"/>
+  <rect x="80" y="80" width="840" height="1240" fill="#f7f4ee" stroke="#111" stroke-opacity=".16"/>
+  <rect x="150" y="190" width="700" height="430" fill="#b9c1c0"/>
+  <path d="M150 620 L340 420 L500 560 L650 360 L850 620 Z" fill="#596872" opacity=".58"/>
+  <circle cx="735" cy="260" r="84" fill="#f7f4ee" opacity=".78"/>
+  <line x1="735" y1="142" x2="735" y2="380" stroke="#111" stroke-opacity=".18" stroke-width="8"/>
+  <line x1="617" y1="260" x2="853" y2="260" stroke="#111" stroke-opacity=".18" stroke-width="8"/>
+  <rect x="160" y="790" width="300" height="220" fill="#111" opacity=".1"/>
+  <rect x="520" y="790" width="300" height="38" fill="#111" opacity=".18"/>
+  <rect x="520" y="860" width="230" height="38" fill="#111" opacity=".12"/>
+  <rect x="520" y="930" width="270" height="38" fill="#111" opacity=".1"/>
+  <text x="150" y="1210" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="72" letter-spacing="-2">Mining &amp; Energy</text>
+  <text x="152" y="1268" fill="#111" opacity=".48" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">MINING / FUEL / SOLAR / POWER</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Professional services template visual placeholder">
+  <rect width="1000" height="1400" fill="#eeece8"/>
+  <rect x="80" y="80" width="840" height="1240" fill="#f7f4ee" stroke="#111" stroke-opacity=".16"/>
+  <rect x="150" y="210" width="700" height="460" fill="#cbc7cf"/>
+  <rect x="210" y="280" width="230" height="320" fill="#f7f4ee" opacity=".72"/>
+  <rect x="480" y="280" width="310" height="74" fill="#111" opacity=".13"/>
+  <rect x="480" y="390" width="250" height="74" fill="#111" opacity=".09"/>
+  <rect x="480" y="500" width="300" height="74" fill="#111" opacity=".11"/>
+  <circle cx="325" cy="390" r="76" fill="#111" opacity=".12"/>
+  <rect x="150" y="780" width="700" height="1" fill="#111" opacity=".28"/>
+  <rect x="150" y="845" width="210" height="210" fill="#111" opacity=".08"/>
+  <rect x="395" y="845" width="210" height="210" fill="#111" opacity=".11"/>
+  <rect x="640" y="845" width="210" height="210" fill="#111" opacity=".07"/>
+  <text x="150" y="1210" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="62" letter-spacing="-2">Professional Services</text>
+  <text x="152" y="1268" fill="#111" opacity=".48" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">LAW / MEDICAL / IT / AGENCY</text>
+</svg>
