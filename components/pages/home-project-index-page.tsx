@@ -227,6 +227,10 @@ export function HomeProjectIndexPage() {
           return;
         }
 
+        if (!(centeredEntry.target instanceof HTMLElement)) {
+          return;
+        }
+
         const index = Number(centeredEntry.target.dataset.editorialIndex);
 
         if (!Number.isNaN(index)) {

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { ObysBracket } from "@/components/pages/obys-bracket";
 import { obysLabItems } from "@/components/pages/obys-lab-data";
 import { ObysProjectStill } from "@/components/pages/obys-project-still";
 import { getRailPresetStyle } from "@/components/pages/obys-rail-preset-vars";
@@ -202,8 +201,6 @@ export function ObysLabPage() {
           );
         })}
       </section>
-
-      <ObysBracket />
 
       <aside className="obys-lab-meta" aria-live="polite">
         <p>{activeItem.number}</p>

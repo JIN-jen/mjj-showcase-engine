@@ -134,6 +134,10 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
           return;
         }
 
+        if (!(centeredEntry.target instanceof HTMLElement)) {
+          return;
+        }
+
         const index = Number(centeredEntry.target.dataset.workFrame);
 
         if (!Number.isNaN(index)) {

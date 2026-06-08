@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { ObysBracket } from "@/components/pages/obys-bracket";
 import type { ObysLabItem } from "@/components/pages/obys-lab-data";
 import { ObysProjectStill } from "@/components/pages/obys-project-still";
 
@@ -160,8 +159,6 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
         </dl>
       </aside>
 
-      <ObysBracket className="obys-lab-detail-bracket" />
-
       <section ref={railRef} className="obys-lab-detail-rail" aria-label={`${title} case image stream`}>
         {caseFrames.map((frame, index) => (
           <article
@@ -170,8 +167,27 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
             className={`obys-lab-detail-frame obys-lab-detail-frame--${index + 1}`}
           >
             <div>
+              <span className="obys-lab-detail-signal">{item.number}</span>
               <ObysProjectStill item={item} mode="detail" frameIndex={index} />
             </div>
+            <dl className="obys-lab-detail-metadata" aria-label={`${title} metadata`}>
+              <div>
+                <dt>YEAR</dt>
+                <dd>2026</dd>
+              </div>
+              <div>
+                <dt>INDUSTRY</dt>
+                <dd>{category}</dd>
+              </div>
+              <div>
+                <dt>SERVICE</dt>
+                <dd>{service}</dd>
+              </div>
+              <div>
+                <dt>LOCATION</dt>
+                <dd>Tanzania</dd>
+              </div>
+            </dl>
           </article>
         ))}
       </section>
