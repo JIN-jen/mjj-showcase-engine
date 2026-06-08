@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ObysBracket } from "@/components/pages/obys-bracket";
 import { obysLabItems } from "@/components/pages/obys-lab-data";
 import { ObysProjectStill } from "@/components/pages/obys-project-still";
+import { getRailPresetStyle } from "@/components/pages/obys-rail-preset-vars";
 
 const loopedLabItems = [...obysLabItems, ...obysLabItems, ...obysLabItems];
 type LabLanguage = "cn" | "en";
@@ -192,6 +193,7 @@ export function ObysLabPage() {
               key={`${item.number}-${index}`}
               data-lab-index={itemIndex}
               className={activeIndex === itemIndex ? "is-active" : ""}
+              style={getRailPresetStyle(item.railPreset)}
             >
               <Link href={`/obys-lab/work/${item.slug}`} className="obys-lab-preview">
                 <ObysProjectStill item={item} mode="index" frameIndex={index} />

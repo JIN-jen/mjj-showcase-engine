@@ -1,3 +1,19 @@
+export type RailWidthTier = "xs" | "sm" | "md" | "lg" | "xl";
+
+export type RailRatioTier = "square" | "portrait" | "landscape" | "wide";
+
+export type RailOffsetTier = "far-left" | "left" | "center" | "right" | "far-right";
+
+export type RailDepthTier = "near" | "mid" | "far";
+
+export type RailPreset = {
+  depthTier: RailDepthTier;
+  id: string;
+  offsetTier: RailOffsetTier;
+  ratioTier: RailRatioTier;
+  widthTier: RailWidthTier;
+};
+
 export type ObysLabItem = {
   slug: string;
   number: string;
@@ -8,6 +24,7 @@ export type ObysLabItem = {
   service: string;
   serviceCn: string;
   imageSrc: string;
+  railPreset: RailPreset;
 };
 
 export const obysLabItems: ObysLabItem[] = [
@@ -21,6 +38,13 @@ export const obysLabItems: ObysLabItem[] = [
     service: "Web Design/Dev",
     serviceCn: "网站设计/开发",
     imageSrc: "/industry/hospitality.svg",
+    railPreset: {
+      id: "hospitality",
+      widthTier: "sm",
+      ratioTier: "square",
+      offsetTier: "left",
+      depthTier: "far",
+    },
   },
   {
     slug: "food-beverage",
@@ -32,6 +56,13 @@ export const obysLabItems: ObysLabItem[] = [
     service: "Web Design/Dev",
     serviceCn: "网站设计/开发",
     imageSrc: "/industry/food-beverage.svg",
+    railPreset: {
+      id: "food-beverage",
+      widthTier: "lg",
+      ratioTier: "portrait",
+      offsetTier: "right",
+      depthTier: "near",
+    },
   },
   {
     slug: "construction",
@@ -43,6 +74,13 @@ export const obysLabItems: ObysLabItem[] = [
     service: "Web Design",
     serviceCn: "网站设计",
     imageSrc: "/industry/construction.svg",
+    railPreset: {
+      id: "construction",
+      widthTier: "md",
+      ratioTier: "square",
+      offsetTier: "center",
+      depthTier: "mid",
+    },
   },
   {
     slug: "mining-energy",
@@ -54,6 +92,13 @@ export const obysLabItems: ObysLabItem[] = [
     service: "Creative Direction, Web Design/Dev",
     serviceCn: "创意指导/网站设计/开发",
     imageSrc: "/industry/mining-energy.svg",
+    railPreset: {
+      id: "mining-energy",
+      widthTier: "md",
+      ratioTier: "portrait",
+      offsetTier: "left",
+      depthTier: "mid",
+    },
   },
   {
     slug: "import-wholesale",
@@ -65,6 +110,13 @@ export const obysLabItems: ObysLabItem[] = [
     service: "Web Design/Dev, Identity",
     serviceCn: "网站设计/开发/品牌识别",
     imageSrc: "/industry/import-wholesale.svg",
+    railPreset: {
+      id: "import-wholesale",
+      widthTier: "xl",
+      ratioTier: "wide",
+      offsetTier: "right",
+      depthTier: "near",
+    },
   },
   {
     slug: "logistics-auto",
@@ -76,6 +128,13 @@ export const obysLabItems: ObysLabItem[] = [
     service: "Web Design/Dev",
     serviceCn: "网站设计/开发",
     imageSrc: "/industry/logistics-auto.svg",
+    railPreset: {
+      id: "logistics-auto",
+      widthTier: "sm",
+      ratioTier: "square",
+      offsetTier: "left",
+      depthTier: "far",
+    },
   },
   {
     slug: "agriculture-processing",
@@ -87,6 +146,13 @@ export const obysLabItems: ObysLabItem[] = [
     service: "Concept, Web Design/Dev",
     serviceCn: "概念/网站设计/开发",
     imageSrc: "/industry/agriculture-processing.svg",
+    railPreset: {
+      id: "agriculture-processing",
+      widthTier: "lg",
+      ratioTier: "portrait",
+      offsetTier: "right",
+      depthTier: "near",
+    },
   },
   {
     slug: "professional-services",
@@ -98,5 +164,12 @@ export const obysLabItems: ObysLabItem[] = [
     service: "Web Design/Dev, Identity",
     serviceCn: "网站设计/开发/品牌识别",
     imageSrc: "/industry/professional-services.svg",
+    railPreset: {
+      id: "professional-services",
+      widthTier: "md",
+      ratioTier: "square",
+      offsetTier: "center",
+      depthTier: "mid",
+    },
   },
 ];
