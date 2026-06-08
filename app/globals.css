@@ -1396,6 +1396,778 @@ textarea {
   font-size: clamp(4rem, 8vw, 8rem);
 }
 
+.obys-lab-page,
+.obys-lab-detail-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #f8f6ef;
+  color: #060606;
+  font-family: var(--font-body);
+}
+
+.obys-lab-page {
+  height: 100vh;
+}
+
+.obys-lab-header,
+.obys-lab-detail-header {
+  position: fixed;
+  inset: clamp(0.82rem, 1.8vw, 1.55rem) clamp(1rem, 2.2vw, 2rem) auto;
+  z-index: 30;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.obys-lab-header > a,
+.obys-lab-detail-header > a {
+  pointer-events: auto;
+  font-family: var(--font-display);
+  font-size: clamp(5.4rem, 14vw, 14.8rem);
+  font-weight: 700;
+  line-height: 0.72;
+}
+
+.obys-lab-detail-header > a {
+  font-size: clamp(1rem, 1.45vw, 1.55rem);
+  line-height: 1;
+}
+
+.obys-lab-header nav,
+.obys-lab-detail-header nav {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(0.75rem, 1.35vw, 1.35rem);
+  padding-top: 0.22rem;
+  font-size: clamp(0.58rem, 0.68vw, 0.72rem);
+  line-height: 1;
+}
+
+.obys-lab-language {
+  display: inline-flex;
+  gap: 0.36rem;
+}
+
+.obys-lab-language button {
+  color: rgba(0, 0, 0, 0.32);
+  cursor: pointer;
+  font: inherit;
+  transition: color 180ms ease;
+}
+
+.obys-lab-language button.is-active,
+.obys-lab-language button:hover,
+.obys-lab-language button:focus-visible {
+  color: #050505;
+}
+
+.obys-lab-index {
+  position: fixed;
+  left: clamp(0.36rem, 0.75vw, 0.72rem);
+  bottom: clamp(6.8rem, 14vh, 9.4rem);
+  z-index: 18;
+  display: grid;
+  width: min(15vw, 12.5rem);
+  gap: 0.16rem;
+}
+
+.obys-lab-index a {
+  display: grid;
+  grid-template-columns: 1.2rem 1fr;
+  gap: 0.24rem;
+  color: rgba(0, 0, 0, 0.115);
+  font-size: clamp(0.46rem, 0.52vw, 0.58rem);
+  line-height: 1.02;
+  transition:
+    color 220ms ease,
+    transform 240ms ease;
+}
+
+.obys-lab-index a.is-active,
+.obys-lab-index a:hover,
+.obys-lab-index a:focus-visible {
+  color: rgba(0, 0, 0, 0.78);
+  transform: translateX(0.16rem);
+}
+
+.obys-lab-index span:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.74em;
+}
+
+.obys-lab-rail {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-block: 34vh;
+  scrollbar-width: none;
+  scroll-snap-type: y mandatory;
+}
+
+.obys-lab-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.obys-lab-rail article {
+  display: flex;
+  min-height: clamp(6.3rem, 13vh, 9.4rem);
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  --lab-lock: 0;
+}
+
+.obys-lab-preview {
+  position: relative;
+  display: block;
+  width: clamp(7.8rem, 10.8vw, 13.8rem);
+  aspect-ratio: 1.08;
+  overflow: hidden;
+  background: transparent;
+  opacity: calc(0.12 + (var(--lab-lock) * 0.88));
+  filter: grayscale(calc(1 - var(--lab-lock)));
+  transform: scale(calc(0.78 + (var(--lab-lock) * 0.24)));
+  transform-origin: center;
+  transition:
+    opacity 120ms linear,
+    filter 160ms linear,
+    transform 160ms linear,
+    box-shadow 420ms ease;
+}
+
+.obys-lab-rail article.is-active .obys-lab-preview {
+  opacity: 1;
+  filter: grayscale(0);
+  transform: scale(1.04);
+  box-shadow: none;
+}
+
+.obys-lab-rail article:nth-child(4n + 1) .obys-lab-preview {
+  aspect-ratio: 0.78;
+  width: clamp(7.2rem, 9.6vw, 12rem);
+}
+
+.obys-lab-rail article:nth-child(4n + 2) .obys-lab-preview {
+  aspect-ratio: 1.42;
+  width: clamp(8.4rem, 12vw, 15.4rem);
+}
+
+.obys-lab-rail article:nth-child(4n + 3) .obys-lab-preview {
+  aspect-ratio: 0.92;
+  width: clamp(7.6rem, 10.4vw, 13.2rem);
+}
+
+.obys-project-still {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(21, 21, 21, 0.08)),
+    var(--still-base, #c9c5ba);
+  color: rgba(5, 5, 5, 0.86);
+  isolation: isolate;
+  z-index: 1;
+}
+
+.obys-project-still::before {
+  position: absolute;
+  inset: -12%;
+  z-index: 4;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.32), transparent 26%),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.035) 0 1px, transparent 1px 4px);
+  content: "";
+  mix-blend-mode: multiply;
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.obys-project-still::after {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  content: "";
+  pointer-events: none;
+}
+
+.obys-project-still__photo {
+  position: absolute;
+  inset: var(--photo-inset, 0);
+  z-index: 1;
+  background:
+    var(--still-photo),
+    linear-gradient(135deg, rgba(244, 241, 232, 0.75), rgba(55, 55, 52, 0.42));
+  background-blend-mode: multiply, normal;
+  filter: saturate(0.25) contrast(1.04);
+}
+
+.obys-project-still__screen {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-rows: 0.55fr 1fr;
+  gap: 4%;
+  inset: var(--screen-inset, 16% 11% 12% 12%);
+  opacity: 0.82;
+}
+
+.obys-project-still__screen span {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0.08)),
+    rgba(12, 12, 12, 0.2);
+}
+
+.obys-project-still__screen span:nth-child(1) {
+  grid-column: 1 / 3;
+}
+
+.obys-project-still__screen span:nth-child(2) {
+  background: rgba(4, 4, 4, 0.64);
+}
+
+.obys-project-still__screen span:nth-child(4) {
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.52) 0 6%, transparent 6% 15%),
+    rgba(255, 255, 255, 0.16);
+}
+
+.obys-project-still__mast {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  z-index: 6;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.35em;
+  max-width: 86%;
+  align-items: start;
+  font-size: clamp(0.42rem, 0.54vw, 0.64rem);
+  line-height: 0.92;
+}
+
+.obys-project-still__mast b,
+.obys-project-still__mast strong {
+  font-weight: 500;
+}
+
+.obys-project-still__caption {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 5%;
+  z-index: 6;
+  display: grid;
+  gap: 0.12em;
+  color: rgba(0, 0, 0, 0.58);
+  font-size: clamp(0.3rem, 0.38vw, 0.44rem);
+  line-height: 1.05;
+}
+
+.obys-project-still--detail {
+  position: absolute;
+  inset: var(--detail-still-inset, 0);
+}
+
+.obys-project-still--detail .obys-project-still__mast {
+  font-size: clamp(1.6rem, 4.8vw, 6rem);
+  letter-spacing: -0.02em;
+  line-height: 0.82;
+}
+
+.obys-project-still--detail .obys-project-still__caption {
+  grid-template-columns: 1fr 1fr;
+  font-size: clamp(0.54rem, 0.72vw, 0.82rem);
+}
+
+.obys-project-still--detail .obys-project-still__screen {
+  inset: var(--screen-inset-detail, 17% 9% 9% 34%);
+}
+
+.obys-project-still--hospitality {
+  --still-base: #d8d1c2;
+  --still-photo:
+    radial-gradient(ellipse at 72% 28%, rgba(255, 255, 255, 0.92) 0 9%, transparent 10%),
+    linear-gradient(90deg, transparent 0 48%, rgba(245, 238, 221, 0.96) 49% 56%, transparent 57%),
+    radial-gradient(ellipse at 35% 75%, rgba(71, 49, 35, 0.56) 0 20%, transparent 21%),
+    linear-gradient(115deg, rgba(223, 208, 177, 0.94), rgba(122, 113, 97, 0.74));
+}
+
+.obys-project-still--food-beverage {
+  --still-base: #c5c2b6;
+  --still-photo:
+    radial-gradient(circle at 22% 34%, rgba(252, 250, 239, 0.72) 0 8%, transparent 9%),
+    radial-gradient(circle at 48% 52%, rgba(46, 43, 37, 0.5) 0 18%, transparent 19%),
+    radial-gradient(circle at 75% 38%, rgba(238, 231, 210, 0.72) 0 13%, transparent 14%),
+    linear-gradient(135deg, rgba(176, 151, 116, 0.66), rgba(42, 39, 35, 0.48));
+}
+
+.obys-project-still--construction {
+  --still-base: #d5d2c8;
+  --still-photo:
+    linear-gradient(142deg, transparent 0 48%, rgba(74, 74, 69, 0.72) 49% 51%, transparent 52%),
+    linear-gradient(164deg, transparent 0 35%, rgba(144, 141, 132, 0.65) 36% 38%, transparent 39%),
+    linear-gradient(90deg, rgba(247, 245, 238, 0.88) 0 36%, transparent 37%),
+    linear-gradient(135deg, rgba(202, 199, 189, 0.86), rgba(86, 86, 80, 0.42));
+}
+
+.obys-project-still--mining-energy {
+  --still-base: #bdbbb3;
+  --still-photo:
+    radial-gradient(ellipse at 25% 76%, rgba(31, 31, 30, 0.65) 0 24%, transparent 25%),
+    linear-gradient(90deg, transparent 0 66%, rgba(245, 244, 229, 0.8) 67% 70%, transparent 71%),
+    radial-gradient(circle at 78% 24%, rgba(232, 226, 183, 0.58) 0 18%, transparent 19%),
+    linear-gradient(130deg, rgba(88, 88, 82, 0.82), rgba(222, 218, 198, 0.55));
+}
+
+.obys-project-still--import-wholesale {
+  --still-base: #d2cec3;
+  --still-photo:
+    repeating-linear-gradient(90deg, rgba(24, 24, 22, 0.32) 0 8%, rgba(240, 236, 224, 0.65) 8% 14%),
+    linear-gradient(0deg, rgba(52, 52, 49, 0.46) 0 38%, transparent 39%),
+    linear-gradient(135deg, rgba(222, 216, 199, 0.9), rgba(106, 99, 85, 0.48));
+}
+
+.obys-project-still--logistics-auto {
+  --still-base: #bbb9b0;
+  --still-photo:
+    radial-gradient(ellipse at 42% 70%, rgba(16, 16, 15, 0.54) 0 30%, transparent 31%),
+    radial-gradient(ellipse at 72% 62%, rgba(235, 232, 220, 0.64) 0 12%, transparent 13%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.65) 0 37%, transparent 38%),
+    linear-gradient(135deg, rgba(75, 76, 75, 0.7), rgba(218, 215, 203, 0.62));
+}
+
+.obys-project-still--agriculture-processing {
+  --still-base: #c8c7b8;
+  --still-photo:
+    repeating-linear-gradient(168deg, rgba(52, 68, 47, 0.42) 0 4%, rgba(221, 218, 194, 0.55) 4% 8%),
+    radial-gradient(ellipse at 74% 32%, rgba(249, 246, 224, 0.74) 0 15%, transparent 16%),
+    linear-gradient(135deg, rgba(185, 178, 132, 0.75), rgba(50, 59, 45, 0.42));
+}
+
+.obys-project-still--professional-services {
+  --still-base: #dcd9cf;
+  --still-photo:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.82) 0 18%, transparent 19%),
+    repeating-linear-gradient(0deg, rgba(18, 18, 17, 0.28) 0 2%, transparent 2% 8%),
+    radial-gradient(ellipse at 72% 62%, rgba(55, 55, 52, 0.32) 0 18%, transparent 19%),
+    linear-gradient(135deg, rgba(236, 232, 219, 0.9), rgba(109, 107, 99, 0.38));
+}
+
+.obys-project-still--frame-2 {
+  --screen-inset: 9% 42% 12% 7%;
+  --screen-inset-detail: 9% 42% 10% 7%;
+}
+
+.obys-project-still--frame-3 {
+  --screen-inset: 34% 8% 8% 12%;
+  --screen-inset-detail: 36% 8% 8% 13%;
+}
+
+.obys-project-still--frame-4 {
+  --screen-inset: 10% 8% 42% 8%;
+  --screen-inset-detail: 11% 8% 44% 8%;
+}
+
+.obys-project-still--frame-5 {
+  --screen-inset: 22% 26% 18% 8%;
+  --screen-inset-detail: 20% 28% 16% 8%;
+}
+
+.obys-project-still--frame-6 {
+  --screen-inset: 8% 8% 8% 44%;
+  --screen-inset-detail: 8% 8% 8% 46%;
+}
+
+.obys-lab-bracket {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 6;
+  display: flex;
+  width: clamp(16.6rem, 30.4vw, 38.6rem);
+  height: clamp(6.6rem, 14.7vh, 11rem);
+  justify-content: space-between;
+  color: rgba(0, 0, 0, 0.82);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.obys-lab-bracket svg {
+  width: clamp(2.76rem, 4.8vw, 6.1rem);
+  height: 100%;
+}
+
+.obys-lab-bracket svg:last-child {
+  transform: scaleX(-1);
+}
+
+.obys-lab-meta {
+  position: fixed;
+  right: clamp(7.4rem, 17vw, 19rem);
+  top: 50%;
+  z-index: 18;
+  display: grid;
+  width: min(16vw, 14rem);
+  gap: 0.18rem;
+  transform: translateY(-34%);
+}
+
+.obys-lab-meta > p {
+  position: fixed;
+  right: clamp(1rem, 2.2vw, 2rem);
+  top: 50%;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(0.64rem, 0.8vw, 0.88rem);
+  line-height: 0.78;
+  transform: translateY(-12%);
+}
+
+.obys-lab-meta h2 {
+  max-width: 13rem;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: clamp(0.72rem, 0.88vw, 0.98rem);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.obys-lab-meta dl {
+  display: grid;
+  gap: 0.12rem;
+  margin: 0;
+}
+
+.obys-lab-meta dl div {
+  display: block;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.obys-lab-meta dt,
+.obys-lab-modes,
+.obys-lab-detail-footer,
+.obys-lab-detail-back,
+.obys-lab-detail-copy dt,
+.obys-lab-detail-copy > a {
+  font-family: var(--font-mono);
+  font-size: clamp(0.46rem, 0.54vw, 0.56rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.obys-lab-meta dt,
+.obys-lab-detail-copy dt {
+  color: rgba(0, 0, 0, 0.28);
+}
+
+.obys-lab-meta dd {
+  margin: 0;
+  font-size: clamp(0.68rem, 0.82vw, 0.92rem);
+  line-height: 1.18;
+}
+
+.obys-lab-meta dt,
+.obys-lab-meta dl div:nth-child(3) {
+  display: none;
+}
+
+.obys-lab-modes {
+  position: fixed;
+  left: clamp(1rem, 2.2vw, 2rem);
+  bottom: clamp(0.9rem, 1.6vw, 1.55rem);
+  z-index: 20;
+  display: flex;
+  gap: clamp(0.82rem, 1.5vw, 1.4rem);
+  color: rgba(0, 0, 0, 0.46);
+}
+
+.obys-lab-modes span:first-child {
+  color: #050505;
+}
+
+.obys-lab-detail-page {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background:
+    linear-gradient(90deg, #f8f6ef 0 50vw, #efeadf 50vw 100%);
+}
+
+.obys-lab-detail-bracket {
+  left: 50%;
+  z-index: 12;
+  width: clamp(7.4rem, 13.8vw, 12rem);
+  height: clamp(6rem, 13.8vh, 9.2rem);
+  color: #050505;
+}
+
+.obys-lab-detail-copy {
+  position: fixed;
+  left: clamp(0.4rem, 0.85vw, 0.75rem);
+  top: 52%;
+  z-index: 18;
+  display: grid;
+  width: min(43vw, 39rem);
+  grid-template-columns: minmax(8rem, 18vw) minmax(9rem, 20vw);
+  gap: clamp(1rem, 3.2vw, 4.6rem);
+  transform: translateY(-50%);
+}
+
+.obys-lab-detail-back {
+  position: fixed;
+  left: clamp(0.4rem, 0.85vw, 0.75rem);
+  bottom: clamp(0.65rem, 1vw, 1rem);
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.obys-lab-detail-copy h1 {
+  max-width: 14ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 0.92vw, 1rem);
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.obys-lab-detail-copy dl {
+  display: grid;
+  gap: 0.06rem;
+  margin: 0;
+}
+
+.obys-lab-detail-copy dl div {
+  display: grid;
+  gap: 0.16rem;
+}
+
+.obys-lab-detail-copy dd {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.84);
+  font-size: clamp(0.68rem, 0.84vw, 0.94rem);
+  line-height: 1.16;
+}
+
+.obys-lab-detail-copy > a {
+  justify-self: start;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.18rem;
+}
+
+.obys-lab-detail-copy > .obys-lab-detail-back {
+  border-bottom-color: rgba(0, 0, 0, 0.18);
+}
+
+.obys-lab-detail-rail {
+  display: grid;
+  gap: clamp(0rem, 2.5vh, 2.5rem);
+  padding: 0 0 8vh 50vw;
+}
+
+.obys-lab-detail-frame {
+  display: flex;
+  min-height: 96vh;
+  align-items: center;
+  justify-content: flex-end;
+  --lab-detail-lock: 0;
+  opacity: calc(0.34 + (var(--lab-detail-lock) * 0.66));
+  transition: opacity 160ms linear;
+}
+
+.obys-lab-detail-frame > div {
+  position: relative;
+  width: clamp(30rem, 48vw, 58rem);
+  aspect-ratio: 1.12;
+  overflow: hidden;
+  background: #eee9df;
+  filter: grayscale(calc(1 - var(--lab-detail-lock)));
+  transform: scale(calc(0.88 + (var(--lab-detail-lock) * 0.12)));
+  transform-origin: center;
+  transition:
+    filter 180ms linear,
+    transform 180ms linear,
+    box-shadow 240ms ease;
+}
+
+.obys-lab-detail-frame > div::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: transparent;
+  content: "";
+}
+
+.obys-lab-detail-frame.is-active > div {
+  filter: grayscale(0);
+  transform: scale(1);
+  box-shadow: 0 1.6rem 4rem rgba(0, 0, 0, 0.16);
+}
+
+.obys-lab-detail-frame:nth-child(2n) {
+  justify-content: flex-end;
+}
+
+.obys-lab-detail-frame:nth-child(2n) > div {
+  width: clamp(34rem, 55vw, 66rem);
+  background: transparent;
+}
+
+.obys-lab-detail-frame:nth-child(2n) > div::before {
+  inset: 6% 0 7% 16%;
+  background: #050505;
+}
+
+.obys-lab-detail-frame:nth-child(2n) .obys-project-still--detail {
+  --detail-still-inset: 10% 7% 9% 0;
+}
+
+.obys-lab-detail-frame:nth-child(3n) > div {
+  width: clamp(28rem, 42vw, 52rem);
+  aspect-ratio: 0.86;
+}
+
+.obys-lab-detail-frame img {
+  object-fit: cover;
+  padding: clamp(0.45rem, 0.8vw, 0.9rem);
+  filter: grayscale(0.08);
+}
+
+.obys-lab-detail-footer {
+  position: fixed;
+  right: clamp(1rem, 2.2vw, 2rem);
+  bottom: clamp(0.9rem, 1.6vw, 1.55rem);
+  z-index: 20;
+  display: flex;
+  gap: clamp(1rem, 2vw, 1.8rem);
+}
+
+@media (max-width: 900px) {
+  .obys-lab-header,
+  .obys-lab-detail-header {
+    inset: 1rem 1rem auto;
+  }
+
+  .obys-lab-header > a,
+  .obys-lab-detail-header > a {
+    font-size: clamp(3.8rem, 18vw, 6.8rem);
+  }
+
+  .obys-lab-detail-header > a {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+  }
+
+  .obys-lab-header nav,
+  .obys-lab-detail-header nav {
+    position: fixed;
+    left: 1rem;
+    top: 5.8rem;
+    flex-wrap: wrap;
+    gap: 0.46rem 0.7rem;
+    font-size: 0.66rem;
+  }
+
+  .obys-lab-index {
+    left: 1rem;
+    bottom: 3.8rem;
+    width: min(46vw, 11rem);
+    gap: 0.24rem;
+  }
+
+  .obys-lab-index a {
+    grid-template-columns: 1.4rem 1fr;
+    font-size: 0.58rem;
+  }
+
+  .obys-lab-rail {
+    padding-block: 36vh;
+  }
+
+  .obys-lab-rail article {
+    min-height: 14vh;
+  }
+
+  .obys-lab-preview {
+    width: min(28vw, 8rem);
+  }
+
+  .obys-lab-bracket {
+    width: min(40vw, 10rem);
+    height: min(13vh, 5.8rem);
+  }
+
+  .obys-lab-bracket svg {
+    width: clamp(1.25rem, 5vw, 2rem);
+  }
+
+  .obys-lab-meta {
+    right: 1rem;
+    top: auto;
+    bottom: 3.8rem;
+    width: min(38vw, 9.5rem);
+    transform: none;
+  }
+
+  .obys-lab-meta > p,
+  .obys-lab-meta h2,
+  .obys-lab-meta dl div:nth-child(-n + 2) {
+    display: none;
+  }
+
+  .obys-lab-meta dl div {
+    grid-template-columns: 1fr;
+  }
+
+  .obys-lab-modes {
+    left: 1rem;
+  }
+
+  .obys-lab-detail-page {
+    overflow-y: auto;
+  }
+
+  .obys-lab-detail-copy {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    padding: 8.6rem 1rem 2rem;
+  }
+
+  .obys-lab-detail-copy h1 {
+    font-size: clamp(2.6rem, 13vw, 4.8rem);
+  }
+
+  .obys-lab-detail-rail {
+    gap: 4rem;
+    padding: 2rem 1rem 8rem;
+  }
+
+  .obys-lab-detail-bracket {
+    width: min(58vw, 15rem);
+    height: min(13vh, 6rem);
+  }
+
+  .obys-lab-detail-frame {
+    min-height: 58vh;
+    justify-content: center;
+  }
+
+  .obys-lab-detail-frame > div,
+  .obys-lab-detail-frame:nth-child(2n) > div,
+  .obys-lab-detail-frame:nth-child(3n) > div {
+    width: min(86vw, 32rem);
+  }
+}
+
 @keyframes work-reel-entry-scope {
   0% {
     opacity: 0;
