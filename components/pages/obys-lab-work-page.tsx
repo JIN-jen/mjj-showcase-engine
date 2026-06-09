@@ -21,6 +21,13 @@ const detailCopy = {
     category: "类别",
     service: "服务",
     case: "案例",
+    templates: "TEMPLATES",
+    chooseTemplate: "选择此模板",
+    projectBrief: "PROJECT BRIEF",
+    briefCopy: "请准备 Logo、图片、公司名称、联系方式和业务介绍。",
+    startBrief: "开始提交资料",
+    contact: "CONTACT",
+    talkWithUs: "Talk With Us",
   },
   en: {
     work: "Work",
@@ -29,6 +36,13 @@ const detailCopy = {
     category: "Category",
     service: "Service",
     case: "Case",
+    templates: "TEMPLATES",
+    chooseTemplate: "Choose This Template",
+    projectBrief: "PROJECT BRIEF",
+    briefCopy: "Prepare your logo, images, company name, contact details and business description.",
+    startBrief: "Start Project Brief",
+    contact: "CONTACT",
+    talkWithUs: "Talk With Us",
   },
 } satisfies Record<LabLanguage, Record<string, string>>;
 
@@ -48,6 +62,11 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
   const title = language === "cn" ? item.titleCn : item.title;
   const category = language === "cn" ? item.categoryCn : item.category;
   const service = language === "cn" ? item.serviceCn : item.service;
+  const briefItems =
+    language === "cn"
+      ? ["Logo", "图片", "公司名称", "联系方式", "业务介绍"]
+      : ["Logo", "Images", "Company name", "Contact details", "Business description"];
+  const contactItems = ["WhatsApp", "WeChat", "Email"];
 
   useEffect(() => {
     setLanguage(getStoredLanguage());
@@ -173,7 +192,7 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
             <dl className="obys-lab-detail-metadata" aria-label={`${title} metadata`}>
               <div>
                 <dt>YEAR</dt>
-                <dd>2026</dd>
+                <dd>{item.year}</dd>
               </div>
               <div>
                 <dt>INDUSTRY</dt>
@@ -185,9 +204,45 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
               </div>
               <div>
                 <dt>LOCATION</dt>
-                <dd>Tanzania</dd>
+                <dd>{item.location}</dd>
               </div>
             </dl>
+            <div className="obys-lab-detail-entry" aria-label={`${title} template entry`}>
+              <section>
+                <h2>{copy.templates}</h2>
+                <ol>
+                  {item.templates.map((template) => (
+                    <li key={template.number}>
+                      <span>{template.number}</span>
+                      <span>
+                        <strong>{template.titleEN}</strong>
+                        <em>{template.titleCN}</em>
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+                <Link href="/contact">{copy.chooseTemplate}</Link>
+              </section>
+              <section>
+                <h2>{copy.projectBrief}</h2>
+                <p>{copy.briefCopy}</p>
+                <ul>
+                  {briefItems.map((briefItem) => (
+                    <li key={briefItem}>{briefItem}</li>
+                  ))}
+                </ul>
+                <Link href="/contact">{copy.startBrief}</Link>
+              </section>
+              <section className="obys-lab-detail-entry__contact">
+                <h2>{copy.contact}</h2>
+                <ul>
+                  {contactItems.map((contactItem) => (
+                    <li key={contactItem}>{contactItem}</li>
+                  ))}
+                </ul>
+                <Link href="/contact">{copy.talkWithUs}</Link>
+              </section>
+            </div>
           </article>
         ))}
       </section>

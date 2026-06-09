@@ -14,18 +14,56 @@ export type RailPreset = {
   widthTier: RailWidthTier;
 };
 
-export type ObysLabItem = {
-  slug: string;
+export type ObysLabTemplate = {
+  descriptionCN: string;
+  descriptionEN: string;
   number: string;
-  title: string;
-  titleCn: string;
-  category: string;
-  categoryCn: string;
+  titleCN: string;
+  titleEN: string;
+};
+
+export type ObysLabItem = {
+  industry: string;
+  imageSrc: string;
+  location: string;
+  number: string;
+  railPreset: RailPreset;
   service: string;
   serviceCn: string;
-  imageSrc: string;
-  railPreset: RailPreset;
+  slug: string;
+  templates: ObysLabTemplate[];
+  title: string;
+  titleCn: string;
+  titleCN: string;
+  titleEN: string;
+  category: string;
+  categoryCn: string;
+  year: string;
 };
+
+const defaultIndustryTemplates: ObysLabTemplate[] = [
+  {
+    number: "01",
+    titleEN: "Signature Website",
+    titleCN: "品牌官网",
+    descriptionEN: "A refined website for credibility, inquiry and brand presentation.",
+    descriptionCN: "用于建立信任、展示业务并承接咨询的品牌官网。",
+  },
+  {
+    number: "02",
+    titleEN: "Sales Landing Page",
+    titleCN: "销售落地页",
+    descriptionEN: "A focused page for service explanation, conversion and WhatsApp inquiry.",
+    descriptionCN: "用于服务介绍、转化咨询和 WhatsApp 沟通的销售页面。",
+  },
+  {
+    number: "03",
+    titleEN: "Contact / Inquiry Page",
+    titleCN: "联系咨询页",
+    descriptionEN: "A lightweight page for contact, location, business info and inquiry.",
+    descriptionCN: "用于展示联系方式、地址、业务说明和咨询入口的轻量页面。",
+  },
+];
 
 export const obysLabItems: ObysLabItem[] = [
   {
@@ -33,11 +71,17 @@ export const obysLabItems: ObysLabItem[] = [
     number: "01",
     title: "Hospitality",
     titleCn: "酒店与旅行",
+    titleCN: "酒店与旅行",
+    titleEN: "Hospitality",
     category: "Hospitality",
     categoryCn: "酒店与旅行",
+    industry: "Hospitality",
     service: "Web Design/Dev",
     serviceCn: "网站设计/开发",
+    location: "Tanzania",
+    year: "2026",
     imageSrc: "/industry/hospitality.svg",
+    templates: defaultIndustryTemplates,
     railPreset: {
       id: "hospitality",
       widthTier: "sm",
@@ -47,17 +91,23 @@ export const obysLabItems: ObysLabItem[] = [
     },
   },
   {
-    slug: "food-beverage",
+    slug: "restaurant",
     number: "02",
-    title: "Food & Beverage",
-    titleCn: "餐饮与食品",
-    category: "Food, Beverage",
-    categoryCn: "餐饮与食品",
+    title: "Restaurant",
+    titleCn: "餐厅与食品",
+    titleCN: "餐厅与食品",
+    titleEN: "Restaurant",
+    category: "Restaurant",
+    categoryCn: "餐厅与食品",
+    industry: "Restaurant",
     service: "Web Design/Dev",
     serviceCn: "网站设计/开发",
+    location: "Tanzania",
+    year: "2026",
     imageSrc: "/industry/food-beverage.svg",
+    templates: defaultIndustryTemplates,
     railPreset: {
-      id: "food-beverage",
+      id: "restaurant",
       widthTier: "lg",
       ratioTier: "portrait",
       offsetTier: "right",
@@ -69,11 +119,17 @@ export const obysLabItems: ObysLabItem[] = [
     number: "03",
     title: "Construction",
     titleCn: "建筑与工程",
+    titleCN: "建筑与工程",
+    titleEN: "Construction",
     category: "Construction",
     categoryCn: "建筑与工程",
+    industry: "Construction",
     service: "Web Design",
     serviceCn: "网站设计",
+    location: "Tanzania",
+    year: "2026",
     imageSrc: "/industry/construction.svg",
+    templates: defaultIndustryTemplates,
     railPreset: {
       id: "construction",
       widthTier: "md",
@@ -83,17 +139,23 @@ export const obysLabItems: ObysLabItem[] = [
     },
   },
   {
-    slug: "mining-energy",
+    slug: "mining",
     number: "04",
-    title: "Mining & Energy",
-    titleCn: "矿业与能源",
-    category: "Mining, Energy",
-    categoryCn: "矿业与能源",
+    title: "Mining",
+    titleCn: "矿业",
+    titleCN: "矿业",
+    titleEN: "Mining",
+    category: "Mining",
+    categoryCn: "矿业",
+    industry: "Mining",
     service: "Creative Direction, Web Design/Dev",
     serviceCn: "创意指导/网站设计/开发",
+    location: "Tanzania",
+    year: "2026",
     imageSrc: "/industry/mining-energy.svg",
+    templates: defaultIndustryTemplates,
     railPreset: {
-      id: "mining-energy",
+      id: "mining",
       widthTier: "md",
       ratioTier: "portrait",
       offsetTier: "left",
@@ -105,11 +167,17 @@ export const obysLabItems: ObysLabItem[] = [
     number: "05",
     title: "Import & Wholesale",
     titleCn: "进口与批发",
+    titleCN: "进口与批发",
+    titleEN: "Import & Wholesale",
     category: "Trading, Wholesale",
     categoryCn: "进口与批发",
+    industry: "Import & Wholesale",
     service: "Web Design/Dev, Identity",
     serviceCn: "网站设计/开发/品牌识别",
+    location: "Tanzania",
+    year: "2026",
     imageSrc: "/industry/import-wholesale.svg",
+    templates: defaultIndustryTemplates,
     railPreset: {
       id: "import-wholesale",
       widthTier: "xl",
@@ -119,17 +187,23 @@ export const obysLabItems: ObysLabItem[] = [
     },
   },
   {
-    slug: "logistics-auto",
+    slug: "logistics",
     number: "06",
-    title: "Logistics & Auto",
-    titleCn: "物流与汽车",
-    category: "Logistics, Automotive",
-    categoryCn: "物流与汽车",
+    title: "Logistics",
+    titleCn: "物流",
+    titleCN: "物流",
+    titleEN: "Logistics",
+    category: "Logistics",
+    categoryCn: "物流",
+    industry: "Logistics",
     service: "Web Design/Dev",
     serviceCn: "网站设计/开发",
+    location: "Tanzania",
+    year: "2026",
     imageSrc: "/industry/logistics-auto.svg",
+    templates: defaultIndustryTemplates,
     railPreset: {
-      id: "logistics-auto",
+      id: "logistics",
       widthTier: "sm",
       ratioTier: "square",
       offsetTier: "left",
@@ -137,17 +211,23 @@ export const obysLabItems: ObysLabItem[] = [
     },
   },
   {
-    slug: "agriculture-processing",
+    slug: "agriculture",
     number: "07",
     title: "Agriculture",
     titleCn: "农业与加工",
+    titleCN: "农业与加工",
+    titleEN: "Agriculture",
     category: "Agriculture, Processing",
     categoryCn: "农业与加工",
+    industry: "Agriculture",
     service: "Concept, Web Design/Dev",
     serviceCn: "概念/网站设计/开发",
+    location: "Tanzania",
+    year: "2026",
     imageSrc: "/industry/agriculture-processing.svg",
+    templates: defaultIndustryTemplates,
     railPreset: {
-      id: "agriculture-processing",
+      id: "agriculture",
       widthTier: "lg",
       ratioTier: "portrait",
       offsetTier: "right",
@@ -159,11 +239,17 @@ export const obysLabItems: ObysLabItem[] = [
     number: "08",
     title: "Professional Services",
     titleCn: "专业服务",
+    titleCN: "专业服务",
+    titleEN: "Professional Services",
     category: "Professional Services",
     categoryCn: "专业服务",
+    industry: "Professional Services",
     service: "Web Design/Dev, Identity",
     serviceCn: "网站设计/开发/品牌识别",
+    location: "Tanzania",
+    year: "2026",
     imageSrc: "/industry/professional-services.svg",
+    templates: defaultIndustryTemplates,
     railPreset: {
       id: "professional-services",
       widthTier: "md",

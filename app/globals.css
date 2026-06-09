@@ -1834,7 +1834,8 @@ textarea {
     linear-gradient(115deg, rgba(223, 208, 177, 0.94), rgba(122, 113, 97, 0.74));
 }
 
-.obys-project-still--food-beverage {
+.obys-project-still--food-beverage,
+.obys-project-still--restaurant {
   --still-base: #c5c2b6;
   --still-photo:
     radial-gradient(circle at 22% 34%, rgba(252, 250, 239, 0.72) 0 8%, transparent 9%),
@@ -1852,7 +1853,8 @@ textarea {
     linear-gradient(135deg, rgba(202, 199, 189, 0.86), rgba(86, 86, 80, 0.42));
 }
 
-.obys-project-still--mining-energy {
+.obys-project-still--mining-energy,
+.obys-project-still--mining {
   --still-base: #bdbbb3;
   --still-photo:
     radial-gradient(ellipse at 25% 76%, rgba(31, 31, 30, 0.65) 0 24%, transparent 25%),
@@ -1869,7 +1871,8 @@ textarea {
     linear-gradient(135deg, rgba(222, 216, 199, 0.9), rgba(106, 99, 85, 0.48));
 }
 
-.obys-project-still--logistics-auto {
+.obys-project-still--logistics-auto,
+.obys-project-still--logistics {
   --still-base: #bbb9b0;
   --still-photo:
     radial-gradient(ellipse at 42% 70%, rgba(16, 16, 15, 0.54) 0 30%, transparent 31%),
@@ -1878,7 +1881,8 @@ textarea {
     linear-gradient(135deg, rgba(75, 76, 75, 0.7), rgba(218, 215, 203, 0.62));
 }
 
-.obys-project-still--agriculture-processing {
+.obys-project-still--agriculture-processing,
+.obys-project-still--agriculture {
   --still-base: #c8c7b8;
   --still-photo:
     repeating-linear-gradient(168deg, rgba(52, 68, 47, 0.42) 0 4%, rgba(221, 218, 194, 0.55) 4% 8%),
@@ -2119,7 +2123,7 @@ textarea {
   --detail-rail-width: 16rem;
 }
 
-.obys-lab-detail-frame > div {
+.obys-lab-detail-frame > div:not(.obys-lab-detail-entry) {
   position: relative;
   width: var(--detail-rail-width);
   aspect-ratio: var(--detail-rail-ratio);
@@ -2138,7 +2142,7 @@ textarea {
     box-shadow 240ms ease;
 }
 
-.obys-lab-detail-frame > div::before {
+.obys-lab-detail-frame > div:not(.obys-lab-detail-entry)::before {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -2162,7 +2166,7 @@ textarea {
 .obys-lab-detail-metadata {
   position: absolute;
   left: calc(50% + (var(--detail-rail-width) / 2) + 4.4rem);
-  top: 50%;
+  top: clamp(5.8rem, 18vh, 8.2rem);
   z-index: 20;
   display: grid;
   width: min(13vw, 10rem);
@@ -2173,7 +2177,6 @@ textarea {
   letter-spacing: 0.08em;
   line-height: 1.08;
   pointer-events: none;
-  transform: translateY(-50%);
 }
 
 .obys-lab-detail-metadata div {
@@ -2191,7 +2194,119 @@ textarea {
   font-weight: 400;
 }
 
-.obys-lab-detail-frame.is-active > div {
+.obys-lab-detail-entry {
+  position: absolute;
+  left: calc(50% + (var(--detail-rail-width) / 2) + 4.4rem);
+  top: clamp(11.6rem, 31vh, 15.4rem);
+  z-index: 20;
+  display: grid;
+  width: min(15vw, 11rem);
+  gap: clamp(0.78rem, 1.15vw, 1.16rem);
+  color: #111;
+  font-size: clamp(0.42rem, 0.52vw, 0.56rem);
+  letter-spacing: 0.08em;
+  line-height: 1.12;
+}
+
+.obys-lab-detail-entry section {
+  display: grid;
+  gap: clamp(0.34rem, 0.56vw, 0.56rem);
+}
+
+.obys-lab-detail-entry h2 {
+  margin: 0;
+  color: rgba(17, 17, 17, 0.42);
+  font-size: inherit;
+  font-weight: 500;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+.obys-lab-detail-entry ol,
+.obys-lab-detail-entry ul {
+  display: grid;
+  gap: clamp(0.16rem, 0.32vw, 0.32rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.obys-lab-detail-entry ol li {
+  display: grid;
+  grid-template-columns: 1.1rem 1fr;
+  gap: 0.3rem;
+}
+
+.obys-lab-detail-entry ol li > span:last-child {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.obys-lab-detail-entry strong,
+.obys-lab-detail-entry em,
+.obys-lab-detail-entry small {
+  display: block;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+.obys-lab-detail-entry strong {
+  font-weight: 500;
+}
+
+.obys-lab-detail-entry em {
+  color: rgba(17, 17, 17, 0.78);
+  font-style: normal;
+}
+
+.obys-lab-detail-entry p {
+  margin: 0;
+  max-width: 24ch;
+}
+
+.obys-lab-detail-entry ul {
+  color: rgba(17, 17, 17, 0.72);
+  letter-spacing: 0.04em;
+}
+
+.obys-lab-detail-entry ul li::before {
+  content: "- ";
+}
+
+.obys-lab-detail-entry a {
+  justify-self: start;
+  color: #111;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: left;
+  text-decoration: none;
+  text-underline-offset: 0.18rem;
+}
+
+.obys-lab-detail-entry a:hover,
+.obys-lab-detail-entry a:focus-visible {
+  text-decoration: underline;
+}
+
+.obys-lab-detail-entry__contact {
+  gap: clamp(0.38rem, 0.62vw, 0.66rem);
+  padding-top: clamp(0.08rem, 0.2vw, 0.18rem);
+}
+
+.obys-lab-detail-entry__contact h2,
+.obys-lab-detail-entry__contact a {
+  color: #111;
+  font-weight: 500;
+}
+
+.obys-lab-detail-entry__contact ul {
+  color: rgba(17, 17, 17, 0.86);
+  letter-spacing: 0.08em;
+}
+
+.obys-lab-detail-frame.is-active > div:not(.obys-lab-detail-entry) {
   opacity: 1;
   filter: grayscale(0);
   transform: translateX(calc(var(--detail-rail-offset) * 0.08)) scale(1.04);
