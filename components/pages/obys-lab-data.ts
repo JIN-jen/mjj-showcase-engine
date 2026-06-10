@@ -1,3 +1,5 @@
+import { getTemplatesByIndustry } from "@/data/templates";
+
 export type RailWidthTier = "xs" | "sm" | "md" | "lg" | "xl";
 
 export type RailRatioTier = "square" | "portrait" | "landscape" | "wide";
@@ -18,6 +20,9 @@ export type ObysLabTemplate = {
   descriptionCN: string;
   descriptionEN: string;
   number: string;
+  route: string;
+  templateId: string;
+  thumbnail: string;
   titleCN: string;
   titleEN: string;
 };
@@ -41,29 +46,18 @@ export type ObysLabItem = {
   year: string;
 };
 
-const defaultIndustryTemplates: ObysLabTemplate[] = [
-  {
-    number: "01",
-    titleEN: "Signature Website",
-    titleCN: "品牌官网",
-    descriptionEN: "A refined website for credibility, inquiry and brand presentation.",
-    descriptionCN: "用于建立信任、展示业务并承接咨询的品牌官网。",
-  },
-  {
-    number: "02",
-    titleEN: "Sales Landing Page",
-    titleCN: "销售落地页",
-    descriptionEN: "A focused page for service explanation, conversion and WhatsApp inquiry.",
-    descriptionCN: "用于服务介绍、转化咨询和 WhatsApp 沟通的销售页面。",
-  },
-  {
-    number: "03",
-    titleEN: "Contact / Inquiry Page",
-    titleCN: "联系咨询页",
-    descriptionEN: "A lightweight page for contact, location, business info and inquiry.",
-    descriptionCN: "用于展示联系方式、地址、业务说明和咨询入口的轻量页面。",
-  },
-];
+function getObysLabTemplates(industry: string): ObysLabTemplate[] {
+  return getTemplatesByIndustry(industry).map((template, index) => ({
+    descriptionCN: template.description,
+    descriptionEN: template.description,
+    number: String(index + 1).padStart(2, "0"),
+    route: template.route,
+    templateId: template.templateId,
+    thumbnail: template.thumbnail,
+    titleCN: template.templateName,
+    titleEN: template.templateName,
+  }));
+}
 
 export const obysLabItems: ObysLabItem[] = [
   {
@@ -81,7 +75,7 @@ export const obysLabItems: ObysLabItem[] = [
     location: "Tanzania",
     year: "2026",
     imageSrc: "/industry/hospitality.svg",
-    templates: defaultIndustryTemplates,
+    templates: getObysLabTemplates("Hospitality"),
     railPreset: {
       id: "hospitality",
       widthTier: "sm",
@@ -105,7 +99,7 @@ export const obysLabItems: ObysLabItem[] = [
     location: "Tanzania",
     year: "2026",
     imageSrc: "/industry/food-beverage.svg",
-    templates: defaultIndustryTemplates,
+    templates: getObysLabTemplates("Restaurant"),
     railPreset: {
       id: "restaurant",
       widthTier: "lg",
@@ -129,7 +123,7 @@ export const obysLabItems: ObysLabItem[] = [
     location: "Tanzania",
     year: "2026",
     imageSrc: "/industry/construction.svg",
-    templates: defaultIndustryTemplates,
+    templates: getObysLabTemplates("Construction"),
     railPreset: {
       id: "construction",
       widthTier: "md",
@@ -153,7 +147,7 @@ export const obysLabItems: ObysLabItem[] = [
     location: "Tanzania",
     year: "2026",
     imageSrc: "/industry/mining-energy.svg",
-    templates: defaultIndustryTemplates,
+    templates: getObysLabTemplates("Mining"),
     railPreset: {
       id: "mining",
       widthTier: "md",
@@ -177,7 +171,7 @@ export const obysLabItems: ObysLabItem[] = [
     location: "Tanzania",
     year: "2026",
     imageSrc: "/industry/import-wholesale.svg",
-    templates: defaultIndustryTemplates,
+    templates: getObysLabTemplates("Import & Wholesale"),
     railPreset: {
       id: "import-wholesale",
       widthTier: "xl",
@@ -201,7 +195,7 @@ export const obysLabItems: ObysLabItem[] = [
     location: "Tanzania",
     year: "2026",
     imageSrc: "/industry/logistics-auto.svg",
-    templates: defaultIndustryTemplates,
+    templates: getObysLabTemplates("Logistics"),
     railPreset: {
       id: "logistics",
       widthTier: "sm",
@@ -225,7 +219,7 @@ export const obysLabItems: ObysLabItem[] = [
     location: "Tanzania",
     year: "2026",
     imageSrc: "/industry/agriculture-processing.svg",
-    templates: defaultIndustryTemplates,
+    templates: getObysLabTemplates("Agriculture"),
     railPreset: {
       id: "agriculture",
       widthTier: "lg",
@@ -249,7 +243,7 @@ export const obysLabItems: ObysLabItem[] = [
     location: "Tanzania",
     year: "2026",
     imageSrc: "/industry/professional-services.svg",
-    templates: defaultIndustryTemplates,
+    templates: getObysLabTemplates("Professional Services"),
     railPreset: {
       id: "professional-services",
       widthTier: "md",
