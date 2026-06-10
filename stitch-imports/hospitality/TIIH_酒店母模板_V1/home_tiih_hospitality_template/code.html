@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TIIH Hospitality - Website Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&amp;family=JetBrains+Mono:wght@400&amp;family=Playfair+Display:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eeeeee",
+                        "inverse-primary": "#c6c6c6",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#474747",
+                        "primary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#4c4546",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-container-high": "#e8e8e8",
+                        "outline-variant": "#cfc4c5",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "surface-container-low": "#f3f3f3",
+                        "on-surface": "#1b1b1b",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed": "#1b1b1b",
+                        "tertiary-container": "#1b1b1b",
+                        "outline": "#7e7576",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-background": "#1b1b1b",
+                        "inverse-surface": "#303030",
+                        "on-tertiary-container": "#848484",
+                        "surface-bright": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#5e5e5e",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#5e5e5e",
+                        "secondary-container": "#e1dfdf",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "background": "#f9f9f9",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-primary-container": "#848484",
+                        "primary-container": "#1b1b1b",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#626263"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "margin-desktop": "80px",
+                        "margin-tablet": "40px",
+                        "container-max": "1440px",
+                        "gutter": "32px",
+                        "section-gap": "160px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Playfair Display"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-xl-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["120px", { "lineHeight": "110%", "letterSpacing": "-0.03em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "160%", "fontWeight": "400" }],
+                        "display-xl-mobile": ["56px", { "lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-lg": ["64px", { "lineHeight": "120%", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "body-lg": ["20px", { "lineHeight": "160%", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "140%", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["40px", { "lineHeight": "120%", "fontWeight": "400" }],
+                        "label-mono": ["13px", { "lineHeight": "140%", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { scroll-behavior: smooth; }
+        .grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gutter, 32px); }
+        .grid-4-mobile { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter, 32px); }
+        .hover-view-cursor { cursor: none; }
+        #custom-cursor {
+            position: fixed; top: 0; left: 0; width: 80px; height: 80px; border-radius: 50%;
+            background: rgba(0,0,0,0.8); color: white; display: flex; align-items: center; justify-content: center;
+            pointer-events: none; opacity: 0; transform: translate(-50%, -50%) scale(0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease; z-index: 100;
+            font-family: 'Hanken Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+        }
+        .hover-view-cursor:hover ~ #custom-cursor,
+        .hover-view-cursor:hover #custom-cursor,
+        .cursor-active { opacity: 1 !important; transform: translate(-50%, -50%) scale(1) !important; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<div class="font-label-caps text-label-caps hidden md:flex" id="custom-cursor">VIEW</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/95 dark:bg-surface/95 flex justify-between items-center px-margin-desktop py-8 transition-all duration-500 ease-in-out">
+<a class="font-display-xl text-body-lg tracking-tighter text-primary dark:text-on-surface uppercase" href="#">TIIH HOSPITALITY</a>
+<div class="hidden md:flex space-x-12">
+<a class="font-label-caps text-label-caps text-primary dark:text-on-surface border-b border-primary dark:border-on-surface pb-1" href="#">Home</a>
+<a class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-variant hover:opacity-60 transition-opacity duration-300" href="#">About</a>
+<a class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-variant hover:opacity-60 transition-opacity duration-300" href="#">Accommodation</a>
+<a class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-variant hover:opacity-60 transition-opacity duration-300" href="#">Services</a>
+</div>
+<a class="font-label-caps text-label-caps bg-primary text-on-primary px-8 py-4 hover:opacity-80 transition-opacity duration-300" href="#">Request Proposal</a>
+</nav>
+<main class="w-full">
+<!-- Frame 01: Hero -->
+<section class="w-full h-screen relative pt-32 px-margin-mobile md:px-margin-desktop pb-margin-mobile md:pb-margin-desktop flex flex-col justify-end">
+<div class="w-full h-full absolute inset-0 z-0">
+<img alt="Architectural photography" class="w-full h-full object-cover grayscale opacity-90" data-alt="A sweeping wide-angle shot of a minimalist, ultra-luxury modern estate exterior at dusk. The architecture features stark, monumental concrete walls, expansive floor-to-ceiling glass panels, and geometric precision. A perfectly still reflecting pool mirrors the structure, creating perfect symmetry. The lighting is moody and cinematic, with soft, high-contrast black-and-white tones emphasizing texture and form, adhering strictly to a high-end luxury editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOj0XV-Y8TNkwhHKZLX0HKAfGWSnOpyhPPMYxxZo36jXueipTfJZsQ6Kqut181hNDEpRPa8Qt787ijN79ze6onLrxTjxlhNIXRDZnbG9HWX1zsEYrNacvpp1lf_3JTgcumrOiToBm_cWVjyO7tNgFOEw4UUK_h2swqXJ7WjVc1uqR-Q_3ZN5wyPnJrv4chMYuBaldBfeq3Kvm54zYsz3lwvQuJEiZxYT2WlPN376HYOHZrQbfFRaPXjyPjZ0I6ZeRumRQq40Sfg5M"/>
+</div>
+<div class="relative z-10 grid-4-mobile md:grid-12 items-end w-full max-w-container-max mx-auto h-full pb-12">
+<div class="col-span-4 md:col-span-10">
+<h1 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-on-primary mix-blend-difference">
+                        Tanzania Hospitality<br/>Website Solutions
+                    </h1>
+</div>
+<div class="col-span-4 md:col-span-2 flex justify-end pb-4">
+<span class="font-label-mono text-label-mono text-on-primary mix-blend-difference opacity-80">EST. 2024</span>
+</div>
+</div>
+</section>
+<!-- Frame 02: Property Intro -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<div class="grid-4-mobile md:grid-12">
+<div class="col-span-4 md:col-span-4 flex flex-col justify-between">
+<p class="font-label-caps text-label-caps text-secondary mb-12 md:mb-0">01 / INTRODUCTION</p>
+<div class="aspect-[3/4] w-full overflow-hidden hover-view-cursor group" onmouseenter="cursorIn()" onmouseleave="cursorOut()">
+<img alt="Interior detail" class="w-full h-full object-cover grayscale transition-transform duration-1000 group-hover:scale-105" data-alt="Close-up architectural detail of a brutalist yet refined interior staircase. The composition is highly asymmetric, focusing on the interplay of stark light and deep shadow falling across textured raw concrete and a perfectly smooth matte black handrail. The image is strictly black and white, conveying a quiet, authoritative museum-like quality with meticulous attention to clean lines and rigorous minimalist geometry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRCOYg9a7t1fCb04IZLWNPibvdfRFD84mWqUCwDqDo-1vXSFxxIrtshfNeFN-r2RN_Ix_ti8VYQYPAmzjXS5NlE7H_gGhl7TS_-2I_9cYzEC4CFKZ9B9p_28pEP3igMZknvumC6F-xw5epf0LDgXCI5ugmqJgU_Z1UTlwxFiDIr3iPnymGT9KDDSA4KnpBfx1Fn3B0-i4jfvasnqGItsUzTsb-bb5hHQAzgDFdJTkt8OaAbzV8Z_39Lyj7USETa_Dl99ze-YOdYiY"/>
+</div>
+</div>
+<div class="col-span-4 md:col-span-7 md:col-start-6 flex flex-col justify-center pt-12 md:pt-0">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-12">
+                        Digital excellence for the East African hospitality sector. We build the digital infrastructure for the region's most prestigious hotels and resorts.
+                    </h2>
+<p class="font-body-md text-body-md text-secondary max-w-xl">
+                        Situated in the heart of East Africa, we specialize in high-converting websites, booking integrations, and digital identity for the hospitality industry. Every solution is curated for performance and brand prestige. We offer not merely a website, but a comprehensive digital experience tailored for luxury markets.
+                    </p>
+<div class="mt-16">
+<a class="inline-block border-b border-primary pb-1 font-label-caps text-label-caps text-primary hover:opacity-60 transition-opacity duration-300" href="#">DISCOVER OUR SOLUTIONS</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Frame 03: Signature Rooms -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-low w-full">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-24">
+<h3 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-primary">Our Specialized<br/>Solutions</h3>
+<p class="font-label-caps text-label-caps text-secondary hidden md:block">02 / PORTFOLIO</p>
+</div>
+<div class="grid-4-mobile md:grid-12">
+<!-- Room 1 -->
+<div class="col-span-4 md:col-span-6 group cursor-pointer mb-16 md:mb-0">
+<div class="aspect-[4/5] overflow-hidden mb-8">
+<img alt="Master Suite" class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-1000" data-alt="An expansive, ultra-minimalist master bedroom suite characterized by vast open space and restrained design. A low-profile, flawlessly made bed sits center stage against a monolithic concrete wall. Floor-to-ceiling windows offer a stark view of a barren, foggy landscape. The lighting is diffused and cool, highlighting the stark black-and-white tonal range and the absolute absence of clutter or decoration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp_jKm1yieb5_YJWkkuYl818eWJJalfJOlB-d9DHmT4EcengU1_ij-PeF4l2uuqAhzJQqzbow6iLiSBlLt1GkIoVJrEHR05kE18FnlSFBRKreXBMUSLPV51mMEWHLm21IDUJXlbZR7jAd8V6TtiyLPFOrfWtuSKe7MpgNn2v1fPK_IqIl8rFm4ZOLOQL6syCcDnmP5UFDd3tdKcI7LKRuh8QLTlHo1Nmj_4GMtDbnL1iW38jErQoD0x-daroE8w107cLLjNxoMtnM"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-body-lg text-primary mb-2">Safari Lodges</h4>
+<p class="font-label-caps text-label-caps text-secondary">DIGITAL IMMERSION / DIRECT BOOKINGS</p>
+</div>
+<span class="material-symbols-outlined font-light text-primary transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+<!-- Room 2 -->
+<div class="col-span-4 md:col-span-5 md:col-start-8 md:mt-32 group cursor-pointer">
+<div class="aspect-[4/5] overflow-hidden mb-8">
+<img alt="Gallery Living" class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-1000" data-alt="A severe, museum-like living area featuring a single, sculptural black leather sofa centered in a vast expanse of polished concrete floor. A single piece of large-scale abstract dark art hangs on a pristine white wall. The composition uses rigorous Swiss grid alignment, with harsh, angular shadows cutting across the room from an unseen clerestory window. The mood is uncompromisingly premium and silent." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhjzL-UuTp4vtHGFF4ghnykRvZTeLCwcmE7LOTeUxNkdlgak1HgByml-pNheyju03zd9Lo8EcSgk6qJEXl_VzQFhX-xCYQIqmjewu8w8xAZBCuDG0nTZjqJIPj6qZwr3IN4oERHf8_SLL5euDlSsBN0a2J2yJ2KxrlrRXwBayvSBbsy3fxI9tdXrIYkzb_En9HyvCmN8DajIv6_muNCYprp65IdFhJT2dvm4X16EGdi-5vUcNcHmrBqbYYknXeSSvJZqpDjuNolCs"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-body-lg text-primary mb-2">Beach Resorts</h4>
+<p class="font-label-caps text-label-caps text-secondary">VISUAL STORYTELLING / GUEST EXPERIENCE</p>
+</div>
+<span class="material-symbols-outlined font-light text-primary transform -rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Frame 06: Inquiry CTA -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop w-full border-t border-black/10">
+<div class="max-w-container-max mx-auto text-center flex flex-col items-center justify-center min-h-[512px]">
+<h2 class="font-display-xl-mobile md:font-display-xl text-display-xl-mobile md:text-display-xl text-primary mb-12">Request a Website Proposal</h2>
+<p class="font-body-md text-body-md text-secondary max-w-md mb-16">
+                    Consultations are available for ambitious hospitality brands ready to elevate their digital presence.
+                </p>
+<a class="font-label-caps text-label-caps bg-primary text-on-primary px-12 py-6 hover:bg-surface hover:text-primary border border-primary transition-colors duration-500" href="#">REQUEST PROPOSAL</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface border-t border-black/10 dark:border-white/10 w-full">
+<div class="grid grid-cols-12 gap-gutter px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="col-span-12 md:col-span-4 mb-12 md:mb-0">
+<a class="font-display-xl text-display-xl-mobile text-primary dark:text-on-surface uppercase" href="#">TIIH HOSPITALITY</a>
+</div>
+<div class="col-span-12 md:col-span-4 flex flex-col space-y-4">
+<a class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant hover:text-primary dark:hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant hover:text-primary dark:hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant hover:text-primary dark:hover:text-on-surface transition-colors" href="#">Sustainability</a>
+<a class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant hover:text-primary dark:hover:text-on-surface transition-colors" href="#">Press Kit</a>
+</div>
+<div class="col-span-12 md:col-span-4 flex items-end justify-start md:justify-end mt-12 md:mt-0">
+<p class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant">© 2024 TIIH HOSPITALITY. ALL RIGHTS RESERVED.</p>
+</div>
+</div>
+</footer>
+<script>
+        // Custom Cursor Logic
+        const cursor = document.getElementById('custom-cursor');
+        let cursorX = 0, cursorY = 0;
+        let isHovering = false;
+
+        document.addEventListener('mousemove', (e) => {
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+            if(isHovering) {
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+            }
+        });
+
+        function cursorIn() {
+            isHovering = true;
+            cursor.classList.add('cursor-active');
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+        }
+
+        function cursorOut() {
+            isHovering = false;
+            cursor.classList.remove('cursor-active');
+        }
+    </script>
+</body></html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TIIH Hospitality - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&amp;family=Playfair+Display:wght@400&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .material-symbols-outlined {
+                font-family: 'Material Symbols Outlined';
+                font-weight: normal;
+                font-style: normal;
+                font-size: 24px;
+                line-height: 1;
+                letter-spacing: normal;
+                text-transform: none;
+                display: inline-block;
+                white-space: nowrap;
+                word-wrap: normal;
+                direction: ltr;
+                -webkit-font-feature-settings: 'liga';
+                -webkit-font-smoothing: antialiased;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eeeeee",
+                        "inverse-primary": "#c6c6c6",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#474747",
+                        "primary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#4c4546",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-container-high": "#e8e8e8",
+                        "outline-variant": "#cfc4c5",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "surface-container-low": "#f3f3f3",
+                        "on-surface": "#1b1b1b",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed": "#1b1b1b",
+                        "tertiary-container": "#1b1b1b",
+                        "outline": "#7e7576",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-background": "#1b1b1b",
+                        "inverse-surface": "#303030",
+                        "on-tertiary-container": "#848484",
+                        "surface-bright": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#5e5e5e",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#5e5e5e",
+                        "secondary-container": "#e1dfdf",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "background": "#f9f9f9",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-primary-container": "#848484",
+                        "primary-container": "#1b1b1b",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#626263"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "margin-desktop": "80px",
+                        "margin-tablet": "40px",
+                        "container-max": "1440px",
+                        "gutter": "32px",
+                        "section-gap": "160px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Playfair Display"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-xl-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["120px", { "lineHeight": "110%", "letterSpacing": "-0.03em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "160%", "fontWeight": "400" }],
+                        "display-xl-mobile": ["56px", { "lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-lg": ["64px", { "lineHeight": "120%", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "body-lg": ["20px", { "lineHeight": "160%", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "140%", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["40px", { "lineHeight": "120%", "fontWeight": "400" }],
+                        "label-mono": ["13px", { "lineHeight": "140%", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+<!-- Top Navigation (Mobile Adapted) -->
+<header class="fixed top-0 w-full z-50 bg-surface/95 border-b border-black/10 transition-all duration-500 ease-in-out">
+<div class="flex justify-between items-center px-margin-mobile py-6 w-full">
+<a class="font-display-xl-mobile text-[32px] tracking-tighter text-primary leading-none" href="#">TIIH HOSPITALITY</a>
+<button aria-label="Menu" class="text-primary hover:opacity-60 transition-opacity duration-300 focus:outline-none">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow pt-[104px]"> <!-- Offset for fixed header -->
+<!-- Hero Section -->
+<section class="px-margin-mobile pt-16 pb-24">
+<h1 class="font-display-xl-mobile text-[48px] leading-[1.1] text-primary mb-8 max-w-[100%]">Tanzania Hospitality Website Solutions</h1>
+<p class="font-body-md text-body-md text-secondary mb-12 max-w-[90%]">
+                A highly curated selection of premium digital experiences for the finest accommodations and hospitality services in Tanzania.
+            </p>
+<div class="relative w-full aspect-[4/5] bg-surface-container overflow-hidden">
+<img alt="Hero Estate" class="w-full h-full object-cover grayscale transition-transform duration-700 hover:scale-105" data-alt="A stark, minimalist luxury estate exterior captured in stark black and white photography. The architecture features harsh, geometric lines and massive glass panes reflecting a pale sky. The composition highlights the brutalist yet refined nature of the concrete structure set against a desolate, expansive landscape. Lighting is highly dramatic, emphasizing deep shadows and bright highlights consistent with a high-end architectural editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm7P69UCr7Sha8b13LMCJpypih0JcnN4tjwfLkCN4-liJBs-tptKVJD9CJV2QT1PKNxqAsFGq-lWx06bvFnibsBncTmU3kAkUVwwbgMWG3n0LBBWZWesgwjOrm_YkOmdR9neivCeQLr3ntwzW1SjrAx5ky0sxEpuYf_7eMVud5kv36XPITcjtHxNF5ZJWmnRMikgEouHN07Un82I77NCwv7R5vm0kAd3-zH-_w20aAPCW5uw_hKY9ns2jZ9G4NGhvxA60-dxhVdKM"/>
+<div class="absolute bottom-6 left-6">
+<span class="font-label-caps text-label-caps text-on-primary bg-primary px-3 py-1">FEATURED</span>
+</div>
+</div>
+</section>
+<!-- Curated Selection -->
+<section class="px-margin-mobile py-section-gap border-t border-black/10">
+<div class="flex justify-between items-end mb-12">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Accommodation.</h2>
+<a class="font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:opacity-60 transition-opacity" href="#">VIEW ALL</a>
+</div>
+<div class="flex flex-col gap-12">
+<!-- Card 1 -->
+<article class="group">
+<div class="relative w-full aspect-[3/2] overflow-hidden bg-surface-container mb-4">
+<img alt="Villa One" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Interior view of a minimalist luxury living space with stark, museum-like aesthetics. Large floor-to-ceiling windows look out onto a serene, isolated landscape. The room is sparsely furnished with highly structural, sculptural seating pieces in neutral tones. The lighting is diffused and soft, creating a quiet, contemplative atmosphere typical of high-end Swiss architectural photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2SO1vdgOFLVd5h0ClA-XwJmm9wweWtP06nKqwcM1QIuXOOWo0rFsE6s6njPKo3Z-OxHzGvBjRM5FX0bdFfW2tUTfz65zT3uw--IAS2UmbJnonMPVRsnqDnlBLVTjpDHkZ45J-higRRLskM2PgC4vDWX_qHW2DViTjmdQElBNtUrhm_rXP6zlw6BwB1iHn9R_yWcw3LDly0OzmdTbYhKPR71_oVOGKiuX65IzV5wUmeMEk1LVfeZ3MLWIMaIeMW6LYOjFMOmQvzeY"/>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-secondary">SERENGETI, TZ</span>
+<h3 class="font-headline-lg-mobile text-[32px] leading-tight text-primary">Safari Lodge</h3>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group">
+<div class="relative w-full aspect-[4/5] overflow-hidden bg-surface-container mb-4">
+<img alt="Villa Two" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A close-up architectural detail shot of a luxury estate showcasing precise material transitions. The image features a seamless joint between smooth, dark concrete and warm, heavily grained wood. A single, stark shaft of light cuts across the textures, highlighting the uncompromising quality of the construction. The mood is silent, authoritative, and deeply focused on materiality, fitting a premium editorial context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkceqePk8ne190vmBRXQt_HbFtu9HKE6Cf3ufcVuZiS92aJo9lHm7mO7dE-a7YOBE7J2a_qzK3Z3O8RY0nx0GHCeLxzmLvQBhvXz3GuUIaV_WLjaj2FEdFcyHNNuAmeSGZNrLBvpcEdG3qJ8dw1DHLr30SR_JkD6IGcSBQ5W-qV-McbAhFyipzfoBvrHDWXmawfKQiEfXZcX7BWVEhjTkzwZnY6k-c9uiCvSedg3nIWDbv27qV1phybEAuI-rcw6y_Z34u7WnIgpM"/>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps text-secondary">ZANZIBAR, TZ</span>
+<h3 class="font-headline-lg-mobile text-[32px] leading-tight text-primary">Beach Resort</h3>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Footer (Mobile Adapted) -->
+<footer class="w-full border-t border-black/10 bg-surface px-margin-mobile py-16 flex flex-col gap-12">
+<div class="flex flex-col gap-8">
+<span class="font-display-xl-mobile text-[40px] text-primary tracking-tighter leading-none">TIIH HOSPITALITY</span>
+<div class="flex flex-col gap-4">
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors" href="#">Accommodation</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors" href="#">Services</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="border-t border-black/10 pt-8">
+<p class="font-label-mono text-label-mono text-secondary text-xs uppercase">© 2024 TIIH HOSPITALITY. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+</body></html>

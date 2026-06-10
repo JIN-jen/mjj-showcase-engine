@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Services - TIIH Hospitality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600&amp;family=Playfair+Display:wght@400&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eeeeee",
+                        "inverse-primary": "#c6c6c6",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#474747",
+                        "primary-fixed": "#e2e2e2",
+                        "on-surface-variant": "#4c4546",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "surface-container-high": "#e8e8e8",
+                        "outline-variant": "#cfc4c5",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-dim": "#dadada",
+                        "surface-container-low": "#f3f3f3",
+                        "on-surface": "#1b1b1b",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "surface": "#f9f9f9",
+                        "on-primary-fixed": "#1b1b1b",
+                        "tertiary-container": "#1b1b1b",
+                        "outline": "#7e7576",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "on-background": "#1b1b1b",
+                        "inverse-surface": "#303030",
+                        "on-tertiary-container": "#848484",
+                        "surface-bright": "#f9f9f9",
+                        "surface-variant": "#e2e2e2",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#5e5e5e",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#5e5e5e",
+                        "secondary-container": "#e1dfdf",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary": "#000000",
+                        "tertiary": "#000000",
+                        "background": "#f9f9f9",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-primary-container": "#848484",
+                        "primary-container": "#1b1b1b",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#626263"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "margin-desktop": "80px",
+                        "margin-tablet": "40px",
+                        "container-max": "1440px",
+                        "gutter": "32px",
+                        "section-gap": "160px"
+                    },
+                    "fontFamily": {
+                        "display-xl": ["Playfair Display"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-xl-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "display-xl": ["120px", { "lineHeight": "110%", "letterSpacing": "-0.03em", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "160%", "fontWeight": "400" }],
+                        "display-xl-mobile": ["56px", { "lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+                        "headline-lg": ["64px", { "lineHeight": "120%", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "body-lg": ["20px", { "lineHeight": "160%", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "140%", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["40px", { "lineHeight": "120%", "fontWeight": "400" }],
+                        "label-mono": ["13px", { "lineHeight": "140%", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Cursor styling for interactive elements */
+        .custom-cursor-target {
+            cursor: none;
+        }
+        #custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.3s ease;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+        .custom-cursor-target:hover ~ #custom-cursor {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        /* Subtle image hover effect */
+        .img-reveal {
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), filter 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            filter: grayscale(100%);
+        }
+        .img-container:hover .img-reveal {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/95 dark:bg-surface/95 border-b border-black/10 dark:border-white/10 transition-all duration-500 ease-in-out">
+<div class="flex justify-between items-center px-margin-desktop py-8 w-full">
+<div class="font-display-xl text-body-lg tracking-tighter text-primary dark:text-on-surface">TIIH</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-variant hover:opacity-60 transition-opacity duration-300" href="#">Home</a>
+<a class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-variant hover:opacity-60 transition-opacity duration-300" href="#">About</a>
+<a class="font-label-caps text-label-caps text-secondary dark:text-on-secondary-variant hover:opacity-60 transition-opacity duration-300" href="#">Portfolio</a>
+<a class="font-label-caps text-label-caps text-primary dark:text-on-surface border-b border-primary dark:border-on-surface pb-1 transition-all duration-500 ease-in-out" href="#">SERVICES</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 font-label-caps text-label-caps hover:opacity-80 transition-opacity duration-300">Contact</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-[140px] pb-section-gap w-full max-w-container-max mx-auto">
+<!-- Hero Section -->
+<section class="px-margin-desktop mb-section-gap">
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-10">
+<h1 class="font-display-xl text-display-xl-mobile md:text-display-xl mb-8">Our<br/>Services</h1>
+<p class="font-body-md text-body-md text-secondary max-w-lg">
+                        Comprehensive digital and physical solutions for modern hospitality brands. We elevate every touchpoint to maximize revenue and guest satisfaction.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Dining Section - Asymmetric Layout -->
+<section class="px-margin-desktop mb-section-gap">
+<div class="flex justify-between items-end border-b border-black/10 pb-4 mb-12">
+<h2 class="font-label-caps text-label-caps">01 — DIGITAL PRESENCE</h2>
+</div>
+<div class="grid grid-cols-12 gap-gutter items-center">
+<div class="col-span-12 md:col-span-7 img-container overflow-hidden custom-cursor-target relative" style="aspect-ratio: 3/4;">
+<img alt="Dining experience" class="w-full h-full object-cover img-reveal" data-alt="A highly stylized, top-down view of an avant-garde culinary dish plated on a stark white, organically shaped ceramic plate. The composition is extremely minimalist, sitting on a solid black textured dining table. Harsh, directed spotlighting creates deep, dramatic shadows, emphasizing the architectural quality of the food presentation. The aesthetic is ultra-luxurious, echoing a modern art gallery feel within a fine dining context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDan1j2EELn9lR_9gm6F36xyDvpNkzau644t4oMJTrG-rH_cxWr4bkTfN_fhPG33rNUExXW6MCkzDupGxHmEQBoerf6uLVbugZv1D8K70-ERq7pSTvsRZTpRe24OlEiy1JYvNsAGZdMMY0QKkSjEDQha5e4FOy9M238KqG_7XkBHDiCYyGFgTqU2iMXCi6DqbpyYqXGJW1TTmRgnv35ZtBtjZv2bW9wnOOeFiuDlPYhMLLmcfFaU12P5pw48HMuihW7UyTDHPDFyr8"/>
+</div>
+<div class="col-span-12 md:col-span-4 md:col-start-9 mt-12 md:mt-0">
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6">Website<br/>Design</h3>
+<p class="font-body-md text-body-md text-secondary mb-8">
+                        Bespoke, conversion-optimized web platforms tailored for luxury hospitality. We craft intuitive user journeys that reflect your brand's unique identity while driving direct bookings.
+                    </p>
+<a class="inline-block border-b border-primary pb-1 font-label-caps text-label-caps hover:opacity-60 transition-opacity" href="#">VIEW PORTFOLIO</a>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-gutter mt-gutter">
+<div class="col-span-12 md:col-span-4 img-container overflow-hidden custom-cursor-target" style="aspect-ratio: 16/9;">
+<img alt="Restaurant interior" class="w-full h-full object-cover img-reveal" data-alt="Interior shot of an ultra-minimalist, brutalist dining room. Expansive concrete walls and floor are punctuated by a single, perfectly aligned row of black, geometric dining tables. Natural light floods in from invisible clerestory windows, casting sharp, rhythmic shadows across the stark space. The atmosphere is silent, austere, and profoundly elegant, devoid of any unnecessary ornamentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf1C272O0BBEXltAcAlYW9xFgfmzNUajo7UBv3uODRWCL69MQBhvV6lCn0Ahjdh2IyV78puy429jO1Hbpfdqv7A0LQpfxaIPuh6HcfhDT7jitv4myqJs-o1PFTbzUvt43eh2lo3VC4pR-9tvNSVqws9AzrbyHQaJngYaTYAxoDp9L1eoBlq0nVv6DG3rWadbsrQTVIavriFk1iDvQtDnTg5Rwy8-W3_78ZrwKoHCRZvAq5EzWqA8y_-VmdGb2EHHYatWDViXRcimQ"/>
+</div>
+<div class="col-span-12 md:col-span-4 md:col-start-9 img-container overflow-hidden custom-cursor-target" style="aspect-ratio: 16/9;">
+<img alt="Wine cellar" class="w-full h-full object-cover img-reveal" data-alt="A meticulously organized wine cellar viewed through a frameless glass wall. The space is defined by rigid, illuminated vertical steel racks holding identical bottles in perfect symmetry. The lighting is low and clinical, creating a stark contrast against the dark, monolithic stone walls. The visual language speaks to precision, curation, and absolute control." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbPCKZK1CIZw2mNMTOJpllYiYuNVvouNY2pMueV2bobqcwPGEpuJbkr5tyxQdZxxzKQwqwjhgNn1ENZm0dK3QqdsBNkUPv5qEYSASkqYUsxKGV0V3Tox7zBsHIYw18it90fxpxjun7IWj0jQORyUscpzfXs4NLlOzCvuAcReb0bJFbylnHnWjp-SSGIfXkqFgRf75fJuneMnA8DwEiQeBqtMm7JUwgvs9qs4IWVwf68j0E59hw0M7F7XkpWemL0F08_VHlM3-76uU"/>
+</div>
+</div>
+</section>
+<!-- Spa Section - Minimalist / Central focus -->
+<section class="px-margin-desktop mb-section-gap">
+<div class="flex justify-between items-end border-b border-black/10 pb-4 mb-12">
+<h2 class="font-label-caps text-label-caps">02 — SYSTEMS &amp; OPERATIONS</h2>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-8 md:col-start-3 text-center mb-16">
+<h3 class="font-display-xl text-display-xl-mobile md:text-display-xl mb-6">Online<br/>Booking System</h3>
+<p class="font-body-md text-body-md text-secondary max-w-xl mx-auto">
+                        Seamless integration of robust booking engines designed to reduce OTA dependency. We streamline the reservation process to enhance revenue management and operational efficiency.
+                    </p>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 img-container overflow-hidden custom-cursor-target" style="aspect-ratio: 21/9;">
+<img alt="Spa pool" class="w-full h-full object-cover img-reveal" data-alt="A stark, minimalist indoor pool area defined by dark basalt stone and perfectly still water. The geometry is severe, with sharp right angles and a monolithic aesthetic. A single, dramatic shaft of sunlight pierces the gloom from an unseen skylight, reflecting off the mirror-like surface of the pool. The mood is solemn, meditative, and entirely isolated from the outside world." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2mQYF_RlaID59pW5v26cwVzchaM18b5On-z5AZO9EDpr89fFAjrqDXa3mSs-Egq69wcKRA2s-fBeupJXvULe6vBEib9uQ-JMafWzGYcYKJktafdC-gbDjem-jowDIKT9MylU9JdHBVEd5IF-Lpg8jVk-HbPCSc0qseaEauNCnvVRwC0-wPLlzdx7jioNSccydEXerfWQPrM6kj6yMa8H2j9nex15cZqIzMdyFN0YhxpMKQM4t19DkeuFdKUMgWzqp2KSaNbK8EM4"/>
+</div>
+</div>
+</section>
+<!-- Activities Section - Bento-ish Grid but stark -->
+<section class="px-margin-desktop mb-section-gap">
+<div class="flex justify-between items-end border-b border-black/10 pb-4 mb-12">
+<h2 class="font-label-caps text-label-caps">03 — BRAND GROWTH</h2>
+</div>
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Activity 1 -->
+<div class="col-span-12 md:col-span-6 mb-12 md:mb-0">
+<div class="img-container overflow-hidden custom-cursor-target mb-6" style="aspect-ratio: 4/5;">
+<img alt="Excursion" class="w-full h-full object-cover img-reveal" data-alt="A stark black and white photograph of a solitary figure walking across a vast, barren landscape of cracked earth. The horizon line is razor-sharp against a featureless pale sky. The scale is immense, emphasizing the isolation and raw power of the natural environment. The visual style is high-contrast, editorial fine-art photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_kSG0MU0GEGVnJrjlwsfkeJ1VqxL-0-8iZ60mtE1iBPd8iBHtBsqbztbWoM4RiX2GSuXju1W0ywWFAW_87J-g00OIJj_XDn17_kfCYwrtMzB9NT2a9D4h3NTZJpNhzO2gYrEdPPuzbFOihmaVgMWC1W_sQ0IBSKFH31Qu43b2Gw8XXn_74XlOLXspxptAB4XS4lak-HBASX9A6zsNIZtgO29KoODHh7ww-7tDVpvv3fe5vN_dcJDdvrIGRKxlnkMkIktu0ihaTS8"/>
+</div>
+<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2">Photography &amp; Content</h4>
+<p class="font-label-mono text-label-mono text-secondary mb-4">VISUAL STORYTELLING</p>
+<p class="font-body-md text-body-md text-secondary mb-6">High-end architectural and lifestyle photography that captures the essence of your property. We produce compelling assets for web, social media, and print campaigns.</p>
+<a class="inline-block border-b border-primary pb-1 font-label-caps text-label-caps hover:opacity-60 transition-opacity" href="#">VIEW GALLERY</a>
+</div>
+<!-- Activity 2 & 3 Stacked -->
+<div class="col-span-12 md:col-span-5 md:col-start-8 flex flex-col gap-12">
+<div>
+<div class="img-container overflow-hidden custom-cursor-target mb-6" style="aspect-ratio: 3/2;">
+<img alt="Water activity" class="w-full h-full object-cover img-reveal" data-alt="A highly abstract, close-up shot of dark, rippling water. The surface tension creates sharp, geometric patterns of light and shadow, resembling liquid metal or obsidian. The image is devoid of color, relying entirely on the contrast between deep blacks and bright silver reflections. The aesthetic is industrial yet organic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXIeNyUy8UpClSy-fM6TcZ-wuWdRRbfX9iTa_gxudVD82MaJ3jqc5Qyd0CFCAH1jZo_lC89kGOt0EjlofxUXMufcVyqWp50yohhnSeTK0QSmrewxPqGNqcWlTcrR3Cbawnq_QrWSqlyPi5nDs0m5Z_z1lbdQt8D22Fnd1IXEkXH2UNhcr_rZeDrc2oOOEuJr8ZIzlZRacVMfOsQ50p2Xb7BSdWCjR7Ur-WeR3DD7NYf8oEXP1XADkKHCHjZGb08yL1V0KRGhI4oH8"/>
+</div>
+<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2">SEO &amp; Marketing</h4>
+<p class="font-label-mono text-label-mono text-secondary mb-4">DATA-DRIVEN ACQUISITION</p>
+<p class="font-body-md text-body-md text-secondary">Targeted search engine optimization and digital marketing strategies designed to increase visibility and attract high-value guests.</p>
+</div>
+<div class="border-t border-black/10 pt-6">
+<h4 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-2">Guest Experience Optimization</h4>
+<p class="font-label-mono text-label-mono text-secondary mb-4">SERVICE DESIGN</p>
+<p class="font-body-md text-body-md text-secondary">Strategic consulting to refine physical touchpoints and service protocols, ensuring every interaction exceeds guest expectations.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface border-t border-black/10 dark:border-white/10 w-full">
+<div class="grid grid-cols-12 gap-gutter px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="col-span-12 md:col-span-6 flex flex-col justify-between">
+<div class="font-display-xl text-display-xl-mobile md:text-display-xl text-primary dark:text-on-surface mb-12">TIIH</div>
+<div class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant">
+                    © 2024 TIIH HOSPITALITY. ALL RIGHTS RESERVED.
+                </div>
+</div>
+<div class="col-span-12 md:col-span-4 md:col-start-9 flex flex-col gap-4 mt-8 md:mt-0">
+<a class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant hover:text-primary dark:hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant hover:text-primary dark:hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant hover:text-primary dark:hover:text-on-surface transition-colors" href="#">Case Studies</a>
+<a class="font-body-md text-body-md text-secondary dark:text-on-secondary-variant hover:text-primary dark:hover:text-on-surface transition-colors" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+<!-- Custom Cursor Element -->
+<div id="custom-cursor">VIEW</div>
+<script>
+        // Custom Cursor Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const cursor = document.getElementById('custom-cursor');
+            const targets = document.querySelectorAll('.custom-cursor-target');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+        });
+    </script>
+</body></html>
