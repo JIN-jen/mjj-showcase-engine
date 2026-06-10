@@ -19,30 +19,40 @@ const detailCopy = {
     about: "关于",
     back: "返回",
     category: "类别",
+    year: "年份",
+    industry: "行业",
     service: "服务",
+    location: "地点",
     case: "案例",
-    templates: "TEMPLATES",
+    templates: "模板",
     chooseTemplate: "选择此模板",
-    projectBrief: "PROJECT BRIEF",
-    briefCopy: "请准备 Logo、图片、公司名称、联系方式和业务介绍。",
+    projectBrief: "项目资料",
+    briefCopy: "请准备标志、图片、公司名称、联系方式和业务介绍。",
     startBrief: "开始提交资料",
-    contact: "CONTACT",
-    talkWithUs: "Talk With Us",
+    delivery: "交付",
+    deliveryValue: "3-5天",
+    price: "价格",
+    priceValue: "获取报价",
   },
   en: {
     work: "Work",
     about: "About",
     back: "Back",
     category: "Category",
+    year: "YEAR",
+    industry: "INDUSTRY",
     service: "Service",
+    location: "LOCATION",
     case: "Case",
     templates: "TEMPLATES",
     chooseTemplate: "Choose This Template",
     projectBrief: "PROJECT BRIEF",
     briefCopy: "Prepare your logo, images, company name, contact details and business description.",
     startBrief: "Start Project Brief",
-    contact: "CONTACT",
-    talkWithUs: "Talk With Us",
+    delivery: "DELIVERY",
+    deliveryValue: "3–5 DAYS",
+    price: "PRICE",
+    priceValue: "Request Quote",
   },
 } satisfies Record<LabLanguage, Record<string, string>>;
 
@@ -64,9 +74,13 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
   const service = language === "cn" ? item.serviceCn : item.service;
   const briefItems =
     language === "cn"
-      ? ["Logo", "图片", "公司名称", "联系方式", "业务介绍"]
+      ? ["标志", "图片", "公司名称", "联系方式", "业务介绍"]
       : ["Logo", "Images", "Company name", "Contact details", "Business description"];
-  const contactItems = ["WhatsApp", "WeChat", "Email"];
+  const localizedItem = {
+    ...item,
+    category,
+    title,
+  };
 
   useEffect(() => {
     setLanguage(getStoredLanguage());
@@ -187,23 +201,23 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
           >
             <div>
               <span className="obys-lab-detail-signal">{item.number}</span>
-              <ObysProjectStill item={item} mode="detail" frameIndex={index} />
+              <ObysProjectStill item={localizedItem} mode="detail" frameIndex={index} />
             </div>
             <dl className="obys-lab-detail-metadata" aria-label={`${title} metadata`}>
               <div>
-                <dt>YEAR</dt>
+                <dt>{copy.year}</dt>
                 <dd>{item.year}</dd>
               </div>
               <div>
-                <dt>INDUSTRY</dt>
+                <dt>{copy.industry}</dt>
                 <dd>{category}</dd>
               </div>
               <div>
-                <dt>SERVICE</dt>
+                <dt>{copy.service}</dt>
                 <dd>{service}</dd>
               </div>
               <div>
-                <dt>LOCATION</dt>
+                <dt>{copy.location}</dt>
                 <dd>{item.location}</dd>
               </div>
             </dl>
@@ -215,8 +229,7 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
                     <li key={template.number}>
                       <span>{template.number}</span>
                       <span>
-                        <strong>{template.titleEN}</strong>
-                        <em>{template.titleCN}</em>
+                        <strong>{language === "cn" ? template.titleCN : template.titleEN}</strong>
                       </span>
                     </li>
                   ))}
@@ -233,14 +246,13 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
                 </ul>
                 <Link href="/contact">{copy.startBrief}</Link>
               </section>
-              <section className="obys-lab-detail-entry__contact">
-                <h2>{copy.contact}</h2>
-                <ul>
-                  {contactItems.map((contactItem) => (
-                    <li key={contactItem}>{contactItem}</li>
-                  ))}
-                </ul>
-                <Link href="/contact">{copy.talkWithUs}</Link>
+              <section>
+                <h2>{copy.delivery}</h2>
+                <p>{copy.deliveryValue}</p>
+              </section>
+              <section>
+                <h2>{copy.price}</h2>
+                <p>{copy.priceValue}</p>
               </section>
             </div>
           </article>
@@ -251,6 +263,40 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
         <span>{copy.case} {caseFrames[activeFrame]}</span>
         <Link href="/obys-lab">{copy.work}</Link>
       </footer>
+      <style jsx>{`
+        .obys-lab-detail-metadata,
+        .obys-lab-detail-entry {
+          font-size: clamp(0.42rem, 0.52vw, 0.56rem);
+          letter-spacing: 0.08em;
+          line-height: 1.12;
+        }
+
+        .obys-lab-detail-metadata dt,
+        .obys-lab-detail-entry h2 {
+          color: rgba(17, 17, 17, 0.42);
+          font: inherit;
+          font-weight: 500;
+          letter-spacing: inherit;
+          line-height: inherit;
+        }
+
+        .obys-lab-detail-metadata dd,
+        .obys-lab-detail-entry p,
+        .obys-lab-detail-entry li,
+        .obys-lab-detail-entry strong {
+          font-size: inherit;
+          font-weight: 400;
+          letter-spacing: 0.04em;
+          line-height: inherit;
+        }
+
+        .obys-lab-detail-entry a {
+          font-size: inherit;
+          font-weight: 500;
+          letter-spacing: inherit;
+          line-height: inherit;
+        }
+      `}</style>
     </main>
   );
 }
