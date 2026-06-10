@@ -4,6 +4,7 @@ import { ClientIntakeForm } from "@/components/intake/ClientIntakeForm";
 type BriefPageProps = {
   searchParams?: Promise<{
     industry?: string | string[];
+    lang?: string | string[];
     template?: string | string[];
   }>;
 };
@@ -20,6 +21,7 @@ export default async function BriefPage({ searchParams }: BriefPageProps) {
   const params = await searchParams;
   const initialIndustry = getSingleParam(params?.industry);
   const initialTemplate = getSingleParam(params?.template);
+  const language = getSingleParam(params?.lang) === "cn" ? "cn" : "en";
 
   return (
     <main className="brief-page">
@@ -28,12 +30,11 @@ export default async function BriefPage({ searchParams }: BriefPageProps) {
           TIIH
         </Link>
         <nav aria-label="Brief navigation">
-          <Link href="/obys-lab">Work</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/obys-lab">{language === "cn" ? "作品" : "Work"}</Link>
         </nav>
       </header>
 
-      <ClientIntakeForm initialIndustry={initialIndustry} initialTemplate={initialTemplate} />
+      <ClientIntakeForm initialIndustry={initialIndustry} initialTemplate={initialTemplate} language={language} />
 
       <style>{`
         .brief-page {

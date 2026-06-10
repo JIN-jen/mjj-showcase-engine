@@ -13,24 +13,31 @@ type ObysLabWorkPageProps = {
 
 const caseFrames = ["01", "02", "03", "04", "05", "06"];
 
+const defaultBriefTemplateByIndustrySlug: Record<string, string> = {
+  agriculture: "commercial-farm",
+  construction: "contractor",
+  hospitality: "luxury-hotel",
+  "import-wholesale": "general-trading",
+  logistics: "freight-forwarder",
+  mining: "mine-operator",
+  "professional-services": "law-firm",
+  restaurant: "fine-dining",
+};
+
 const detailCopy = {
   cn: {
     work: "作品",
     about: "关于",
     back: "返回",
     category: "类别",
-    year: "年份",
     industry: "行业",
     service: "服务",
-    location: "地点",
     case: "案例",
-    templates: "模板",
-    chooseTemplate: "选择此模板",
     projectBrief: "项目资料",
-    briefCopy: "请准备标志、图片、公司名称、联系方式和业务介绍。",
+    briefCopy: "请准备：",
     startBrief: "开始提交资料",
     delivery: "交付",
-    deliveryValue: "3-5天",
+    deliveryValue: "3–5天",
     price: "价格",
     priceValue: "获取报价",
   },
@@ -39,15 +46,11 @@ const detailCopy = {
     about: "About",
     back: "Back",
     category: "Category",
-    year: "YEAR",
     industry: "INDUSTRY",
     service: "Service",
-    location: "LOCATION",
     case: "Case",
-    templates: "TEMPLATES",
-    chooseTemplate: "Choose This Template",
     projectBrief: "PROJECT BRIEF",
-    briefCopy: "Prepare your logo, images, company name, contact details and business description.",
+    briefCopy: "Prepare:",
     startBrief: "Start Project Brief",
     delivery: "DELIVERY",
     deliveryValue: "3–5 DAYS",
@@ -71,11 +74,12 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
   const copy = detailCopy[language];
   const title = language === "cn" ? item.titleCn : item.title;
   const category = language === "cn" ? item.categoryCn : item.category;
-  const service = language === "cn" ? item.serviceCn : item.service;
-  const briefHref = `/brief?industry=${encodeURIComponent(item.industry)}`;
+  const service = language === "cn" ? item.serviceCn.replaceAll("/", " / ") : item.service.replaceAll("/", " / ");
+  const briefTemplate = defaultBriefTemplateByIndustrySlug[item.slug] ?? "";
+  const briefHref = `/brief?industry=${encodeURIComponent(item.slug)}&template=${encodeURIComponent(briefTemplate)}&lang=${language}`;
   const briefItems =
     language === "cn"
-      ? ["标志", "图片", "公司名称", "联系方式", "业务介绍"]
+      ? ["Logo", "图片", "公司名称", "联系方式", "业务介绍"]
       : ["Logo", "Images", "Company name", "Contact details", "Business description"];
   const localizedItem = {
     ...item,
@@ -206,10 +210,6 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
             </div>
             <dl className="obys-lab-detail-metadata" aria-label={`${title} metadata`}>
               <div>
-                <dt>{copy.year}</dt>
-                <dd>{item.year}</dd>
-              </div>
-              <div>
                 <dt>{copy.industry}</dt>
                 <dd>{category}</dd>
               </div>
@@ -217,26 +217,8 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
                 <dt>{copy.service}</dt>
                 <dd>{service}</dd>
               </div>
-              <div>
-                <dt>{copy.location}</dt>
-                <dd>{item.location}</dd>
-              </div>
             </dl>
             <div className="obys-lab-detail-entry" aria-label={`${title} template entry`}>
-              <section>
-                <h2>{copy.templates}</h2>
-                <ol>
-                  {item.templates.map((template) => (
-                    <li key={template.number}>
-                      <span>{template.number}</span>
-                      <span>
-                        <strong>{language === "cn" ? template.titleCN : template.titleEN}</strong>
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-                <Link href="/contact">{copy.chooseTemplate}</Link>
-              </section>
               <section>
                 <h2>{copy.projectBrief}</h2>
                 <p>{copy.briefCopy}</p>
@@ -267,14 +249,29 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
       <style jsx>{`
         .obys-lab-detail-metadata,
         .obys-lab-detail-entry {
-          font-size: clamp(0.42rem, 0.52vw, 0.56rem);
-          letter-spacing: 0.08em;
-          line-height: 1.12;
+          font-size: clamp(0.48rem, 0.58vw, 0.62rem);
+          letter-spacing: 0.06em;
+          line-height: 1.18;
+        }
+
+        .obys-lab-detail-metadata {
+          gap: clamp(2rem, 3vw, 3rem);
+        }
+
+        .obys-lab-detail-entry {
+          gap: clamp(2rem, 3vw, 3rem);
+        }
+
+        .obys-lab-detail-metadata div,
+        .obys-lab-detail-entry section {
+          gap: clamp(0.42rem, 0.72vw, 0.72rem);
+          padding-top: clamp(0.7rem, 1vw, 1rem);
+          border-top: 1px solid rgba(17, 17, 17, 0.14);
         }
 
         .obys-lab-detail-metadata dt,
         .obys-lab-detail-entry h2 {
-          color: rgba(17, 17, 17, 0.42);
+          color: #8a8a8a;
           font: inherit;
           font-weight: 500;
           letter-spacing: inherit;
@@ -285,17 +282,38 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
         .obys-lab-detail-entry p,
         .obys-lab-detail-entry li,
         .obys-lab-detail-entry strong {
+          color: #111;
           font-size: inherit;
           font-weight: 400;
           letter-spacing: 0.04em;
           line-height: inherit;
         }
 
+        .obys-lab-detail-entry section:first-child {
+          gap: clamp(0.58rem, 0.9vw, 0.92rem);
+        }
+
+        .obys-lab-detail-entry section:first-child h2,
+        .obys-lab-detail-entry section:first-child a {
+          color: #111;
+          font-weight: 500;
+        }
+
+        .obys-lab-detail-entry section:first-child p {
+          color: rgba(17, 17, 17, 0.82);
+        }
+
         .obys-lab-detail-entry a {
+          color: #111;
           font-size: inherit;
           font-weight: 500;
           letter-spacing: inherit;
           line-height: inherit;
+          text-decoration: none;
+        }
+
+        .obys-lab-detail-entry a::after {
+          content: " →";
         }
       `}</style>
     </main>
