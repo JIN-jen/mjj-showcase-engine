@@ -72,6 +72,7 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
   const title = language === "cn" ? item.titleCn : item.title;
   const category = language === "cn" ? item.categoryCn : item.category;
   const service = language === "cn" ? item.serviceCn : item.service;
+  const briefHref = `/brief?industry=${encodeURIComponent(item.industry)}`;
   const briefItems =
     language === "cn"
       ? ["标志", "图片", "公司名称", "联系方式", "业务介绍"]
@@ -244,7 +245,7 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
                     <li key={briefItem}>{briefItem}</li>
                   ))}
                 </ul>
-                <Link href="/contact">{copy.startBrief}</Link>
+                <Link href={briefHref}>{copy.startBrief}</Link>
               </section>
               <section>
                 <h2>{copy.delivery}</h2>
