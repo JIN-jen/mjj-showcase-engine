@@ -75,6 +75,11 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
   const [entered, setEntered] = useState(false);
   const [locale, setLocale] = useState<Locale>("en");
   const isZh = locale === "zh";
+  const isHospitality = project.slug === "hospitality";
+  const indexHref = isHospitality ? "/obys-lab" : "/";
+  const briefHref = `/brief?industry=${encodeURIComponent(project.slug)}&template=${encodeURIComponent(
+    isHospitality ? "luxury-hotel" : "",
+  )}&lang=${isZh ? "cn" : "en"}`;
 
   const frames = useMemo(
     () =>
@@ -96,6 +101,17 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
     industry: isZh ? project.industryZh : project.industry,
     description: isZh ? project.descriptionZh : project.description,
   };
+  const deliveryPanel = isZh
+    ? [
+        ["交付", "3-5 天"],
+        ["方向", "Luxury Hotel / Resort / Lodge"],
+        ["系统", "品牌官网 / 预订入口 / 移动端"],
+      ]
+    : [
+        ["Delivery", "3-5 Days"],
+        ["Direction", "Luxury Hotel / Resort / Lodge"],
+        ["System", "Brand Website / Booking Entry / Mobile"],
+      ];
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -197,7 +213,16 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
 
   return (
     <LenisProvider>
-      <main ref={pageRef} className={["work-reel-page", entered ? "is-entered" : ""].join(" ")}>
+      <main
+        ref={pageRef}
+        className={[
+          "work-reel-page",
+          isHospitality ? "work-reel-page--hospitality" : "",
+          entered ? "is-entered" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+      >
         <div className="work-reel-entry" aria-hidden={entered}>
           <div className="work-reel-entry__scope">
             <span>(</span>
@@ -207,9 +232,9 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
         </div>
 
         <header className="work-reel-nav">
-          <Link href="/">TIIH</Link>
+          <Link href={indexHref}>TIIH</Link>
           <nav aria-label="Work detail navigation">
-            <Link href="/">{isZh ? "索引" : "Index"}</Link>
+            <Link href={indexHref}>{isZh ? "索引" : "Index"}</Link>
             <Link href="/work">{isZh ? "模板" : "Templates"}</Link>
             <Link href="/contact">{isZh ? "提交需求" : "Start Project"}</Link>
             <span className="language-switch" aria-label="Language switch">
@@ -234,8 +259,8 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
         <aside className="work-reel-copy">
           <h1 lang={isZh ? "zh" : "en"}>{projectCopy.title}</h1>
           <p>{projectCopy.description}</p>
-          <Link href="/" className="work-reel-back">
-            {isZh ? "返回索引" : "Back to Index"}
+          <Link href={indexHref} className="work-reel-back">
+            {isZh ? "返回 Obys Lab" : "Back to Obys Lab"}
           </Link>
           <div className="work-frame-index" aria-label="Frame index">
             {frames.map((frame, index) => (
@@ -270,6 +295,17 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
               <dd>{projectCopy.service}</dd>
             </div>
           </dl>
+          {isHospitality ? (
+            <section className="work-reel-delivery" aria-label={isZh ? "交付信息" : "Delivery information"}>
+              {deliveryPanel.map(([label, value]) => (
+                <div key={label}>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                </div>
+              ))}
+              <Link href={briefHref}>{isZh ? "开始提交资料" : "Start Project Brief"}</Link>
+            </section>
+          ) : null}
         </aside>
 
         <ObysBracket className="work-reel-aim" />
@@ -305,6 +341,7 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
                 <div className="work-reel-frame__wash" style={{ background: project.previewBackground }} />
                 <div className="work-reel-frame__poster">
                   <p>{frame.kicker}</p>
+                  <h2>{isZh ? frame.titleZh : frame.title}</h2>
                   <span>{projectCopy.category}</span>
                   <span>{projectCopy.service}</span>
                 </div>
