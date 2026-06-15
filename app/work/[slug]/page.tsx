@@ -175,9 +175,13 @@ const industryTemplates: IndustryTemplate[] = [
   },
 ];
 
+export function getWorkDetailProject(slug: string) {
+  return industryTemplates.find((item) => item.slug === slug);
+}
+
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const { slug } = await params;
-  const project = industryTemplates.find((item) => item.slug === slug);
+  const project = getWorkDetailProject(slug);
 
   if (!project) {
     notFound();

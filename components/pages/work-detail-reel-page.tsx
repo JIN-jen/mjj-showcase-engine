@@ -80,6 +80,7 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
   const briefHref = `/brief?industry=${encodeURIComponent(project.slug)}&template=${encodeURIComponent(
     isHospitality ? "luxury-hotel" : "",
   )}&lang=${isZh ? "cn" : "en"}`;
+  const demoHref = "/templates/hospitality/luxury-hotel";
 
   const frames = useMemo(
     () =>
@@ -303,6 +304,7 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
                   <strong>{value}</strong>
                 </div>
               ))}
+              <Link href={demoHref}>{isZh ? "查看完整演示" : "View Live Demo"}</Link>
               <Link href={briefHref}>{isZh ? "开始提交资料" : "Start Project Brief"}</Link>
             </section>
           ) : null}
