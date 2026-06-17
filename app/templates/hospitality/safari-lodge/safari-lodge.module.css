@@ -1,0 +1,967 @@
+.page {
+  min-height: 100vh;
+  overflow-x: clip;
+  background:
+    radial-gradient(circle at top left, rgba(194, 159, 98, 0.18), transparent 28%),
+    linear-gradient(180deg, #f8f1df 0%, #f5ebd7 24%, #efe1c0 56%, #e3c79e 100%);
+  color: #25160d;
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+}
+
+.page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header,
+.hero,
+.story,
+.accommodation,
+.experiences,
+.journeys,
+.gallery,
+.location,
+.booking,
+.footer {
+  width: min(1240px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  background: linear-gradient(180deg, rgba(248, 241, 223, 0.96), rgba(248, 241, 223, 0.72));
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(37, 22, 13, 0.1);
+}
+
+.concierge {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 25;
+  display: grid;
+  gap: 0.75rem;
+  width: 12rem;
+  padding: 0.95rem;
+  border: 1px solid rgba(37, 22, 13, 0.12);
+  background: rgba(247, 239, 220, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.conciergeHead {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.conciergeHead span {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(37, 22, 13, 0.56);
+}
+
+.conciergeHead strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.concierge a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6rem;
+  border: 1px solid #25160d;
+  background: #25160d;
+  color: #fff8e9;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.brand,
+.nav,
+.headerMeta {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.16em;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  color: rgba(37, 22, 13, 0.78);
+}
+
+.headerMeta {
+  justify-self: end;
+  color: rgba(37, 22, 13, 0.7);
+}
+
+.hero {
+  position: relative;
+  display: block;
+  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: min(1240px, calc(100% - 48px));
+  min-height: 100vh;
+  margin-inline: auto;
+  padding: 0 0 4.5rem;
+  color: #fff8eb;
+}
+
+.heroCopy p,
+.sectionKicker,
+.sectionHeader p,
+.experienceItem span,
+.packageCard p,
+.packageCardActive p,
+.galleryItem figcaption span,
+.locationMeta dt,
+.contactList span,
+.footer span,
+.footer p,
+.heroMeta dt {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.heroCopy h1,
+.sectionHeader h2,
+.locationCopy h2,
+.bookingForm h2,
+.contactPanel h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+.heroCopy h1 {
+  max-width: 12ch;
+  font-size: clamp(3.7rem, 7.8vw, 7.9rem);
+}
+
+.heroCopy span {
+  max-width: 34rem;
+  font-size: clamp(0.95rem, 1.4vw, 1.12rem);
+  line-height: 1.78;
+  color: rgba(255, 248, 235, 0.88);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 0.6rem;
+}
+
+.heroActions a,
+.booking button,
+.whatsappButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.2rem;
+  border: 1px solid #25160d;
+  background: #25160d;
+  color: #fff8e9;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.heroActions a:last-child,
+.whatsappButton {
+  background: transparent;
+  color: #fff8eb;
+  border-color: rgba(255, 248, 235, 0.56);
+}
+
+.heroMeta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.heroMeta div {
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 248, 235, 0.24);
+}
+
+.heroMeta dt {
+  margin-bottom: 0.3rem;
+  color: rgba(255, 248, 235, 0.62);
+}
+
+.heroMeta dd {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.heroVisual {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #8a6843;
+}
+
+.heroVisualTop {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 10%;
+  background: linear-gradient(90deg, rgba(20, 10, 5, 0.84) 0 16%, transparent 16% 20%, rgba(20, 10, 5, 0.74) 20% 23%, transparent 23% 82%, rgba(20, 10, 5, 0.82) 82% 100%);
+  z-index: 2;
+}
+
+.heroVisualMain {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heroVisualMain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(32, 20, 11, 0.1), rgba(32, 20, 11, 0.38)),
+    linear-gradient(135deg, rgba(255, 220, 153, 0.08), rgba(35, 20, 8, 0.2));
+}
+
+.heroVisualCard,
+.heroVisualCardSmall {
+  position: absolute;
+  right: 7%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 237, 204, 0.16);
+  background: rgba(20, 11, 7, 0.82);
+  color: #fff7e3;
+  text-transform: uppercase;
+}
+
+.heroVisualCard {
+  inset: auto 7% 16% auto;
+  width: min(54%, 22rem);
+  aspect-ratio: 4 / 3;
+}
+
+.heroVisualCardSmall {
+  inset: auto auto 6% 6%;
+  width: min(40%, 14rem);
+  aspect-ratio: 1 / 1.08;
+}
+
+.cardImage {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heroVisualCard::after,
+.heroVisualCardSmall::after,
+.galleryItem::after,
+.mapCard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 11, 8, 0.1), rgba(16, 11, 8, 0.42)),
+    linear-gradient(135deg, rgba(255, 221, 160, 0.04), rgba(24, 15, 9, 0.22));
+}
+
+.heroVisualCard span,
+.heroVisualCardSmall span {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.7vw, 1.45rem);
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+}
+
+.story,
+.accommodation,
+.experiences,
+.journeys,
+.gallery,
+.location,
+.booking {
+  padding: clamp(1.8rem, 5vw, 4rem) 0;
+  border-top: 1px solid rgba(37, 22, 13, 0.12);
+}
+
+.sectionKicker {
+  margin-bottom: 0.65rem;
+  color: rgba(37, 22, 13, 0.56);
+}
+
+.sectionHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 1.5rem;
+  align-items: end;
+  margin-bottom: 1.6rem;
+}
+
+.sectionHeader h2 {
+  font-size: clamp(2.1rem, 4.4vw, 4.8rem);
+}
+
+.sectionHeader p {
+  max-width: 34rem;
+  margin-left: auto;
+  color: rgba(37, 22, 13, 0.72);
+  line-height: 1.7;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.72fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.storyPanel,
+.storyMeta,
+.experienceItem,
+.packageCard,
+.packageCardActive,
+.locationCopy,
+.bookingForm,
+.contactPanel,
+.mediaCard {
+  border: 1px solid rgba(37, 22, 13, 0.12);
+  background: rgba(248, 242, 230, 0.72);
+}
+
+.storyPanel {
+  padding: 1.5rem;
+}
+
+.storyPanel p {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(37, 22, 13, 0.82);
+}
+
+.storyMeta {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1.2rem;
+}
+
+.aboutVisual {
+  position: relative;
+  margin-top: 1.3rem;
+  height: min(64vw, 32rem);
+  overflow: hidden;
+  border: 1px solid rgba(37, 22, 13, 0.12);
+}
+
+.aboutVisual img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.storyMeta div,
+.locationMeta div {
+  display: grid;
+  gap: 0.35rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(37, 22, 13, 0.12);
+}
+
+.storyMeta dd,
+.locationMeta dd,
+.contactList a {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+.cardGrid3 {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.mediaCard {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.9rem;
+  border: 0;
+  background: transparent;
+}
+
+.mediaCardImage,
+.galleryImage {
+  position: relative;
+  inset: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mediaCardImage {
+  min-height: min(64vw, 36rem);
+}
+
+.galleryImage {
+  position: absolute;
+  inset: 0;
+}
+
+.mediaCardBody {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem 0 0;
+  background: transparent;
+}
+
+.mediaCardBody h3,
+.experienceItem h3,
+.packageCard h3,
+.packageCardActive h3,
+.locationCopy h2,
+.bookingForm h2,
+.contactPanel h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.mediaCardBody h3 {
+  font-size: 1.8rem;
+}
+
+.mediaCardBody p {
+  margin: 0;
+  max-width: 28ch;
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.mediaCardBody span {
+  width: fit-content;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid rgba(37, 22, 13, 0.7);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.experienceGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.experienceItem {
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+  min-height: 0;
+}
+
+.experienceItem span {
+  color: rgba(37, 22, 13, 0.54);
+}
+
+.experienceItem h3 {
+  font-size: 1.6rem;
+}
+
+.experienceImage {
+  position: relative;
+  height: min(52vw, 28rem);
+  overflow: hidden;
+  border: 1px solid rgba(37, 22, 13, 0.12);
+}
+
+.experienceImage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coverImage {
+  display: block;
+}
+
+.experienceItem p,
+.packageCard span,
+.packageCardActive span,
+.locationCopy p,
+.bookingForm p,
+.contactPanel p {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: rgba(37, 22, 13, 0.78);
+}
+
+.packageGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.packageCard,
+.packageCardActive {
+  padding: 1.4rem;
+  min-height: 0;
+  display: grid;
+  align-content: space-between;
+  gap: 0.75rem;
+}
+
+.packageCardActive {
+  background: linear-gradient(180deg, rgba(37, 22, 13, 0.96), rgba(59, 38, 21, 0.96));
+  color: #fdf5e2;
+}
+
+.packageCardActive span,
+.packageCardActive p {
+  color: rgba(253, 245, 226, 0.82);
+}
+
+.packageCard strong,
+.packageCardActive strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 400;
+}
+
+.packageCard button,
+.packageCardActive button {
+  width: 100%;
+  min-height: 2.9rem;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.galleryGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.galleryItem {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  border: 1px solid rgba(37, 22, 13, 0.12);
+  background: rgba(248, 242, 230, 0.72);
+}
+
+.galleryItemWide {
+  min-height: min(50vw, 32rem);
+}
+
+.galleryItemTall {
+  min-height: min(56vw, 38rem);
+}
+
+.galleryItem::after {
+  z-index: 1;
+}
+
+.galleryItem figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 0.9rem;
+  color: #fff8e8;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+}
+
+.galleryImage {
+  background-position: center;
+}
+
+.location {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  gap: 1.2rem;
+  align-items: stretch;
+}
+
+.locationCopy {
+  padding: 1.4rem;
+}
+
+.locationCopy h2 {
+  font-size: clamp(2rem, 4vw, 4rem);
+  margin-bottom: 0.7rem;
+}
+
+.locationMeta {
+  display: grid;
+  gap: 0.8rem;
+  margin: 1.1rem 0;
+}
+
+.locationPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.locationPills span {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(37, 22, 13, 0.14);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mapCard {
+  position: relative;
+  overflow: hidden;
+  min-height: min(78vw, 28rem);
+  border: 1px solid rgba(37, 22, 13, 0.12);
+  background:
+    radial-gradient(circle at 25% 28%, rgba(255, 220, 149, 0.22), transparent 20%),
+    linear-gradient(180deg, rgba(70, 50, 28, 0.1), rgba(37, 22, 13, 0.18)),
+    linear-gradient(135deg, #f7efd8 0%, #ebd9b0 42%, #d7be8b 100%);
+}
+
+.mapGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(37, 22, 13, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 22, 13, 0.09) 1px, transparent 1px);
+  background-size: 2.6rem 2.6rem;
+  opacity: 0.44;
+}
+
+.mapPin {
+  position: absolute;
+  left: 52%;
+  top: 44%;
+  width: 1rem;
+  height: 1rem;
+  margin: -0.5rem 0 0 -0.5rem;
+  border-radius: 999px;
+  background: #25160d;
+  box-shadow: 0 0 0 0.8rem rgba(37, 22, 13, 0.12), 0 0 0 1.6rem rgba(37, 22, 13, 0.06);
+}
+
+.mapLabel {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  display: grid;
+  gap: 0.25rem;
+  max-width: 16rem;
+  padding: 0.9rem;
+  background: rgba(37, 22, 13, 0.8);
+  color: #fff5e4;
+  text-transform: uppercase;
+}
+
+.mapLabel span {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+}
+
+.mapLabel strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.booking {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.78fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.bookingForm,
+.contactPanel {
+  padding: 1.4rem;
+}
+
+.form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.form label {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.form span,
+.contactList span {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(37, 22, 13, 0.56);
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(37, 22, 13, 0.3);
+  background: transparent;
+  color: #25160d;
+  font: inherit;
+  padding: 0.5rem 0;
+  outline: none;
+}
+
+.form textarea {
+  resize: vertical;
+  min-height: 5.6rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.form button {
+  margin-top: 0.4rem;
+}
+
+.contactPanel {
+  display: grid;
+  gap: 1rem;
+}
+
+.contactList {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.contactList div {
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(37, 22, 13, 0.12);
+  display: grid;
+  gap: 0.24rem;
+}
+
+.whatsappButton {
+  width: fit-content;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  padding: 2.4rem 0 3rem;
+  border-top: 1px solid rgba(37, 22, 13, 0.14);
+}
+
+.footer strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.footer p {
+  margin-bottom: 0.35rem;
+}
+
+.footer small {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(37, 22, 13, 0.58);
+}
+
+@media (max-width: 1024px) {
+  .header,
+  .hero,
+  .story,
+  .accommodation,
+  .experiences,
+  .journeys,
+  .gallery,
+  .location,
+  .booking,
+  .footer {
+    width: min(1000px, calc(100% - 32px));
+  }
+
+  .storyGrid,
+  .location,
+  .booking {
+    grid-template-columns: 1fr;
+  }
+
+  .heroCopy {
+    width: min(1000px, calc(100% - 32px));
+    min-height: 84vh;
+  }
+
+  .heroVisualCard {
+    width: min(48%, 20rem);
+  }
+
+  .heroVisualCardSmall {
+    width: min(34%, 12rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .header,
+  .hero,
+  .story,
+  .accommodation,
+  .experiences,
+  .journeys,
+  .gallery,
+  .location,
+  .booking,
+  .footer {
+    width: min(100% - 20px, 100%);
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    padding: 0.9rem 0;
+  }
+
+  .concierge {
+    width: min(12rem, calc(100vw - 2rem));
+  }
+
+  .nav,
+  .headerMeta {
+    justify-self: start;
+  }
+
+  .hero {
+    min-height: 92vh;
+  }
+
+  .heroCopy {
+    width: 100%;
+    min-height: 92vh;
+    padding: 0 0 3.2rem;
+  }
+
+  .heroCopy h1 {
+    max-width: 100%;
+    font-size: clamp(2.8rem, 15vw, 4.4rem);
+  }
+
+  .heroVisual {
+    position: absolute;
+    inset: 0;
+  }
+
+  .heroVisualCard {
+    width: 58%;
+  }
+
+  .heroVisualCardSmall {
+    width: 48%;
+  }
+
+  .sectionHeader {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .sectionHeader p {
+    margin-left: 0;
+  }
+
+  .storyGrid,
+  .location,
+  .booking {
+    grid-template-columns: 1fr;
+  }
+
+  .galleryItem {
+    min-height: 18rem;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+  }
+}

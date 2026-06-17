@@ -741,13 +741,12 @@ textarea {
   display: block;
   width: clamp(13.75rem, 17vw, 18.75rem);
   min-width: 0;
-  aspect-ratio: 0.68;
+  aspect-ratio: var(--poster-ratio, 0.68);
   overflow: hidden;
   background: #ddd7cb;
-  filter: grayscale(0.36) saturate(0.82);
-  transform: scale(0.86);
+  transform: scale(0.96);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   transition:
-    filter 420ms ease,
     transform 520ms ease,
     box-shadow 420ms ease;
 }
@@ -755,23 +754,256 @@ textarea {
 .editorial-strip-item.is-active .editorial-image-card,
 .editorial-image-card:hover,
 .editorial-image-card:focus-visible {
-  filter: grayscale(0) saturate(1);
-  transform: scale(1.02);
-  box-shadow: 0 1.5rem 3.4rem rgba(0, 0, 0, 0.14);
+  transform: scale(1);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 1.5rem 3.4rem rgba(0, 0, 0, 0.14);
 }
 
-.editorial-image-tint {
+.editorial-poster__media {
   position: absolute;
   inset: 0;
-  opacity: 0.18;
+  overflow: hidden;
+}
+
+.editorial-poster__media img {
+  object-fit: cover;
+  filter: grayscale(100%) saturate(0.72);
+  opacity: 0.55;
+  transform: scale(0.96);
+  transition:
+    filter 420ms ease,
+    opacity 360ms ease,
+    transform 520ms ease;
+}
+
+.editorial-strip-item.is-active .editorial-poster__media img,
+.editorial-image-card:hover .editorial-poster__media img,
+.editorial-image-card:focus-visible .editorial-poster__media img {
+  filter: grayscale(0) saturate(1);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.editorial-poster__wash {
+  position: absolute;
+  inset: 0;
+  opacity: 0.22;
   mix-blend-mode: soft-light;
   transition: opacity 320ms ease;
 }
 
-.editorial-strip-item.is-active .editorial-image-tint,
-.editorial-image-card:hover .editorial-image-tint,
-.editorial-image-card:focus-visible .editorial-image-tint {
-  opacity: 0;
+.editorial-strip-item.is-active .editorial-poster__wash,
+.editorial-image-card:hover .editorial-poster__wash,
+.editorial-image-card:focus-visible .editorial-poster__wash {
+  opacity: 0.1;
+}
+
+.editorial-poster__number,
+.editorial-poster__content,
+.editorial-poster__meta,
+.editorial-poster__tags {
+  position: absolute;
+  z-index: 2;
+}
+
+.editorial-poster__number {
+  inset: 0 auto auto 0;
+  display: grid;
+  gap: 0.12rem;
+  padding: 0.65rem 0.72rem;
+  color: rgba(255, 248, 238, 0.94);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.editorial-poster__number span {
+  font-family: var(--font-mono);
+  font-size: 0.48rem;
+}
+
+.editorial-poster__number strong {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 0.82;
+  font-weight: 700;
+}
+
+.editorial-poster__content {
+  inset: auto 0 0 0;
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.8rem 0.8rem 0.75rem;
+  color: #fff7ea;
+  text-transform: uppercase;
+}
+
+.editorial-poster__kicker {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+}
+
+.editorial-poster__content h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.55rem);
+  line-height: 0.84;
+  letter-spacing: -0.06em;
+}
+
+.editorial-poster__content span {
+  max-width: 22ch;
+  font-size: 0.58rem;
+  line-height: 1.35;
+  letter-spacing: 0.18em;
+  color: rgba(255, 248, 238, 0.72);
+}
+
+.editorial-poster__meta {
+  top: 0.9rem;
+  right: 0.9rem;
+  display: grid;
+  justify-items: end;
+  gap: 0.15rem;
+  color: rgba(255, 248, 238, 0.92);
+  text-transform: uppercase;
+}
+
+.editorial-poster__meta em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+}
+
+.editorial-poster__meta strong {
+  max-width: 11ch;
+  text-align: right;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  line-height: 0.96;
+  font-weight: 400;
+}
+
+.editorial-poster__tags {
+  left: 0.8rem;
+  right: 0.8rem;
+  bottom: 3.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.editorial-poster__tags span {
+  padding: 0.22rem 0.34rem;
+  border: 1px solid rgba(255, 248, 238, 0.18);
+  background: rgba(0, 0, 0, 0.18);
+  color: rgba(255, 248, 238, 0.9);
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.editorial-image-card--collage {
+  --poster-ratio: 0.74;
+}
+
+.editorial-image-card--collage .editorial-poster__content {
+  inset: auto 0 0 0;
+}
+
+.editorial-image-card--menu {
+  --poster-ratio: 0.8;
+}
+
+.editorial-image-card--menu .editorial-poster__content {
+  inset: 48% 0 0 0;
+  background: linear-gradient(180deg, transparent, rgba(10, 10, 10, 0.82));
+}
+
+.editorial-image-card--blueprint {
+  --poster-ratio: 0.66;
+}
+
+.editorial-image-card--blueprint .editorial-poster__content {
+  inset: auto auto 0 0;
+  max-width: 80%;
+}
+
+.editorial-image-card--industrial {
+  --poster-ratio: 0.72;
+}
+
+.editorial-image-card--industrial .editorial-poster__meta {
+  left: 0.9rem;
+  right: auto;
+  top: auto;
+  bottom: 5.2rem;
+  justify-items: start;
+}
+
+.editorial-image-card--catalog {
+  --poster-ratio: 0.78;
+}
+
+.editorial-image-card--catalog .editorial-poster__tags {
+  bottom: 4.1rem;
+}
+
+.editorial-image-card--route {
+  --poster-ratio: 0.69;
+}
+
+.editorial-image-card--route::before,
+.editorial-image-card--field::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 100% 100%, 2.5rem 2.5rem;
+  opacity: 0.14;
+  mix-blend-mode: screen;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.editorial-image-card--route .editorial-poster__content,
+.editorial-image-card--field .editorial-poster__content {
+  inset: auto 0 0 0;
+}
+
+.editorial-image-card--field {
+  --poster-ratio: 0.71;
+}
+
+.editorial-image-card--editorial {
+  --poster-ratio: 0.76;
+}
+
+.editorial-image-card--editorial .editorial-poster__meta {
+  bottom: 5rem;
+  top: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .editorial-image-card,
+  .editorial-poster__media img,
+  .editorial-poster__wash,
+  .editorial-shell,
+  .editorial-project-list,
+  .editorial-meta,
+  .editorial-brackets,
+  .editorial-mode-switch,
+  .editorial-copyright,
+  .editorial-image-strip {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 .client-intake-section {

@@ -20,6 +20,9 @@ type IndustryShowcaseItem = {
   industryZh: string;
   imageSrc: string;
   previewBackground: string;
+  posterLayout: string;
+  posterStatement: string;
+  posterTags: string[];
 };
 
 const industryShowcaseItems: IndustryShowcaseItem[] = [
@@ -35,6 +38,9 @@ const industryShowcaseItems: IndustryShowcaseItem[] = [
     imageSrc: "/industry/hospitality.svg",
     previewBackground:
       "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(206,199,184,0.9) 42%, rgba(128,145,132,0.72) 100%)",
+    posterLayout: "collage",
+    posterStatement: "Luxury editorial collage for hotel, resort and safari booking entry.",
+    posterTags: ["Luxury Stay", "Suite", "Pool"],
   },
   {
     slug: "food-beverage",
@@ -48,6 +54,9 @@ const industryShowcaseItems: IndustryShowcaseItem[] = [
     imageSrc: "/industry/food-beverage.svg",
     previewBackground:
       "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(214,196,174,0.92) 44%, rgba(142,97,75,0.7) 100%)",
+    posterLayout: "menu",
+    posterStatement: "Magazine menu poster for restaurant, cafe, bar and reservation flow.",
+    posterTags: ["Menu", "Dining", "Reservation"],
   },
   {
     slug: "construction",
@@ -67,6 +76,9 @@ const industryShowcaseItems: IndustryShowcaseItem[] = [
     imageSrc: "/industry/construction.svg",
     previewBackground:
       "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(196,193,187,0.92) 40%, rgba(104,102,94,0.74) 100%)",
+    posterLayout: "blueprint",
+    posterStatement: "Architecture blueprint poster for build, contractor and project showcase.",
+    posterTags: ["Blueprint", "Project", "Build"],
   },
   {
     slug: "mining-energy",
@@ -80,6 +92,9 @@ const industryShowcaseItems: IndustryShowcaseItem[] = [
     imageSrc: "/industry/mining-energy.svg",
     previewBackground:
       "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(190,195,191,0.92) 42%, rgba(86,103,112,0.72) 100%)",
+    posterLayout: "industrial",
+    posterStatement: "Industrial authority poster for site, fleet, mining and energy operators.",
+    posterTags: ["Site", "Fleet", "Energy"],
   },
   {
     slug: "import-wholesale",
@@ -93,6 +108,9 @@ const industryShowcaseItems: IndustryShowcaseItem[] = [
     imageSrc: "/industry/import-wholesale.svg",
     previewBackground:
       "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(204,202,192,0.92) 42%, rgba(118,126,146,0.7) 100%)",
+    posterLayout: "catalog",
+    posterStatement: "Trade catalog poster for import, wholesale and supply businesses.",
+    posterTags: ["Import", "Wholesale", "Supply"],
   },
   {
     slug: "logistics-auto",
@@ -106,6 +124,9 @@ const industryShowcaseItems: IndustryShowcaseItem[] = [
     imageSrc: "/industry/logistics-auto.svg",
     previewBackground:
       "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(193,200,201,0.92) 40%, rgba(92,118,128,0.72) 100%)",
+    posterLayout: "route",
+    posterStatement: "Route system poster for delivery, fleet, port and transport operations.",
+    posterTags: ["Delivery", "Fleet", "Port"],
   },
   {
     slug: "agriculture-processing",
@@ -119,6 +140,9 @@ const industryShowcaseItems: IndustryShowcaseItem[] = [
     imageSrc: "/industry/agriculture-processing.svg",
     previewBackground:
       "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(199,205,184,0.92) 42%, rgba(98,126,88,0.68) 100%)",
+    posterLayout: "field",
+    posterStatement: "Field production poster for harvest, processing and export brands.",
+    posterTags: ["Harvest", "Processing", "Export"],
   },
   {
     slug: "professional-services",
@@ -132,6 +156,9 @@ const industryShowcaseItems: IndustryShowcaseItem[] = [
     imageSrc: "/industry/professional-services.svg",
     previewBackground:
       "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(205,202,197,0.92) 42%, rgba(126,116,142,0.68) 100%)",
+    posterLayout: "editorial",
+    posterStatement: "Editorial business poster for advisory, legal and finance services.",
+    posterTags: ["Advisory", "Legal", "Finance"],
   },
 ];
 
@@ -430,23 +457,43 @@ export function HomeProjectIndexPage() {
                   activeIndex === itemIndex ? "is-active" : "",
                 ].join(" ")}
               >
-                <Link
-                  href={`/work/${project.slug}`}
-                  onClick={(event) => handleProjectOpen(event, project.slug)}
-                  className="editorial-image-card"
-                >
-                  <Image
-                    src={project.imageSrc}
-                    alt={projectCopy.title}
-                    fill
-                    priority={index === 0}
-                    sizes="(min-width: 900px) 34vw, 72vw"
-                    className="object-cover"
-                  />
-                  <div
-                    className="editorial-image-tint"
-                    style={{ background: project.previewBackground }}
-                  />
+              <Link
+                href={`/work/${project.slug}`}
+                onClick={(event) => handleProjectOpen(event, project.slug)}
+                className={`editorial-image-card editorial-image-card--${project.posterLayout}`}
+              >
+                  <div className="editorial-poster__number">
+                    <span>TIIH</span>
+                    <strong>{project.displayNumber}</strong>
+                  </div>
+                  <div className="editorial-poster__media">
+                    <Image
+                      src={project.imageSrc}
+                      alt={projectCopy.title}
+                      fill
+                      priority={index === 0}
+                      sizes="(min-width: 900px) 34vw, 72vw"
+                      className="editorial-poster__image"
+                    />
+                    <div
+                      className="editorial-poster__wash"
+                      style={{ background: project.previewBackground }}
+                    />
+                  </div>
+                  <div className="editorial-poster__content">
+                    <p className="editorial-poster__kicker">{isZh ? "行业海报" : "PROJECT POSTER"}</p>
+                    <h2>{projectCopy.title}</h2>
+                    <span>{project.posterStatement}</span>
+                  </div>
+                  <div className="editorial-poster__meta">
+                    <em>{projectCopy.industry}</em>
+                    <strong>{projectCopy.subtypes[0]}</strong>
+                  </div>
+                  <div className="editorial-poster__tags">
+                    {project.posterTags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
                 </Link>
               </article>
             );
