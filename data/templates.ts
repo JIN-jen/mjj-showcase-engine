@@ -19,10 +19,10 @@ export const templates: TemplateRecord[] = [
   {
     industry: "Hospitality",
     templateId: "hospitality-02",
-    templateName: "Boutique Hotel Website",
-    description: "A compact hospitality site for boutique stays, atmosphere, rooms and guest conversion.",
+    templateName: "Safari Lodge Website",
+    description: "A safari lodge website for wilderness stays, itineraries, gallery and WhatsApp inquiry flow.",
     thumbnail: "/industry/hospitality.svg",
-    route: "/obys-lab/work/hospitality?template=hospitality-02",
+    route: "/templates/hospitality/safari-lodge",
   },
   {
     industry: "Hospitality",
@@ -35,8 +35,8 @@ export const templates: TemplateRecord[] = [
   {
     industry: "Hospitality",
     templateId: "hospitality-04",
-    templateName: "Safari Lodge Website",
-    description: "A lodge-focused website for safari stays, tour highlights, gallery and inquiry flow.",
+    templateName: "Boutique Hotel Website",
+    description: "A compact hospitality site for boutique stays, atmosphere, rooms and guest conversion.",
     thumbnail: "/industry/hospitality.svg",
     route: "/obys-lab/work/hospitality?template=hospitality-04",
   },

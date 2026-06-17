@@ -1,16 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Agriculture and processing template visual placeholder">
-  <rect width="1000" height="1400" fill="#eef0e6"/>
-  <rect x="80" y="80" width="840" height="1240" fill="#f7f4ee" stroke="#111" stroke-opacity=".16"/>
-  <rect x="150" y="190" width="700" height="480" fill="#c7d0b8"/>
-  <path d="M150 650 C290 560 400 590 500 510 C620 415 730 460 850 380 V670 H150 Z" fill="#78906d" opacity=".56"/>
-  <g stroke="#111" stroke-opacity=".18" stroke-width="6">
-    <line x1="190" y1="760" x2="810" y2="760"/>
-    <line x1="190" y1="820" x2="810" y2="820"/>
-    <line x1="190" y1="880" x2="810" y2="880"/>
-    <line x1="190" y1="940" x2="810" y2="940"/>
-  </g>
-  <rect x="180" y="1010" width="250" height="80" fill="#111" opacity=".1"/>
-  <rect x="470" y="1010" width="250" height="80" fill="#111" opacity=".08"/>
-  <text x="150" y="1210" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="64" letter-spacing="-2">Agriculture &amp; Processing</text>
-  <text x="152" y="1268" fill="#111" opacity=".48" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">FARM / CASHEW / COLD CHAIN</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Agriculture poster">
+  <defs>
+    <linearGradient id="a-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fbf6e8"/>
+      <stop offset=".45" stop-color="#c9d0af"/>
+      <stop offset="1" stop-color="#557147"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1400" fill="url(#a-bg)"/>
+  <rect x="82" y="84" width="836" height="1232" fill="none" stroke="#31452f" stroke-opacity=".16"/>
+  <rect x="112" y="120" width="304" height="74" fill="#31452f"/>
+  <text x="138" y="170" fill="#f8f1e4" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">07</text>
+  <text x="452" y="170" fill="#31452f" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="5">TIIH / FIELD / PROCESSING / EXPORT</text>
+  <path d="M116 1118c114-208 266-334 412-368s302-6 378 100v248H116z" fill="#31452f" opacity=".92"/>
+  <path d="M122 972c132-132 258-194 400-190 118 4 236 52 354 146" fill="none" stroke="#e9cf85" stroke-width="12" stroke-linecap="round"/>
+  <path d="M122 1008c126-84 252-126 378-126 126 0 244 42 364 126" fill="none" stroke="#fbf6e8" stroke-opacity=".66" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="742" cy="316" r="132" fill="#e9cf85"/>
+  <rect x="146" y="286" width="316" height="170" fill="#31452f" opacity=".08"/>
+  <text x="170" y="358" fill="#31452f" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700">Agriculture</text>
+  <text x="170" y="410" fill="#31452f" opacity=".72" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="4">HARVEST / PROCESSING / EXPORT</text>
+  <rect x="560" y="556" width="314" height="180" fill="#fbf6e8" stroke="#31452f" stroke-opacity=".16"/>
+  <text x="588" y="632" fill="#31452f" font-family="Arial, Helvetica, sans-serif" font-size="32" letter-spacing="4">CROP</text>
+  <text x="588" y="684" fill="#31452f" font-family="Arial, Helvetica, sans-serif" font-size="32" letter-spacing="4">TEXTURE</text>
+  <rect x="146" y="556" width="360" height="180" fill="#e9cf85"/>
+  <text x="176" y="632" fill="#31452f" font-family="Arial, Helvetica, sans-serif" font-size="32" letter-spacing="4">FARM / FIELD</text>
+  <rect x="146" y="816" width="728" height="180" fill="#fbf6e8" stroke="#31452f" stroke-opacity=".16"/>
+  <text x="176" y="888" fill="#31452f" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700">Processing</text>
+  <text x="176" y="940" fill="#31452f" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="4">EXPORT / PACK / SORT</text>
+  <rect x="146" y="1114" width="728" height="118" fill="#31452f"/>
+  <text x="174" y="1188" fill="#f8f1e4" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Field Production Poster</text>
 </svg>

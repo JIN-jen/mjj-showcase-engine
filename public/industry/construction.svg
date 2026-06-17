@@ -1,13 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Construction template visual placeholder">
-  <rect width="1000" height="1400" fill="#ece9e1"/>
-  <rect x="80" y="80" width="840" height="1240" fill="#f7f4ee" stroke="#111" stroke-opacity=".16"/>
-  <rect x="150" y="230" width="700" height="470" fill="#c7c4bb"/>
-  <path d="M160 700 L820 250" stroke="#111" stroke-opacity=".24" stroke-width="16"/>
-  <path d="M290 700 L850 360" stroke="#111" stroke-opacity=".12" stroke-width="10"/>
-  <rect x="190" y="780" width="180" height="300" fill="#111" opacity=".1"/>
-  <rect x="410" y="780" width="180" height="210" fill="#111" opacity=".16"/>
-  <rect x="630" y="780" width="180" height="260" fill="#111" opacity=".09"/>
-  <rect x="150" y="1120" width="700" height="18" fill="#111" opacity=".2"/>
-  <text x="150" y="1210" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="76" letter-spacing="-2">Construction</text>
-  <text x="152" y="1268" fill="#111" opacity=".48" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">SITE / MACHINERY / MATERIALS</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Construction poster">
+  <defs>
+    <linearGradient id="c-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f1f0ec"/>
+      <stop offset=".45" stop-color="#d7d3cb"/>
+      <stop offset="1" stop-color="#8a8a83"/>
+    </linearGradient>
+    <pattern id="c-grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#202020" stroke-opacity=".12" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="1400" fill="url(#c-bg)"/>
+  <rect x="76" y="76" width="848" height="1248" fill="url(#c-grid)" opacity=".55"/>
+  <rect x="104" y="122" width="314" height="72" fill="#1b1b1b"/>
+  <text x="128" y="174" fill="#f5f1e7" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="700">03</text>
+  <rect x="460" y="118" width="382" height="78" fill="#b66d2f"/>
+  <text x="486" y="168" fill="#fff5e8" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="5">TIIH / CONSTRUCTION</text>
+  <path d="M160 1036V620l110-84 120 84v420z" fill="#fff6ea" fill-opacity=".84" stroke="#1b1b1b" stroke-opacity=".2"/>
+  <path d="M274 1036V520l122-82 122 82v516z" fill="#bfc5c7" fill-opacity=".9" stroke="#1b1b1b" stroke-opacity=".2"/>
+  <path d="M394 1036V584l122-84 122 84v452z" fill="#7d837d" fill-opacity=".86" stroke="#1b1b1b" stroke-opacity=".2"/>
+  <path d="M160 1036h532" stroke="#1b1b1b" stroke-width="10"/>
+  <rect x="148" y="214" width="654" height="228" fill="#1b1b1b" opacity=".06"/>
+  <rect x="148" y="214" width="654" height="228" fill="none" stroke="#1b1b1b" stroke-opacity=".22"/>
+  <text x="176" y="300" fill="#1b1b1b" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="-2">Construction</text>
+  <text x="176" y="356" fill="#1b1b1b" opacity=".72" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="4">BLUEPRINT / SITE / CONTRACTOR</text>
+  <rect x="148" y="474" width="244" height="108" fill="#b66d2f"/>
+  <text x="172" y="536" fill="#fff7eb" font-family="Arial, Helvetica, sans-serif" font-size="30" letter-spacing="4">PROJECT</text>
+  <rect x="418" y="474" width="384" height="108" fill="#fff7eb" stroke="#1b1b1b" stroke-opacity=".18"/>
+  <text x="446" y="536" fill="#1b1b1b" font-family="Arial, Helvetica, sans-serif" font-size="30" letter-spacing="4">BUILD / EQUIP / ROAD</text>
+  <rect x="126" y="1112" width="748" height="160" fill="#1b1b1b" opacity=".88"/>
+  <text x="154" y="1174" fill="#fff7eb" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700">Architecture Blueprint</text>
+  <text x="154" y="1222" fill="#fff7eb" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="4">PROJECT / BUILD / CONTRACTOR</text>
 </svg>

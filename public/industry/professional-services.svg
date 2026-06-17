@@ -1,16 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Professional services template visual placeholder">
-  <rect width="1000" height="1400" fill="#eeece8"/>
-  <rect x="80" y="80" width="840" height="1240" fill="#f7f4ee" stroke="#111" stroke-opacity=".16"/>
-  <rect x="150" y="210" width="700" height="460" fill="#cbc7cf"/>
-  <rect x="210" y="280" width="230" height="320" fill="#f7f4ee" opacity=".72"/>
-  <rect x="480" y="280" width="310" height="74" fill="#111" opacity=".13"/>
-  <rect x="480" y="390" width="250" height="74" fill="#111" opacity=".09"/>
-  <rect x="480" y="500" width="300" height="74" fill="#111" opacity=".11"/>
-  <circle cx="325" cy="390" r="76" fill="#111" opacity=".12"/>
-  <rect x="150" y="780" width="700" height="1" fill="#111" opacity=".28"/>
-  <rect x="150" y="845" width="210" height="210" fill="#111" opacity=".08"/>
-  <rect x="395" y="845" width="210" height="210" fill="#111" opacity=".11"/>
-  <rect x="640" y="845" width="210" height="210" fill="#111" opacity=".07"/>
-  <text x="150" y="1210" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="62" letter-spacing="-2">Professional Services</text>
-  <text x="152" y="1268" fill="#111" opacity=".48" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">LAW / MEDICAL / IT / AGENCY</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Professional services poster">
+  <defs>
+    <linearGradient id="p-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8f6f2"/>
+      <stop offset=".42" stop-color="#dad7cf"/>
+      <stop offset="1" stop-color="#8f829d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1400" fill="url(#p-bg)"/>
+  <rect x="86" y="86" width="828" height="1228" fill="none" stroke="#2d2235" stroke-opacity=".16"/>
+  <rect x="110" y="124" width="284" height="74" fill="#2d2235"/>
+  <text x="134" y="174" fill="#f6f2ea" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">08</text>
+  <text x="422" y="171" fill="#2d2235" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="5">TIIH / ADVISORY / LEGAL / FINANCE</text>
+  <rect x="130" y="262" width="738" height="184" fill="#fffaf5" stroke="#2d2235" stroke-opacity=".16"/>
+  <rect x="156" y="288" width="176" height="132" fill="#8f829d"/>
+  <rect x="356" y="288" width="224" height="132" fill="#f1dfc4"/>
+  <rect x="604" y="288" width="240" height="132" fill="#2d2235"/>
+  <text x="180" y="354" fill="#fffaf5" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">CONSULTING</text>
+  <text x="382" y="354" fill="#2d2235" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">DOCUMENTS</text>
+  <text x="628" y="354" fill="#fffaf5" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">FINANCE</text>
+  <rect x="130" y="518" width="318" height="220" fill="#2d2235"/>
+  <text x="156" y="596" fill="#f6f2ea" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="700">Services</text>
+  <text x="156" y="650" fill="#f6f2ea" opacity=".72" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="4">BUSINESS / LEGAL / TAX</text>
+  <rect x="476" y="518" width="392" height="220" fill="#f1dfc4"/>
+  <g fill="none" stroke="#2d2235" stroke-opacity=".2">
+    <rect x="514" y="556" width="314" height="30"/>
+    <rect x="514" y="606" width="314" height="30"/>
+    <rect x="514" y="656" width="210" height="30"/>
+  </g>
+  <rect x="130" y="810" width="738" height="164" fill="#fffaf5" stroke="#2d2235" stroke-opacity=".16"/>
+  <text x="156" y="888" fill="#2d2235" font-family="Arial, Helvetica, sans-serif" font-size="38" letter-spacing="4">ADVISORY / FINANCE / LEGAL</text>
+  <rect x="130" y="1120" width="738" height="112" fill="#2d2235"/>
+  <text x="156" y="1188" fill="#f6f2ea" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Editorial Business Poster</text>
 </svg>

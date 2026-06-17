@@ -77,7 +77,6 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
   const service = language === "cn" ? item.serviceCn.replaceAll("/", " / ") : item.service.replaceAll("/", " / ");
   const briefTemplate = defaultBriefTemplateByIndustrySlug[item.slug] ?? "";
   const briefHref = `/brief?industry=${encodeURIComponent(item.slug)}&template=${encodeURIComponent(briefTemplate)}&lang=${language}`;
-  const demoHref = item.templates.find((template) => template.templateHref)?.templateHref;
   const briefItems =
     language === "cn"
       ? ["Logo", "图片", "公司名称", "联系方式", "业务介绍"]
@@ -199,54 +198,63 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
       </aside>
 
       <section ref={railRef} className="obys-lab-detail-rail" aria-label={`${title} case image stream`}>
-        {caseFrames.map((frame, index) => (
-          <article
-            key={frame}
-            data-detail-frame={frame}
-            className={`obys-lab-detail-frame obys-lab-detail-frame--${index + 1}`}
-          >
-            <div>
-              <ObysProjectStill item={localizedItem} mode="detail" frameIndex={index} />
-              {index === 0 && demoHref ? (
-                <Link
-                  href={demoHref}
-                  aria-label={language === "cn" ? "查看 Luxury Hotel 演示" : "View Luxury Hotel Demo"}
-                  style={{ position: "absolute", inset: 0, zIndex: 3 }}
-                />
-              ) : null}
-            </div>
-            <dl className="obys-lab-detail-metadata" aria-label={`${title} metadata`}>
+        {caseFrames.map((frame, index) => {
+          const frameTemplate = item.templates[index];
+          const frameTemplateHref = frameTemplate?.templateHref;
+
+          return (
+            <article
+              key={frame}
+              data-detail-frame={frame}
+              className={`obys-lab-detail-frame obys-lab-detail-frame--${index + 1}`}
+            >
               <div>
-                <dt>{copy.industry}</dt>
-                <dd>{category}</dd>
+                <ObysProjectStill item={localizedItem} mode="detail" frameIndex={index} />
+                {frameTemplateHref ? (
+                  <Link
+                    href={frameTemplateHref}
+                    aria-label={
+                      language === "cn"
+                        ? `查看 ${frameTemplate.titleCN || frameTemplate.titleEN} 演示`
+                        : `View ${frameTemplate.titleEN || frameTemplate.titleCN} Demo`
+                    }
+                    style={{ position: "absolute", inset: 0, zIndex: 3 }}
+                  />
+                ) : null}
               </div>
-              <div>
-                <dt>{copy.service}</dt>
-                <dd>{service}</dd>
+              <dl className="obys-lab-detail-metadata" aria-label={`${title} metadata`}>
+                <div>
+                  <dt>{copy.industry}</dt>
+                  <dd>{category}</dd>
+                </div>
+                <div>
+                  <dt>{copy.service}</dt>
+                  <dd>{service}</dd>
+                </div>
+              </dl>
+              <div className="obys-lab-detail-entry" aria-label={`${title} template entry`}>
+                <section>
+                  <h2>{copy.projectBrief}</h2>
+                  <p>{copy.briefCopy}</p>
+                  <ul>
+                    {briefItems.map((briefItem) => (
+                      <li key={briefItem}>{briefItem}</li>
+                    ))}
+                  </ul>
+                  <Link href={briefHref}>{copy.startBrief}</Link>
+                </section>
+                <section>
+                  <h2>{copy.delivery}</h2>
+                  <p>{copy.deliveryValue}</p>
+                </section>
+                <section>
+                  <h2>{copy.price}</h2>
+                  <p>{copy.priceValue}</p>
+                </section>
               </div>
-            </dl>
-            <div className="obys-lab-detail-entry" aria-label={`${title} template entry`}>
-              <section>
-                <h2>{copy.projectBrief}</h2>
-                <p>{copy.briefCopy}</p>
-                <ul>
-                  {briefItems.map((briefItem) => (
-                    <li key={briefItem}>{briefItem}</li>
-                  ))}
-                </ul>
-                <Link href={briefHref}>{copy.startBrief}</Link>
-              </section>
-              <section>
-                <h2>{copy.delivery}</h2>
-                <p>{copy.deliveryValue}</p>
-              </section>
-              <section>
-                <h2>{copy.price}</h2>
-                <p>{copy.priceValue}</p>
-              </section>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </section>
 
       <footer className="obys-lab-detail-footer">

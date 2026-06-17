@@ -54,7 +54,11 @@ function getObysLabTemplates(industry: string): ObysLabTemplate[] {
     number: String(index + 1).padStart(2, "0"),
     route: template.route,
     templateHref:
-      industry === "Hospitality" && index === 0 ? "/templates/hospitality/luxury-hotel" : undefined,
+      industry === "Hospitality" && index === 0
+        ? "/templates/hospitality/luxury-hotel"
+        : industry === "Hospitality" && index === 1
+          ? "/templates/hospitality/safari-lodge"
+          : undefined,
     templateId: template.templateId,
     thumbnail: template.thumbnail,
     titleCN: template.templateName,
@@ -77,7 +81,7 @@ export const obysLabItems: ObysLabItem[] = [
     serviceCn: "创意指导/网站设计/开发",
     location: "Tanzania",
     year: "2026",
-    imageSrc: "/industry/hospitality.svg",
+    imageSrc: "/posters/hospitality.png",
     templates: getObysLabTemplates("Hospitality"),
     railPreset: {
       id: "hospitality",
@@ -101,7 +105,7 @@ export const obysLabItems: ObysLabItem[] = [
     serviceCn: "网站设计/开发",
     location: "Tanzania",
     year: "2026",
-    imageSrc: "/industry/food-beverage.svg",
+    imageSrc: "/posters/restaurant.png",
     templates: getObysLabTemplates("Restaurant"),
     railPreset: {
       id: "restaurant",
@@ -125,7 +129,7 @@ export const obysLabItems: ObysLabItem[] = [
     serviceCn: "网站设计",
     location: "Tanzania",
     year: "2026",
-    imageSrc: "/industry/construction.svg",
+    imageSrc: "/posters/construction.png",
     templates: getObysLabTemplates("Construction"),
     railPreset: {
       id: "construction",
@@ -149,7 +153,7 @@ export const obysLabItems: ObysLabItem[] = [
     serviceCn: "创意指导/网站设计/开发",
     location: "Tanzania",
     year: "2026",
-    imageSrc: "/industry/mining-energy.svg",
+    imageSrc: "/posters/mining.png",
     templates: getObysLabTemplates("Mining"),
     railPreset: {
       id: "mining",
@@ -173,7 +177,7 @@ export const obysLabItems: ObysLabItem[] = [
     serviceCn: "网站设计/开发/品牌识别",
     location: "Tanzania",
     year: "2026",
-    imageSrc: "/industry/import-wholesale.svg",
+    imageSrc: "/posters/wholesale.png",
     templates: getObysLabTemplates("Import & Wholesale"),
     railPreset: {
       id: "import-wholesale",
@@ -197,7 +201,7 @@ export const obysLabItems: ObysLabItem[] = [
     serviceCn: "网站设计/开发",
     location: "Tanzania",
     year: "2026",
-    imageSrc: "/industry/logistics-auto.svg",
+    imageSrc: "/posters/logistics.png",
     templates: getObysLabTemplates("Logistics"),
     railPreset: {
       id: "logistics",
@@ -221,7 +225,7 @@ export const obysLabItems: ObysLabItem[] = [
     serviceCn: "概念/网站设计/开发",
     location: "Tanzania",
     year: "2026",
-    imageSrc: "/industry/agriculture-processing.svg",
+    imageSrc: "/posters/agriculture.png",
     templates: getObysLabTemplates("Agriculture"),
     railPreset: {
       id: "agriculture",
@@ -245,7 +249,7 @@ export const obysLabItems: ObysLabItem[] = [
     serviceCn: "网站设计/开发/品牌识别",
     location: "Tanzania",
     year: "2026",
-    imageSrc: "/industry/professional-services.svg",
+    imageSrc: "/posters/services.png",
     templates: getObysLabTemplates("Professional Services"),
     railPreset: {
       id: "professional-services",

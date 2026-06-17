@@ -1,14 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Food and beverage template visual placeholder">
-  <rect width="1000" height="1400" fill="#f1ece4"/>
-  <rect x="82" y="82" width="836" height="1236" fill="#f8f5ef" stroke="#111" stroke-opacity=".16"/>
-  <circle cx="500" cy="430" r="250" fill="#c9aa8d" opacity=".62"/>
-  <circle cx="500" cy="430" r="150" fill="#f8f5ef" opacity=".82"/>
-  <circle cx="500" cy="430" r="52" fill="#141414" opacity=".16"/>
-  <rect x="170" y="760" width="660" height="1" fill="#111" opacity=".26"/>
-  <rect x="170" y="830" width="260" height="22" fill="#111" opacity=".2"/>
-  <rect x="170" y="900" width="660" height="22" fill="#111" opacity=".12"/>
-  <rect x="170" y="952" width="520" height="22" fill="#111" opacity=".1"/>
-  <rect x="170" y="1040" width="660" height="1" fill="#111" opacity=".26"/>
-  <text x="150" y="1210" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="70" letter-spacing="-2">Food &amp; Beverage</text>
-  <text x="152" y="1268" fill="#111" opacity=".48" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">RESTAURANT / CAFE / BAKERY</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Food and beverage poster">
+  <defs>
+    <linearGradient id="fb-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff8ef"/>
+      <stop offset=".58" stop-color="#f0ddc8"/>
+      <stop offset="1" stop-color="#ae7f61"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1400" fill="url(#fb-bg)"/>
+  <rect x="78" y="84" width="844" height="1232" fill="none" stroke="#24180f" stroke-opacity=".16"/>
+  <circle cx="748" cy="308" r="178" fill="#8f5b48" opacity=".2"/>
+  <circle cx="732" cy="308" r="122" fill="#fff2e4" opacity=".9"/>
+  <rect x="118" y="160" width="334" height="22" fill="#24180f" opacity=".82"/>
+  <rect x="118" y="202" width="504" height="8" fill="#24180f" opacity=".18"/>
+  <rect x="118" y="234" width="390" height="8" fill="#24180f" opacity=".18"/>
+  <rect x="118" y="266" width="452" height="8" fill="#24180f" opacity=".18"/>
+  <rect x="118" y="322" width="364" height="92" fill="#24180f" opacity=".92"/>
+  <text x="146" y="380" fill="#fff7ea" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" letter-spacing="-2">Restaurant</text>
+  <text x="118" y="480" fill="#24180f" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="4">TIIH / 02 / FINE DINING / MENU / RESERVATION</text>
+  <rect x="118" y="548" width="304" height="604" fill="#fff7ef" stroke="#24180f" stroke-opacity=".18"/>
+  <g fill="#24180f" opacity=".76" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="3">
+    <text x="144" y="612">CHEF</text>
+    <text x="260" y="612">DINING</text>
+    <text x="144" y="648">MENU</text>
+    <text x="260" y="648">BOOK</text>
+  </g>
+  <g stroke="#24180f" stroke-opacity=".15">
+    <line x1="144" y1="704" x2="398" y2="704"/>
+    <line x1="144" y1="748" x2="398" y2="748"/>
+    <line x1="144" y1="792" x2="398" y2="792"/>
+    <line x1="144" y1="836" x2="398" y2="836"/>
+    <line x1="144" y1="880" x2="398" y2="880"/>
+  </g>
+  <rect x="476" y="548" width="378" height="352" fill="#8a4e39"/>
+  <rect x="520" y="590" width="270" height="48" fill="#fff6e8"/>
+  <rect x="520" y="664" width="220" height="16" fill="#fff6e8" opacity=".8"/>
+  <rect x="520" y="694" width="258" height="16" fill="#fff6e8" opacity=".55"/>
+  <rect x="520" y="724" width="208" height="16" fill="#fff6e8" opacity=".55"/>
+  <rect x="520" y="778" width="178" height="54" fill="#24180f" opacity=".92"/>
+  <text x="540" y="812" fill="#fff7ea" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="3">RESERVATION</text>
+  <rect x="118" y="1208" width="736" height="60" fill="#24180f" opacity=".92"/>
+  <text x="146" y="1247" fill="#fff7ea" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" letter-spacing="-1">Fine Dining Poster</text>
+  <text x="706" y="1247" fill="#fff7ea" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="4">MENU / TABLE / BAR</text>
 </svg>

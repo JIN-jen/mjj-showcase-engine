@@ -2062,9 +2062,9 @@ textarea {
   aspect-ratio: 1.08;
   overflow: hidden;
   background: transparent;
-  opacity: calc(0.12 + (var(--lab-lock) * 0.88));
+  opacity: calc(0.45 + (var(--lab-lock) * 0.55));
   filter: grayscale(calc(1 - var(--lab-lock)));
-  transform: scale(calc(0.78 + (var(--lab-lock) * 0.24)));
+  transform: scale(calc(0.96 + (var(--lab-lock) * 0.04)));
   transform-origin: center;
   transition:
     opacity 120ms linear,
@@ -2076,8 +2076,10 @@ textarea {
 .obys-lab-rail article.is-active .obys-lab-preview {
   opacity: 1;
   filter: grayscale(0);
-  transform: scale(1.04);
-  box-shadow: none;
+  transform: scale(1);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 1.5rem 3.4rem rgba(0, 0, 0, 0.18);
 }
 
 .obys-lab-rail article:nth-child(4n + 1) .obys-lab-preview {
@@ -2103,6 +2105,37 @@ textarea {
   color: rgba(5, 5, 5, 0.86);
   isolation: isolate;
   z-index: 1;
+}
+
+.obys-project-still--index::before,
+.obys-project-still--index::after {
+  opacity: 0;
+}
+
+.obys-project-still__poster {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.16)),
+    #d8d3c6;
+}
+
+.obys-project-still__poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.12)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.18));
+  pointer-events: none;
+}
+
+.obys-project-still__poster-image {
+  object-fit: cover;
+  transform: scale(1.03);
 }
 
 .obys-project-still::before {

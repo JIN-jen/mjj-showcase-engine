@@ -1,13 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Hospitality template visual placeholder">
-  <rect width="1000" height="1400" fill="#eee9df"/>
-  <rect x="80" y="80" width="840" height="1240" fill="#f7f4ee" stroke="#111" stroke-opacity=".16"/>
-  <rect x="150" y="190" width="700" height="420" fill="#d9d2c4"/>
-  <path d="M150 610 C290 500 430 500 570 610 C670 690 760 690 850 610 V830 H150 Z" fill="#9ea88e" opacity=".62"/>
-  <circle cx="735" cy="300" r="86" fill="#f6f1e7" opacity=".74"/>
-  <rect x="190" y="890" width="260" height="260" fill="#111" opacity=".08"/>
-  <rect x="510" y="890" width="300" height="120" fill="#111" opacity=".1"/>
-  <rect x="510" y="1040" width="210" height="20" fill="#111" opacity=".24"/>
-  <rect x="510" y="1085" width="270" height="20" fill="#111" opacity=".14"/>
-  <text x="150" y="1210" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="76" letter-spacing="-2">Hospitality</text>
-  <text x="152" y="1268" fill="#111" opacity=".48" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">HOTEL / RESORT / SAFARI LODGE</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Hospitality poster">
+  <defs>
+    <linearGradient id="h-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6efe4"/>
+      <stop offset="0.46" stop-color="#e4d6bd"/>
+      <stop offset="1" stop-color="#8c7c64"/>
+    </linearGradient>
+    <linearGradient id="h-wash" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#111111" stop-opacity=".18"/>
+    </linearGradient>
+    <clipPath id="h-left">
+      <polygon points="72,122 670,88 642,658 92,705"/>
+    </clipPath>
+    <clipPath id="h-right">
+      <polygon points="585,240 896,206 898,948 504,955"/>
+    </clipPath>
+    <clipPath id="h-bottom">
+      <polygon points="126,844 596,810 734,1224 162,1248"/>
+    </clipPath>
+  </defs>
+  <rect width="1000" height="1400" fill="url(#h-bg)"/>
+  <rect x="70" y="80" width="860" height="1240" fill="none" stroke="#1b120b" stroke-opacity=".18"/>
+  <rect x="92" y="102" width="816" height="1216" fill="none" stroke="#fff" stroke-opacity=".16"/>
+  <g clip-path="url(#h-left)">
+    <image href="/template-assets/hospitality/luxury-hotel/hero-estate.png" x="60" y="70" width="690" height="680" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="60" y="70" width="690" height="680" fill="#1f1510" opacity=".16"/>
+  </g>
+  <g clip-path="url(#h-right)">
+    <image href="/template-assets/hospitality/luxury-hotel/suite-room.png" x="500" y="195" width="420" height="790" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="500" y="195" width="420" height="790" fill="#1a110d" opacity=".14"/>
+  </g>
+  <g clip-path="url(#h-bottom)">
+    <image href="/template-assets/hospitality/luxury-hotel/gallery-living.png" x="110" y="800" width="660" height="520" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="110" y="800" width="660" height="520" fill="#1a110d" opacity=".12"/>
+  </g>
+  <rect x="72" y="74" width="856" height="176" fill="#12100d" opacity=".88"/>
+  <text x="102" y="134" fill="#f8f0e2" font-family="Arial, Helvetica, sans-serif" font-size="28" letter-spacing="9">TIIH</text>
+  <text x="784" y="134" fill="#f8f0e2" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="6">01</text>
+  <text x="102" y="212" fill="#f8f0e2" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="700" letter-spacing="-2">Hospitality</text>
+  <text x="104" y="268" fill="#f8f0e2" opacity=".78" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="4">LUXURY HOTEL / RESORT / SAFARI LODGE</text>
+  <rect x="96" y="1032" width="292" height="150" fill="#12100d" opacity=".9"/>
+  <text x="122" y="1092" fill="#f8f0e2" font-family="Arial, Helvetica, sans-serif" font-size="54" letter-spacing="-1">Luxury</text>
+  <text x="122" y="1140" fill="#f8f0e2" font-family="Arial, Helvetica, sans-serif" font-size="36" letter-spacing="-1">Resort</text>
+  <text x="122" y="1178" fill="#f8f0e2" opacity=".7" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="3">TANZANIA HOSPITALITY</text>
+  <g fill="none" stroke="#f8f0e2" stroke-opacity=".64">
+    <rect x="420" y="1032" width="138" height="56"/>
+    <rect x="574" y="1032" width="138" height="56"/>
+    <rect x="728" y="1032" width="138" height="56"/>
+  </g>
+  <g fill="#f8f0e2" font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="3">
+    <text x="440" y="1065">SUITE</text>
+    <text x="598" y="1065">POOL</text>
+    <text x="742" y="1065">BOOKING</text>
+  </g>
+  <rect x="424" y="1118" width="286" height="16" fill="#f8f0e2" opacity=".72"/>
+  <rect x="424" y="1150" width="236" height="16" fill="#f8f0e2" opacity=".34"/>
+  <rect x="424" y="1182" width="176" height="16" fill="#f8f0e2" opacity=".34"/>
+  <rect x="742" y="1118" width="132" height="132" fill="url(#h-wash)" opacity=".8"/>
+  <text x="760" y="1172" fill="#12100d" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="4">DIRECT</text>
+  <text x="760" y="1202" fill="#12100d" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="4">BOOKING</text>
 </svg>

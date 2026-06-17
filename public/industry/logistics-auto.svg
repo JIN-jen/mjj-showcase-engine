@@ -1,15 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Logistics and auto template visual placeholder">
-  <rect width="1000" height="1400" fill="#e9ecea"/>
-  <rect x="80" y="80" width="840" height="1240" fill="#f7f4ee" stroke="#111" stroke-opacity=".16"/>
-  <rect x="150" y="240" width="700" height="360" fill="#bec8ca"/>
-  <path d="M210 500 H580 L660 420 H790 V520 H210 Z" fill="#111" opacity=".18"/>
-  <circle cx="310" cy="540" r="42" fill="#f7f4ee"/>
-  <circle cx="690" cy="540" r="42" fill="#f7f4ee"/>
-  <path d="M190 760 C330 660 520 880 690 760 C750 720 795 710 850 730" fill="none" stroke="#111" stroke-opacity=".28" stroke-width="10"/>
-  <circle cx="190" cy="760" r="18" fill="#111" opacity=".24"/>
-  <circle cx="500" cy="810" r="18" fill="#111" opacity=".18"/>
-  <circle cx="850" cy="730" r="18" fill="#111" opacity=".24"/>
-  <rect x="160" y="940" width="620" height="22" fill="#111" opacity=".11"/>
-  <text x="150" y="1210" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="76" letter-spacing="-2">Logistics &amp; Auto</text>
-  <text x="152" y="1268" fill="#111" opacity=".48" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">FREIGHT / FLEET / AUTO PARTS</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" role="img" aria-label="Logistics poster">
+  <defs>
+    <linearGradient id="l-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7f1e8"/>
+      <stop offset=".42" stop-color="#cdd7d7"/>
+      <stop offset="1" stop-color="#527180"/>
+    </linearGradient>
+    <pattern id="l-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#16313a" stroke-opacity=".12"/>
+    </pattern>
+  </defs>
+  <rect width="1000" height="1400" fill="url(#l-bg)"/>
+  <rect x="78" y="82" width="844" height="1236" fill="url(#l-grid)" opacity=".48"/>
+  <rect x="110" y="120" width="300" height="72" fill="#16313a"/>
+  <text x="136" y="170" fill="#f4efe3" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="700">06</text>
+  <text x="438" y="170" fill="#16313a" font-family="Arial, Helvetica, sans-serif" font-size="18" letter-spacing="5">TIIH / ROUTE / FLEET / PORT</text>
+  <path d="M154 1036h642l94-132v132h34v-278h-88l-88-132H154z" fill="#16313a" opacity=".9"/>
+  <circle cx="288" cy="928" r="92" fill="#f3e7d4"/>
+  <circle cx="288" cy="928" r="42" fill="#16313a"/>
+  <circle cx="704" cy="928" r="92" fill="#f3e7d4"/>
+  <circle cx="704" cy="928" r="42" fill="#16313a"/>
+  <rect x="140" y="314" width="330" height="152" fill="#16313a" opacity=".08"/>
+  <text x="162" y="374" fill="#16313a" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">Logistics</text>
+  <text x="162" y="424" fill="#16313a" opacity=".7" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="4">DELIVERY / FLEET / PORT</text>
+  <path d="M518 296h282l-44 114H474z" fill="#f0b85f"/>
+  <path d="M520 296l-74 114" stroke="#16313a" stroke-width="10"/>
+  <path d="M650 286v124" stroke="#16313a" stroke-width="8"/>
+  <text x="536" y="354" fill="#16313a" font-family="Arial, Helvetica, sans-serif" font-size="24" letter-spacing="4">SUPPLY CHAIN</text>
+  <rect x="132" y="560" width="742" height="126" fill="#f3e7d4" stroke="#16313a" stroke-opacity=".16"/>
+  <text x="160" y="636" fill="#16313a" font-family="Arial, Helvetica, sans-serif" font-size="38" letter-spacing="4">CONTAINERS / ROUTES / TRUCKS</text>
+  <rect x="132" y="752" width="308" height="220" fill="#527180"/>
+  <rect x="470" y="752" width="404" height="220" fill="#f0b85f"/>
+  <text x="500" y="828" fill="#16313a" font-family="Arial, Helvetica, sans-serif" font-size="26" letter-spacing="4">PORT</text>
+  <text x="500" y="876" fill="#16313a" font-family="Arial, Helvetica, sans-serif" font-size="26" letter-spacing="4">FLEET</text>
+  <text x="500" y="924" fill="#16313a" font-family="Arial, Helvetica, sans-serif" font-size="26" letter-spacing="4">DELIVERY</text>
+  <rect x="132" y="1118" width="736" height="116" fill="#16313a"/>
+  <text x="160" y="1188" fill="#f4efe3" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Route System Poster</text>
 </svg>
