@@ -20,6 +20,7 @@ type ObysProjectStillProps = {
 export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStillProps) {
   const frame = (frameIndex % 6) + 1;
   const isHospitalityHero = item.slug === "hospitality" && mode === "detail" && frameIndex === 0;
+  const displayNumber = mode === "detail" ? String(frame).padStart(2, "0") : item.number;
 
   return (
     <div
@@ -64,7 +65,7 @@ export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStil
                   className="obys-project-still__hospitality-image obys-project-still__hospitality-image--room"
                 />
               </div>
-              <span>01</span>
+              <span>{displayNumber}</span>
               <strong>Luxury Suite</strong>
             </article>
             <article className="obys-project-still__hospitality-room-card">
@@ -95,7 +96,7 @@ export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStil
             <i />
           </div>
           <div className="obys-project-still__hospitality-title">
-            <span>{item.number}</span>
+            <span>{displayNumber}</span>
             <strong>{item.title}</strong>
             <em>Hotel / Resort / Safari Lodge</em>
           </div>
@@ -118,7 +119,7 @@ export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStil
             <span />
           </div>
           <div className="obys-project-still__support-layer support-layer">
-            <b>{item.number}</b>
+            <b>{displayNumber}</b>
             <strong>{item.title}</strong>
             <span>{item.category}</span>
           </div>

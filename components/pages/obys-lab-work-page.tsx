@@ -206,7 +206,6 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
             className={`obys-lab-detail-frame obys-lab-detail-frame--${index + 1}`}
           >
             <div>
-              <span className="obys-lab-detail-signal">{item.number}</span>
               <ObysProjectStill item={localizedItem} mode="detail" frameIndex={index} />
               {index === 0 && demoHref ? (
                 <Link
@@ -322,6 +321,141 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
 
         .obys-lab-detail-entry a::after {
           content: " →";
+        }
+
+        @media (max-width: 768px) {
+          .obys-lab-detail-page {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 4.8rem 0.9rem 1.2rem;
+            background: #f8f6ef;
+          }
+
+          .obys-lab-detail-header {
+            inset: 0.72rem 0.72rem auto;
+          }
+
+          .obys-lab-detail-header nav {
+            max-width: 54vw;
+          }
+
+          .obys-lab-detail-rail {
+            order: 1;
+            gap: 1rem;
+            padding: 0;
+          }
+
+          .obys-lab-detail-copy {
+            order: 2;
+            position: static;
+            width: auto;
+            margin: 0;
+            grid-template-columns: 1fr;
+            gap: 0.52rem;
+            padding: 0;
+            transform: none;
+          }
+
+          .obys-lab-detail-copy h1 {
+            max-width: 18ch;
+            font-size: clamp(1rem, 6.2vw, 1.6rem);
+            line-height: 0.96;
+          }
+
+          .obys-lab-detail-copy dl {
+            gap: 0.28rem;
+          }
+
+          .obys-lab-detail-copy dl div {
+            gap: 0.08rem;
+          }
+
+          .obys-lab-detail-copy dd {
+            font-size: clamp(0.62rem, 3.4vw, 0.78rem);
+            line-height: 1.08;
+          }
+
+          .obys-lab-detail-copy > a {
+            margin-top: 0.12rem;
+          }
+
+          .obys-lab-detail-frame {
+            min-height: auto;
+            display: grid;
+            gap: 0.9rem;
+            justify-items: center;
+            padding-bottom: 1.1rem;
+          }
+
+          .obys-lab-detail-frame > div:not(.obys-lab-detail-entry) {
+            width: min(86vw, 420px);
+            aspect-ratio: 1 / 1;
+            opacity: 1;
+            filter: grayscale(1) contrast(1.03);
+            transform: none;
+            padding: 0;
+          }
+
+          .obys-lab-detail-frame.is-active > div:not(.obys-lab-detail-entry) {
+            opacity: 1;
+            filter: grayscale(1) contrast(1.03);
+            transform: none;
+          }
+
+          .obys-lab-detail-frame:nth-child(5n + 1),
+          .obys-lab-detail-frame:nth-child(5n + 2),
+          .obys-lab-detail-frame:nth-child(5n + 3),
+          .obys-lab-detail-frame:nth-child(5n + 4),
+          .obys-lab-detail-frame:nth-child(5n) {
+            --detail-rail-offset: 0rem;
+            --detail-rail-ratio: 1 / 1;
+            --detail-rail-width: min(86vw, 420px);
+          }
+
+          .obys-lab-detail-metadata {
+            position: static;
+            width: min(86vw, 420px);
+            margin: 0;
+            gap: 0.52rem;
+            font-size: clamp(0.58rem, 2.8vw, 0.72rem);
+          }
+
+          .obys-lab-detail-entry {
+            position: static;
+            width: min(86vw, 420px);
+            gap: 0.92rem;
+            font-size: clamp(0.58rem, 2.8vw, 0.72rem);
+          }
+
+          .obys-lab-detail-entry section {
+            gap: 0.38rem;
+          }
+
+          .obys-lab-detail-entry h2 {
+            font-size: inherit;
+          }
+
+          .obys-lab-detail-entry p,
+          .obys-lab-detail-entry li {
+            max-width: none;
+            font-size: inherit;
+          }
+
+          .obys-lab-detail-entry ol li {
+            grid-template-columns: 1.25rem 1fr;
+          }
+
+          .obys-lab-detail-footer {
+            order: 3;
+            position: static;
+            right: auto;
+            bottom: auto;
+            margin-top: 0.2rem;
+            justify-content: space-between;
+            padding-top: 0.2rem;
+            font-size: clamp(0.54rem, 2.6vw, 0.7rem);
+          }
         }
       `}</style>
     </main>
