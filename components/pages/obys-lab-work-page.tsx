@@ -77,6 +77,7 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
   const service = language === "cn" ? item.serviceCn.replaceAll("/", " / ") : item.service.replaceAll("/", " / ");
   const briefTemplate = defaultBriefTemplateByIndustrySlug[item.slug] ?? "";
   const briefHref = `/brief?industry=${encodeURIComponent(item.slug)}&template=${encodeURIComponent(briefTemplate)}&lang=${language}`;
+  const demoHref = item.templates.find((template) => template.templateHref)?.templateHref;
   const briefItems =
     language === "cn"
       ? ["Logo", "图片", "公司名称", "联系方式", "业务介绍"]
@@ -207,6 +208,13 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
             <div>
               <span className="obys-lab-detail-signal">{item.number}</span>
               <ObysProjectStill item={localizedItem} mode="detail" frameIndex={index} />
+              {index === 0 && demoHref ? (
+                <Link
+                  href={demoHref}
+                  aria-label={language === "cn" ? "查看 Luxury Hotel 演示" : "View Luxury Hotel Demo"}
+                  style={{ position: "absolute", inset: 0, zIndex: 3 }}
+                />
+              ) : null}
             </div>
             <dl className="obys-lab-detail-metadata" aria-label={`${title} metadata`}>
               <div>

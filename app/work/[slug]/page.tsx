@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import {
   type IndustryTemplate,
   type TemplateFrame,
@@ -28,6 +28,53 @@ function makeCases(): TemplateFrame[] {
   }));
 }
 
+function makeHospitalityCases(): TemplateFrame[] {
+  return [
+    {
+      title: "Luxury Hotel",
+      titleZh: "豪华酒店",
+      copy: "",
+      copyZh: "",
+      type: "cover",
+    },
+    {
+      title: "Boutique Hotel",
+      titleZh: "精品酒店",
+      copy: "",
+      copyZh: "",
+      type: "interface",
+    },
+    {
+      title: "Beach Resort",
+      titleZh: "海滨度假村",
+      copy: "",
+      copyZh: "",
+      type: "signal",
+    },
+    {
+      title: "Safari Lodge",
+      titleZh: "野奢营地",
+      copy: "",
+      copyZh: "",
+      type: "detail",
+    },
+    {
+      title: "Apartment Hotel",
+      titleZh: "服务式公寓",
+      copy: "",
+      copyZh: "",
+      type: "mobile",
+    },
+    {
+      title: "Restaurant / Bar",
+      titleZh: "餐厅 / 酒吧",
+      copy: "",
+      copyZh: "",
+      type: "result",
+    },
+  ];
+}
+
 const industryTemplates: IndustryTemplate[] = [
   {
     slug: "hospitality",
@@ -36,16 +83,16 @@ const industryTemplates: IndustryTemplate[] = [
     titleZh: "酒店与旅行",
     category: "Business Website Template",
     categoryZh: "商业网站模板",
-    service: "UI / UX / Development",
-    serviceZh: "UI / UX / 开发",
+    service: "Creative Direction / Web Design / Development",
+    serviceZh: "创意指导 / 网站设计 / 开发",
     industry: "Hospitality",
-    industryZh: "酒店",
+    industryZh: "酒店与旅行",
     year: "2026",
-    description: "Five compact case directions for Tanzania hospitality websites.",
-    descriptionZh: "五组适用于坦桑尼亚酒店与旅行网站的案例方向。",
+    description: "Six compact case directions for Tanzania hospitality websites.",
+    descriptionZh: "六组适用于坦桑尼亚酒店与旅行网站的案例方向。",
     previewBackground:
       "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(206,199,184,0.9) 42%, rgba(128,145,132,0.72) 100%)",
-    frames: makeCases(),
+    frames: makeHospitalityCases(),
   },
   {
     slug: "food-beverage",
@@ -181,6 +228,11 @@ export function getWorkDetailProject(slug: string) {
 
 export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
   const { slug } = await params;
+
+  if (slug === "hospitality") {
+    redirect("/obys-lab/work/hospitality");
+  }
+
   const project = getWorkDetailProject(slug);
 
   if (!project) {

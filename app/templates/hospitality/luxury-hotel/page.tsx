@@ -9,6 +9,7 @@ const assetBase = "/template-assets/hospitality/luxury-hotel";
 
 const demoImages = {
   aboutInterior: `${assetBase}/about-interior.png`,
+  aboutMapLocation: `${assetBase}/about-map-location.png`,
   galleryLiving: `${assetBase}/gallery-living.png`,
   heroEstate: `${assetBase}/hero-estate.png`,
   mobileHeroEstate: `${assetBase}/mobile-hero-estate.png`,
@@ -74,6 +75,15 @@ const copy = {
     about: {
       label: "06 / About",
       title: "Brand story, coordinates and principles for a quiet luxury hotel presence.",
+      location: "Location",
+      locationValue: "Zanzibar / Serengeti / Arusha",
+      coordinates: "Coordinates",
+      coordinatesValue: "06° 09' S / 39° 11' E",
+    },
+    location: {
+      label: "07 / Location",
+      title: "Local context for East African hospitality.",
+      body: "Designed for hotels, resorts and lodges that need digital presence rooted in local context.",
       location: "Location",
       locationValue: "Zanzibar / Serengeti / Arusha",
       coordinates: "Coordinates",
@@ -153,6 +163,15 @@ const copy = {
       coordinates: "坐标",
       coordinatesValue: "南纬 06°09' / 东经 39°11'",
     },
+    location: {
+      label: "07 / 地理位置",
+      title: "扎根东非酒店场景的本地语境。",
+      body: "为酒店、度假村与 Lodge 打造与本地环境、目的地体验和品牌故事相连的数字存在感。",
+      location: "位置",
+      locationValue: "桑给巴尔 / 塞伦盖蒂 / 阿鲁沙",
+      coordinates: "坐标",
+      coordinatesValue: "南纬 06°09' / 东经 39°11'",
+    },
     principles: [
       ["01", "建筑式安静", "充足留白、精确字体层级，以及以图片驱动的酒店叙事。"],
       ["02", "直接预订", "清晰的预订路径，减少咨询前的决策阻力。"],
@@ -180,7 +199,7 @@ export default function LuxuryHotelTemplatePage() {
   return (
     <main className={styles.page}>
       <nav className={styles.nav} aria-label="Hospitality demo navigation">
-        <Link href="/work/hospitality">{t.nav.brand}</Link>
+        <Link href="/obys-lab/work/hospitality">{t.nav.brand}</Link>
         <div className={styles.navLinks}>
           <a href="#rooms">{t.nav.rooms}</a>
           <a href="#booking">{t.nav.booking}</a>
@@ -316,6 +335,27 @@ export default function LuxuryHotelTemplatePage() {
             </div>
           </dl>
         </div>
+      </section>
+
+      <section className={styles.location}>
+        <div>
+          <p>{t.location.label}</p>
+          <h2>{t.location.title}</h2>
+          <span>{t.location.body}</span>
+          <dl>
+            <div>
+              <dt>{t.location.location}</dt>
+              <dd>{t.location.locationValue}</dd>
+            </div>
+            <div>
+              <dt>{t.location.coordinates}</dt>
+              <dd>{t.location.coordinatesValue}</dd>
+            </div>
+          </dl>
+        </div>
+        <figure>
+          <Image src={demoImages.aboutMapLocation} alt="" fill sizes="(min-width: 900px) 46vw, 90vw" />
+        </figure>
       </section>
 
       <section className={styles.principles}>

@@ -113,6 +113,7 @@
 .gallery header p,
 .mobile p,
 .about p,
+.location p,
 .proposal header p,
 .proposal aside > p {
   margin: 0;
@@ -145,6 +146,7 @@
 .gallery,
 .mobile,
 .about,
+.location,
 .principles,
 .proposal {
   width: min(1180px, calc(100% - 64px));
@@ -166,6 +168,7 @@
 .gallery h2,
 .mobile h2,
 .about h2,
+.location h2,
 .proposal h2 {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
@@ -239,6 +242,7 @@
 .gallery figure,
 .mobile figure,
 .about figure,
+.location figure,
 .proposal figure {
   position: relative;
   overflow: hidden;
@@ -254,6 +258,7 @@
 .gallery img,
 .mobile img,
 .about img,
+.location img,
 .proposal img {
   object-fit: cover;
 }
@@ -418,6 +423,63 @@
   font-size: 22px;
 }
 
+.location {
+  display: grid;
+  grid-template-columns: minmax(0, 0.48fr) minmax(0, 0.52fr);
+  gap: 58px;
+  align-items: stretch;
+}
+
+.location > div {
+  display: grid;
+  align-content: center;
+  gap: 24px;
+  padding: 34px 0;
+}
+
+.location h2 {
+  max-width: 620px;
+  font-size: clamp(38px, 5vw, 72px);
+}
+
+.location > div > span {
+  display: block;
+  max-width: 460px;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.location dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 20px 0 0;
+}
+
+.location dl div {
+  padding-top: 18px;
+  border-top: 1px solid rgba(17, 17, 17, 0.18);
+}
+
+.location dt {
+  margin-bottom: 8px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.location dd {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+}
+
+.location figure {
+  min-height: 520px;
+  margin: 0;
+  background: #ffffff;
+}
+
 .principles {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -522,6 +584,7 @@
   .gallery,
   .mobile,
   .about,
+  .location,
   .principles,
   .proposal {
     width: min(100% - 32px, 680px);
@@ -532,6 +595,7 @@
   .gallery > div,
   .mobile,
   .about,
+  .location,
   .proposal > div,
   .rooms > div,
   .principles {
@@ -544,6 +608,7 @@
   .gallery,
   .mobile,
   .about,
+  .location,
   .principles,
   .proposal {
     padding: 72px 0;
@@ -558,7 +623,8 @@
 
   .booking figure,
   .gallery > div > figure,
-  .about figure {
+  .about figure,
+  .location figure {
     min-height: 420px;
   }
 

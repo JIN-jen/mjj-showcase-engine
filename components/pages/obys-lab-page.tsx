@@ -216,7 +216,7 @@ export function ObysLabPage() {
   return (
     <main className="obys-lab-page">
       <header className="obys-lab-header">
-        <Link href="/" aria-label="TIIH home">
+        <Link href="/obys-lab" aria-label="TIIH home">
           TIIH
         </Link>
         <nav aria-label="Obys lab navigation">

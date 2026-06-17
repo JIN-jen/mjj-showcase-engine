@@ -36,7 +36,6 @@ export type IndustryTemplate = {
 type WorkDetailReelPageProps = {
   project: IndustryTemplate;
 };
-
 function ObysBracket({ className = "" }: { className?: string }) {
   return (
     <div className={["obys-bracket", className].join(" ")} aria-hidden="true">
@@ -77,10 +76,6 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
   const isZh = locale === "zh";
   const isHospitality = project.slug === "hospitality";
   const indexHref = isHospitality ? "/obys-lab" : "/";
-  const briefHref = `/brief?industry=${encodeURIComponent(project.slug)}&template=${encodeURIComponent(
-    isHospitality ? "luxury-hotel" : "",
-  )}&lang=${isZh ? "cn" : "en"}`;
-  const demoHref = "/templates/hospitality/luxury-hotel";
 
   const frames = useMemo(
     () =>
@@ -102,17 +97,6 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
     industry: isZh ? project.industryZh : project.industry,
     description: isZh ? project.descriptionZh : project.description,
   };
-  const deliveryPanel = isZh
-    ? [
-        ["交付", "3-5 天"],
-        ["方向", "Luxury Hotel / Resort / Lodge"],
-        ["系统", "品牌官网 / 预订入口 / 移动端"],
-      ]
-    : [
-        ["Delivery", "3-5 Days"],
-        ["Direction", "Luxury Hotel / Resort / Lodge"],
-        ["System", "Brand Website / Booking Entry / Mobile"],
-      ];
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -218,7 +202,6 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
         ref={pageRef}
         className={[
           "work-reel-page",
-          isHospitality ? "work-reel-page--hospitality" : "",
           entered ? "is-entered" : "",
         ]
           .filter(Boolean)
@@ -296,18 +279,6 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
               <dd>{projectCopy.service}</dd>
             </div>
           </dl>
-          {isHospitality ? (
-            <section className="work-reel-delivery" aria-label={isZh ? "交付信息" : "Delivery information"}>
-              {deliveryPanel.map(([label, value]) => (
-                <div key={label}>
-                  <span>{label}</span>
-                  <strong>{value}</strong>
-                </div>
-              ))}
-              <Link href={demoHref}>{isZh ? "查看完整演示" : "View Live Demo"}</Link>
-              <Link href={briefHref}>{isZh ? "开始提交资料" : "Start Project Brief"}</Link>
-            </section>
-          ) : null}
         </aside>
 
         <ObysBracket className="work-reel-aim" />
@@ -320,33 +291,42 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
         >
           {loopedFrames.map((frame, index) => {
             const frameIndex = index % frames.length;
+            const demoLink =
+              isHospitality && frameIndex === 0 ? "/templates/hospitality/luxury-hotel" : null;
 
             return (
-            <article
-              key={`${project.slug}-${frame.title}-${index}`}
-              data-work-frame={frameIndex}
-              className={[
-                "work-reel-frame",
-                `work-reel-frame--${frame.type}`,
-                activeFrame === frameIndex ? "is-active" : "",
-              ].join(" ")}
-            >
-              <div className="work-reel-frame__stage">
-                <Image
-                  src={frame.media}
-                  alt=""
-                  fill
-                  priority={index === 0}
-                  sizes="(min-width: 900px) 58vw, 82vw"
-                  className="object-contain"
-                />
-                <div className="work-reel-frame__wash" style={{ background: project.previewBackground }} />
-                <div className="work-reel-frame__poster">
-                  <p>{frame.kicker}</p>
-                  <h2>{isZh ? frame.titleZh : frame.title}</h2>
-                  <span>{projectCopy.category}</span>
-                  <span>{projectCopy.service}</span>
-                </div>
+              <article
+                key={`${project.slug}-${frame.title}-${index}`}
+                data-work-frame={frameIndex}
+                className={[
+                  "work-reel-frame",
+                  `work-reel-frame--${frame.type}`,
+                  activeFrame === frameIndex ? "is-active" : "",
+                ].join(" ")}
+              >
+                <div className="work-reel-frame__stage">
+                  <Image
+                    src={frame.media}
+                    alt=""
+                    fill
+                    priority={index === 0}
+                    sizes="(min-width: 900px) 58vw, 82vw"
+                    className="object-contain"
+                  />
+                  <div className="work-reel-frame__wash" style={{ background: project.previewBackground }} />
+                  <div className="work-reel-frame__poster">
+                    <p>{frame.kicker}</p>
+                    <h2>{isZh ? frame.titleZh : frame.title}</h2>
+                    <span>{projectCopy.category}</span>
+                    <span>{projectCopy.service}</span>
+                  </div>
+                  {demoLink ? (
+                    <Link
+                      href={demoLink}
+                      aria-label={isZh ? "查看完整演示" : "View Live Demo"}
+                      style={{ position: "absolute", inset: 0, zIndex: 4 }}
+                    />
+                  ) : null}
               </div>
             </article>
             );

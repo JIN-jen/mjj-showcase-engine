@@ -21,6 +21,7 @@ export type ObysLabTemplate = {
   descriptionEN: string;
   number: string;
   route: string;
+  templateHref?: string;
   templateId: string;
   thumbnail: string;
   titleCN: string;
@@ -52,6 +53,8 @@ function getObysLabTemplates(industry: string): ObysLabTemplate[] {
     descriptionEN: template.description,
     number: String(index + 1).padStart(2, "0"),
     route: template.route,
+    templateHref:
+      industry === "Hospitality" && index === 0 ? "/templates/hospitality/luxury-hotel" : undefined,
     templateId: template.templateId,
     thumbnail: template.thumbnail,
     titleCN: template.templateName,
@@ -70,8 +73,8 @@ export const obysLabItems: ObysLabItem[] = [
     category: "Hospitality",
     categoryCn: "酒店与旅行",
     industry: "Hospitality",
-    service: "Web Design/Dev",
-    serviceCn: "网站设计/开发",
+    service: "Creative Direction / Web Design / Development",
+    serviceCn: "创意指导/网站设计/开发",
     location: "Tanzania",
     year: "2026",
     imageSrc: "/industry/hospitality.svg",
