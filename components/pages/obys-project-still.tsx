@@ -40,40 +40,40 @@ type ObysProjectStillProps = {
 
 const hospitalityPosterFrames = [
   {
-    image: demoImages.heroEstate,
+    image: "/posters/hospitality/luxury-hotel.png",
     title: "Luxury Hotel",
     subtitle: "Brand Website / Direct Booking / Mobile Experience",
     tags: ["Brand Website", "Direct Booking", "Mobile"],
   },
   {
-    image: safariImages.hero,
+    image: "/posters/hospitality/safari-lodge.png",
     title: "Safari Lodge",
     subtitle: "WhatsApp / Map / Inquiry Flow",
     tags: ["WhatsApp", "Map", "Inquiry"],
   },
   {
-    image: demoImages.galleryLiving,
-    title: "Resort Booking",
-    subtitle: "Rooms / Gallery / Travel",
-    tags: ["Rooms", "Gallery", "Travel"],
-  },
-  {
-    image: demoImages.suiteRoom,
+    image: "/posters/hospitality/boutique-hotel.png",
     title: "Boutique Hotel",
     subtitle: "Editorial Rooms / Guest Experience",
     tags: ["Editorial", "Rooms", "Guest"],
   },
   {
-    image: demoImages.mobileHeroEstate,
+    image: "/posters/hospitality/resort.png",
+    title: "Resort Booking",
+    subtitle: "Rooms / Gallery / Travel",
+    tags: ["Rooms", "Gallery", "Travel"],
+  },
+  {
+    image: "/posters/hospitality/apartment-hotel.png",
     title: "Apartment Hotel",
     subtitle: "Long Stay / Mobile",
     tags: ["Long Stay", "Mobile", "Inquiry"],
   },
   {
-    image: demoImages.proposalDetail,
-    title: "Restaurant / Bar",
-    subtitle: "Dining / Contact / Location",
-    tags: ["Dining", "Contact", "Location"],
+    image: "/posters/hospitality/beach-resort.png",
+    title: "Beach Resort",
+    subtitle: "Coastal Stay / Wedding / Leisure",
+    tags: ["BEACH", "WEDDING", "LEISURE"],
   },
 ] as const;
 
