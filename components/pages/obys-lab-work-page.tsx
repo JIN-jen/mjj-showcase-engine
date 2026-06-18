@@ -400,14 +400,14 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
             width: min(86vw, 420px);
             aspect-ratio: 1 / 1;
             opacity: 1;
-            filter: grayscale(1) contrast(1.03);
+            filter: none;
             transform: none;
             padding: 0;
           }
 
           .obys-lab-detail-frame.is-active > div:not(.obys-lab-detail-entry) {
             opacity: 1;
-            filter: grayscale(1) contrast(1.03);
+            filter: none;
             transform: none;
           }
 

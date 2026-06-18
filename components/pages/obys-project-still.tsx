@@ -77,10 +77,51 @@ const hospitalityPosterFrames = [
   },
 ] as const;
 
+const restaurantPosterFrames = [
+  {
+    image: "/posters/restaurant/fine-dining-restaurant.png",
+    title: "Fine Dining",
+    subtitle: "Michelin Star / Wine / Experience",
+    tags: ["MICHELIN", "WINE", "DINING"],
+  },
+  {
+    image: "/posters/restaurant/modern-cafe.png",
+    title: "Coffee Shop",
+    subtitle: "Specialty Coffee / Lifestyle / Brand",
+    tags: ["COFFEE", "LIFESTYLE", "BRAND"],
+  },
+  {
+    image: "/posters/restaurant/rooftop-bar-lounge.png",
+    title: "Rooftop Bar",
+    subtitle: "Cocktails / Skyline / Membership",
+    tags: ["BAR", "SKYLINE", "VIP"],
+  },
+  {
+    image: "/posters/restaurant/bakery-patisserie.png",
+    title: "Bakery",
+    subtitle: "Pastry / Dessert / Boutique",
+    tags: ["PASTRY", "DESSERT", "BOUTIQUE"],
+  },
+  {
+    image: "/posters/restaurant/fast-casual-restaurant.png",
+    title: "Fast Casual",
+    subtitle: "Healthy Food / Chain / Startup",
+    tags: ["HEALTHY", "CHAIN", "BRAND"],
+  },
+  {
+    image: "/posters/restaurant/bubble-tea-dessert-brand.png",
+    title: "Bubble Tea",
+    subtitle: "Tea / Dessert / Retail",
+    tags: ["TEA", "DESSERT", "RETAIL"],
+  },
+] as const;
+
 export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStillProps) {
   const frame = (frameIndex % 6) + 1;
   const isHospitalityPoster = item.slug === "hospitality" && mode === "detail";
   const hospitalityPoster = hospitalityPosterFrames[frameIndex % hospitalityPosterFrames.length];
+  const isRestaurantPoster = item.slug === "restaurant" && mode === "detail";
+  const restaurantPoster = restaurantPosterFrames[frameIndex % restaurantPosterFrames.length];
   const displayNumber = mode === "detail" ? String(frame).padStart(2, "0") : item.number;
 
   return (
@@ -117,6 +158,29 @@ export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStil
             </div>
             <ul>
               {hospitalityPoster.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : isRestaurantPoster ? (
+        <div className="obys-project-still__hospitality-poster">
+          <div className="obys-project-still__hospitality-poster-top">
+            <span>TIIH</span>
+            <span>Restaurant</span>
+            <span>{displayNumber}</span>
+          </div>
+          <div className="obys-project-still__hospitality-poster-image">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={restaurantPoster.image} alt="" className="obys-project-still__hospitality-poster-img" />
+          </div>
+          <div className="obys-project-still__hospitality-poster-footer">
+            <div>
+              <strong>{restaurantPoster.title}</strong>
+              <em>{restaurantPoster.subtitle}</em>
+            </div>
+            <ul>
+              {restaurantPoster.tags.map((tag) => (
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
