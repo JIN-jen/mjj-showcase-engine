@@ -116,12 +116,53 @@ const restaurantPosterFrames = [
   },
 ] as const;
 
+const constructionPosterFrames = [
+  {
+    image: "/posters/construction/premium-construction.png",
+    title: "Premium Construction",
+    subtitle: "Commercial Buildings / Contractor / Excellence",
+    tags: ["COMMERCIAL", "BUILDINGS", "CONTRACTOR"],
+  },
+  {
+    image: "/posters/construction/road-construction.png",
+    title: "Road Construction",
+    subtitle: "Highways / Infrastructure / Engineering",
+    tags: ["ROAD", "HIGHWAY", "INFRA"],
+  },
+  {
+    image: "/posters/construction/earthworks-contractor.png",
+    title: "Earthworks",
+    subtitle: "Excavation / Grading / Civil Works",
+    tags: ["EARTHWORK", "CIVIL", "GRADING"],
+  },
+  {
+    image: "/posters/construction/bridge-infrastructure.png",
+    title: "Bridge Engineering",
+    subtitle: "Structure / Transport / Infrastructure",
+    tags: ["BRIDGE", "STRUCTURE", "INFRA"],
+  },
+  {
+    image: "/posters/construction/industrial-construction.png",
+    title: "Industrial Construction",
+    subtitle: "Factory / Steel / Engineering",
+    tags: ["INDUSTRIAL", "FACTORY", "STEEL"],
+  },
+  {
+    image: "/posters/construction/real-estate-development.png",
+    title: "Real Estate",
+    subtitle: "Mixed Use / Development / Urban",
+    tags: ["REAL ESTATE", "DEVELOPMENT", "URBAN"],
+  },
+] as const;
+
 export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStillProps) {
   const frame = (frameIndex % 6) + 1;
   const isHospitalityPoster = item.slug === "hospitality" && mode === "detail";
   const hospitalityPoster = hospitalityPosterFrames[frameIndex % hospitalityPosterFrames.length];
   const isRestaurantPoster = item.slug === "restaurant" && mode === "detail";
   const restaurantPoster = restaurantPosterFrames[frameIndex % restaurantPosterFrames.length];
+  const isConstructionPoster = item.slug === "construction" && mode === "detail";
+  const constructionPoster = constructionPosterFrames[frameIndex % constructionPosterFrames.length];
   const displayNumber = mode === "detail" ? String(frame).padStart(2, "0") : item.number;
 
   return (
@@ -181,6 +222,29 @@ export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStil
             </div>
             <ul>
               {restaurantPoster.tags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : isConstructionPoster ? (
+        <div className="obys-project-still__hospitality-poster">
+          <div className="obys-project-still__hospitality-poster-top">
+            <span>TIIH</span>
+            <span>Construction</span>
+            <span>{displayNumber}</span>
+          </div>
+          <div className="obys-project-still__hospitality-poster-image">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={constructionPoster.image} alt="" className="obys-project-still__hospitality-poster-img" />
+          </div>
+          <div className="obys-project-still__hospitality-poster-footer">
+            <div>
+              <strong>{constructionPoster.title}</strong>
+              <em>{constructionPoster.subtitle}</em>
+            </div>
+            <ul>
+              {constructionPoster.tags.map((tag) => (
                 <li key={tag}>{tag}</li>
               ))}
             </ul>
