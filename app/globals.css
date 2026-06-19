@@ -2053,6 +2053,8 @@ textarea {
   scroll-snap-align: center;
   scroll-snap-stop: always;
   --lab-lock: 0;
+  content-visibility: auto;
+  contain-intrinsic-size: 10rem 12rem;
 }
 
 .obys-lab-preview {
@@ -2095,6 +2097,17 @@ textarea {
 .obys-lab-rail article:nth-child(4n + 3) .obys-lab-preview {
   aspect-ratio: 0.92;
   width: clamp(7.6rem, 10.4vw, 13.2rem);
+}
+
+@media (max-width: 760px), (prefers-reduced-motion: reduce) {
+  .obys-lab-preview,
+  .obys-lab-rail article.is-active .obys-lab-preview {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+    box-shadow: none;
+  }
 }
 
 .obys-project-still {
@@ -2684,6 +2697,8 @@ textarea {
   --detail-rail-offset: 0rem;
   --detail-rail-ratio: 1 / 1;
   --detail-rail-width: 16rem;
+  content-visibility: auto;
+  contain-intrinsic-size: 48rem 84vh;
 }
 
 .obys-lab-detail-frame > div:not(.obys-lab-detail-entry) {

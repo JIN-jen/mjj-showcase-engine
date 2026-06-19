@@ -71,6 +71,7 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
   const railRef = useRef<HTMLElement>(null);
   const [language, setLanguage] = useState<LabLanguage>("cn");
   const [activeFrame, setActiveFrame] = useState(0);
+  const activeFrameRef = useRef(0);
   const copy = detailCopy[language];
   const title = language === "cn" ? item.titleCn : item.title;
   const category = language === "cn" ? item.categoryCn : item.category;
@@ -87,6 +88,15 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
     title,
   };
 
+  function setActiveFrameSafely(nextFrame: number) {
+    if (activeFrameRef.current === nextFrame) {
+      return;
+    }
+
+    activeFrameRef.current = nextFrame;
+    setActiveFrame(nextFrame);
+  }
+
   useEffect(() => {
     setLanguage(getStoredLanguage());
   }, []);
@@ -100,6 +110,14 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
     const rail = railRef.current;
 
     if (!rail) {
+      return;
+    }
+
+    const isCompactViewport = window.matchMedia("(max-width: 768px)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (isCompactViewport || prefersReducedMotion) {
+      setActiveFrameSafely(0);
       return;
     }
 
@@ -129,7 +147,7 @@ export function ObysLabWorkPage({ item }: ObysLabWorkPageProps) {
       });
 
       targets.forEach((target, index) => target.classList.toggle("is-active", index === closestIndex));
-      setActiveFrame(closestIndex);
+      setActiveFrameSafely(closestIndex);
     }
 
     function requestCenterLockUpdate() {

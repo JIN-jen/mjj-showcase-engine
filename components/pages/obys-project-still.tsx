@@ -177,7 +177,8 @@ export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStil
             alt={item.title}
             fill
             priority={frameIndex === 0}
-            sizes="(min-width: 900px) 18vw, 48vw"
+            loading={frameIndex === 0 ? undefined : "lazy"}
+            sizes="(max-width: 760px) 30vw, (min-width: 900px) 18vw, 18vw"
             className="obys-project-still__poster-image"
           />
         </div>
@@ -190,7 +191,13 @@ export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStil
           </div>
           <div className="obys-project-still__hospitality-poster-image">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={hospitalityPoster.image} alt="" className="obys-project-still__hospitality-poster-img" />
+            <img
+              src={hospitalityPoster.image}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="obys-project-still__hospitality-poster-img"
+            />
           </div>
           <div className="obys-project-still__hospitality-poster-footer">
             <div>
@@ -213,7 +220,13 @@ export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStil
           </div>
           <div className="obys-project-still__hospitality-poster-image">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={restaurantPoster.image} alt="" className="obys-project-still__hospitality-poster-img" />
+            <img
+              src={restaurantPoster.image}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="obys-project-still__hospitality-poster-img"
+            />
           </div>
           <div className="obys-project-still__hospitality-poster-footer">
             <div>
@@ -236,7 +249,13 @@ export function ObysProjectStill({ frameIndex = 0, item, mode }: ObysProjectStil
           </div>
           <div className="obys-project-still__hospitality-poster-image">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={constructionPoster.image} alt="" className="obys-project-still__hospitality-poster-img" />
+            <img
+              src={constructionPoster.image}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="obys-project-still__hospitality-poster-img"
+            />
           </div>
           <div className="obys-project-still__hospitality-poster-footer">
             <div>

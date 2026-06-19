@@ -108,14 +108,25 @@ export function ObysLabPage() {
   const railRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [language, setLanguage] = useState<LabLanguage>("cn");
+  const activeIndexRef = useRef(0);
   const activeItem = obysLabItems[activeIndex] ?? obysLabItems[0];
   const copy = labCopy[language];
   const activeTitle = language === "cn" ? activeItem.titleCn : activeItem.title;
   const activeIntelligence =
-    industryIntelligenceBySlug[activeItem.slug as keyof typeof industryIntelligenceBySlug];
+    industryIntelligenceBySlug[activeItem.slug as keyof typeof industryIntelligenceBySlug] ??
+    industryIntelligenceBySlug.hospitality;
   const activeSubindustries =
     language === "cn" ? activeIntelligence.subindustriesCn : activeIntelligence.subindustries;
   const activeServices = language === "cn" ? activeIntelligence.servicesCn : activeIntelligence.services;
+
+  function setActiveIndexSafely(nextIndex: number) {
+    if (activeIndexRef.current === nextIndex) {
+      return;
+    }
+
+    activeIndexRef.current = nextIndex;
+    setActiveIndex(nextIndex);
+  }
 
   useEffect(() => {
     setLanguage(getStoredLanguage());
@@ -130,6 +141,14 @@ export function ObysLabPage() {
     const rail = railRef.current;
 
     if (!rail) {
+      return;
+    }
+
+    const isCompactViewport = window.matchMedia("(max-width: 760px)").matches;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (isCompactViewport || prefersReducedMotion) {
+      setActiveIndexSafely(0);
       return;
     }
 
@@ -169,7 +188,7 @@ export function ObysLabPage() {
         target.classList.toggle("is-active", itemIndex === closestIndex);
       });
 
-      setActiveIndex(closestIndex);
+      setActiveIndexSafely(closestIndex);
     }
 
     function requestCenterLockUpdate() {
@@ -241,7 +260,7 @@ export function ObysLabPage() {
             key={item.number}
             href={`/obys-lab/work/${item.slug}`}
             className={activeIndex === index ? "is-active" : ""}
-            onMouseEnter={() => setActiveIndex(index)}
+            onMouseEnter={() => setActiveIndexSafely(index)}
           >
             <span>{item.number}</span>
             <span>{language === "cn" ? item.titleCn : item.title}</span>
