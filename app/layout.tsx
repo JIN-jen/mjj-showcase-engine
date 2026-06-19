@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { siteUrl } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: "M-JJ Showcase Engine",
-    template: "%s | M-JJ Showcase Engine",
-  },
-  description: "SEO industry template lead generation matrix for Tanzania, Chinese businesses, and local entrepreneurs.",
-  openGraph: {
-    siteName: "M-JJ Showcase Engine",
-    title: "M-JJ Showcase Engine",
-    description: "SEO industry template lead generation matrix for Tanzania, Chinese businesses, and local entrepreneurs.",
-    type: "website",
-  },
+  title: "TIIH Brand Website",
+  description: "Cinematic portfolio skeleton for TIIH.",
 };
 
 export default function RootLayout({

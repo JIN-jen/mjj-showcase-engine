@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { ObysLabPage } from "@/components/pages/obys-lab-page";
 
 export default function Page() {
-  redirect("/");
+  return <ObysLabPage />;
 }
