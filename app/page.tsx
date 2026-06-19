@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { HomeProjectIndexPage } from "@/components/pages/home-project-index-page";
 
 export default function HomePage() {
-  redirect("/obys-lab");
+  return <HomeProjectIndexPage />;
 }

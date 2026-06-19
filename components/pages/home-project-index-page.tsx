@@ -6,163 +6,53 @@ import { useRouter } from "next/navigation";
 import type { MouseEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import { LenisProvider } from "@/components/motion/lenis-provider";
+import { getTemplateMatrix } from "@/data/template-matrix";
 
 type Locale = "en" | "zh";
 
-type IndustryShowcaseItem = {
+type TemplateMatrixShowcaseItem = {
   slug: string;
   displayNumber: string;
   title: string;
   titleZh: string;
-  subtypes: string[];
-  subtypesZh: string[];
+  keywords: string[];
+  keywordsZh: string[];
   industry: string;
   industryZh: string;
+  targetCustomer: string;
+  targetCustomerZh: string;
   imageSrc: string;
   previewBackground: string;
   posterLayout: string;
   posterStatement: string;
   posterTags: string[];
+  route: string;
+  visualDirection: string;
+  visualDirectionZh: string;
 };
 
-const industryShowcaseItems: IndustryShowcaseItem[] = [
-  {
-    slug: "hospitality",
-    displayNumber: "01",
-    title: "Hospitality",
-    titleZh: "酒店与旅行",
-    subtypes: ["Hotel", "Resort", "Safari", "Travel Agency", "Guest House", "Booking Website"],
-    subtypesZh: ["酒店", "度假村", "Safari", "旅行社", "民宿", "预订网站"],
-    industry: "Hospitality",
-    industryZh: "酒店",
-    imageSrc: "/industry/hospitality.svg",
-    previewBackground:
-      "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(206,199,184,0.9) 42%, rgba(128,145,132,0.72) 100%)",
-    posterLayout: "collage",
-    posterStatement: "Luxury editorial collage for hotel, resort and safari booking entry.",
-    posterTags: ["Luxury Stay", "Suite", "Pool"],
-  },
-  {
-    slug: "food-beverage",
-    displayNumber: "02",
-    title: "Food & Beverage",
-    titleZh: "餐饮与食品",
-    subtypes: ["Restaurant", "Cafe", "Bar", "Bakery", "Takeaway", "Food Brand"],
-    subtypesZh: ["餐厅", "咖啡馆", "酒吧", "烘焙店", "外卖", "食品品牌"],
-    industry: "Food",
-    industryZh: "餐饮",
-    imageSrc: "/industry/food-beverage.svg",
-    previewBackground:
-      "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(214,196,174,0.92) 44%, rgba(142,97,75,0.7) 100%)",
-    posterLayout: "menu",
-    posterStatement: "Magazine menu poster for restaurant, cafe, bar and reservation flow.",
-    posterTags: ["Menu", "Dining", "Reservation"],
-  },
-  {
-    slug: "construction",
-    displayNumber: "03",
-    title: "Construction",
-    titleZh: "建筑与工程",
-    subtypes: [
-      "Construction Company",
-      "Building Materials",
-      "Equipment Rental",
-      "Road Contractor",
-      "Steel Supplier",
-    ],
-    subtypesZh: ["建筑公司", "建材", "设备租赁", "道路承包商", "钢材供应商"],
-    industry: "Construction",
-    industryZh: "建筑",
-    imageSrc: "/industry/construction.svg",
-    previewBackground:
-      "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(196,193,187,0.92) 40%, rgba(104,102,94,0.74) 100%)",
-    posterLayout: "blueprint",
-    posterStatement: "Architecture blueprint poster for build, contractor and project showcase.",
-    posterTags: ["Blueprint", "Project", "Build"],
-  },
-  {
-    slug: "mining-energy",
-    displayNumber: "04",
-    title: "Mining & Energy",
-    titleZh: "矿业与能源",
-    subtypes: ["Mining Company", "Fuel Supplier", "Lubricants", "Generator", "Solar Energy"],
-    subtypesZh: ["矿业公司", "燃油供应", "润滑油", "发电机", "太阳能"],
-    industry: "Mining",
-    industryZh: "矿业",
-    imageSrc: "/industry/mining-energy.svg",
-    previewBackground:
-      "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(190,195,191,0.92) 42%, rgba(86,103,112,0.72) 100%)",
-    posterLayout: "industrial",
-    posterStatement: "Industrial authority poster for site, fleet, mining and energy operators.",
-    posterTags: ["Site", "Fleet", "Energy"],
-  },
-  {
-    slug: "import-wholesale",
-    displayNumber: "05",
-    title: "Import & Wholesale",
-    titleZh: "进口与批发",
-    subtypes: ["Trading Company", "Wholesale Store", "Yiwu Import", "Hardware", "Electronics", "Daily Goods"],
-    subtypesZh: ["贸易公司", "批发店", "义乌进口", "五金", "电子产品", "日用品"],
-    industry: "Trading",
-    industryZh: "贸易",
-    imageSrc: "/industry/import-wholesale.svg",
-    previewBackground:
-      "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(204,202,192,0.92) 42%, rgba(118,126,146,0.7) 100%)",
-    posterLayout: "catalog",
-    posterStatement: "Trade catalog poster for import, wholesale and supply businesses.",
-    posterTags: ["Import", "Wholesale", "Supply"],
-  },
-  {
-    slug: "logistics-auto",
-    displayNumber: "06",
-    title: "Logistics & Auto",
-    titleZh: "物流与汽车",
-    subtypes: ["Freight Forwarder", "Customs Clearance", "Transport Company", "Fleet Management", "Auto Parts"],
-    subtypesZh: ["货运代理", "清关", "运输公司", "车队管理", "汽车配件"],
-    industry: "Logistics",
-    industryZh: "物流",
-    imageSrc: "/industry/logistics-auto.svg",
-    previewBackground:
-      "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(193,200,201,0.92) 40%, rgba(92,118,128,0.72) 100%)",
-    posterLayout: "route",
-    posterStatement: "Route system poster for delivery, fleet, port and transport operations.",
-    posterTags: ["Delivery", "Fleet", "Port"],
-  },
-  {
-    slug: "agriculture-processing",
-    displayNumber: "07",
-    title: "Agriculture & Processing",
-    titleZh: "农业与加工",
-    subtypes: ["Farm", "Timber", "Cashew", "Cold Chain", "Food Processing"],
-    subtypesZh: ["农场", "木材", "腰果", "冷链", "食品加工"],
-    industry: "Agriculture",
-    industryZh: "农业",
-    imageSrc: "/industry/agriculture-processing.svg",
-    previewBackground:
-      "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(199,205,184,0.92) 42%, rgba(98,126,88,0.68) 100%)",
-    posterLayout: "field",
-    posterStatement: "Field production poster for harvest, processing and export brands.",
-    posterTags: ["Harvest", "Processing", "Export"],
-  },
-  {
-    slug: "professional-services",
-    displayNumber: "08",
-    title: "Professional Services",
-    titleZh: "专业服务",
-    subtypes: ["Law Firm", "Accounting", "Medical", "Education", "IT Service", "Marketing Agency"],
-    subtypesZh: ["律师事务所", "会计", "医疗", "教育", "IT 服务", "营销机构"],
-    industry: "Services",
-    industryZh: "服务",
-    imageSrc: "/industry/professional-services.svg",
-    previewBackground:
-      "linear-gradient(135deg, rgba(246,244,238,1) 0%, rgba(205,202,197,0.92) 42%, rgba(126,116,142,0.68) 100%)",
-    posterLayout: "editorial",
-    posterStatement: "Editorial business poster for advisory, legal and finance services.",
-    posterTags: ["Advisory", "Legal", "Finance"],
-  },
-];
+const templateMatrixItems: TemplateMatrixShowcaseItem[] = getTemplateMatrix().map((item, index) => ({
+  slug: item.slug,
+  displayNumber: String(index + 1).padStart(2, "0"),
+  title: item.shortNameEn,
+  titleZh: item.shortNameCn,
+  keywords: item.keywordsEn,
+  keywordsZh: item.keywordsCn,
+  industry: item.categoryTagEn,
+  industryZh: item.categoryTagCn,
+  targetCustomer: item.targetCustomerEn,
+  targetCustomerZh: item.targetCustomerCn,
+  imageSrc: item.imageSrc,
+  previewBackground: item.previewBackground,
+  posterLayout: item.posterLayout,
+  posterStatement: item.visualDirectionEn,
+  posterTags: item.posterTags,
+  route: item.route,
+  visualDirection: item.visualDirectionEn,
+  visualDirectionZh: item.visualDirectionCn,
+}));
 
-const loopedIndustryShowcaseItems = [...industryShowcaseItems, ...industryShowcaseItems];
+const loopedIndustryShowcaseItems = [...templateMatrixItems, ...templateMatrixItems];
 
 function ObysBracket({ className = "" }: { className?: string }) {
   return (
@@ -204,16 +94,18 @@ export function HomeProjectIndexPage() {
   const [transitionProject, setTransitionProject] = useState<string | null>(null);
   const [locale, setLocale] = useState<Locale>("en");
 
-  const activeProject = industryShowcaseItems[activeIndex] ?? industryShowcaseItems[0];
+  const activeProject = templateMatrixItems[activeIndex] ?? templateMatrixItems[0];
   const isZh = locale === "zh";
 
-  function getProjectCopy(project: IndustryShowcaseItem) {
+  function getProjectCopy(project: TemplateMatrixShowcaseItem) {
     return {
       title: isZh ? project.titleZh : project.title,
-      subtypes: isZh ? project.subtypesZh : project.subtypes,
-      category: isZh ? "商业网站模板" : "Business Website Template",
-      service: "UI / UX / Development",
+      keywords: isZh ? project.keywordsZh : project.keywords,
+      category: isZh ? project.industryZh : project.industry,
+      service: isZh ? "模板获客矩阵" : "Lead Generation Matrix",
       industry: isZh ? project.industryZh : project.industry,
+      targetCustomer: isZh ? project.targetCustomerZh : project.targetCustomer,
+      visualDirection: isZh ? project.visualDirectionZh : project.visualDirection,
     };
   }
 
@@ -261,7 +153,7 @@ export function HomeProjectIndexPage() {
         const index = Number(centeredEntry.target.dataset.editorialIndex);
 
         if (!Number.isNaN(index)) {
-          setActiveIndex(index % industryShowcaseItems.length);
+          setActiveIndex(index % templateMatrixItems.length);
         }
       },
       {
@@ -315,16 +207,16 @@ export function HomeProjectIndexPage() {
     window.localStorage.setItem("tiih-locale", nextLocale);
   }
 
-  function handleProjectOpen(event: MouseEvent<HTMLAnchorElement>, slug: string) {
+  function handleProjectOpen(event: MouseEvent<HTMLAnchorElement>, route: string) {
     event.preventDefault();
 
     if (transitionProject) {
       return;
     }
 
-    setTransitionProject(slug);
+    setTransitionProject(route);
     window.setTimeout(() => {
-      router.push(`/work/${slug}`);
+      router.push(route);
     }, 760);
   }
 
@@ -344,7 +236,7 @@ export function HomeProjectIndexPage() {
             <div>
               <p>00</p>
               <i />
-              <p>TIIH</p>
+              <p>M-JJ</p>
             </div>
             <span>)</span>
           </div>
@@ -361,11 +253,11 @@ export function HomeProjectIndexPage() {
         ) : null}
 
         <header className="editorial-shell" aria-label="Home navigation">
-          <Link href="/" className="editorial-logo" aria-label="TIIH home">
-            TIIH
+          <Link href="/" className="editorial-logo" aria-label="M-JJ home">
+            M-JJ
           </Link>
           <nav className="editorial-nav" aria-label="Primary navigation">
-            <Link href="/work">{isZh ? "模板" : "Work"}</Link>
+            <Link href="/">{isZh ? "矩阵" : "Matrix"}</Link>
             <Link href="/about">{isZh ? "关于" : "About"}</Link>
             <Link href="/contact">{isZh ? "提交需求" : "Start Project"}</Link>
             <span className="language-switch" aria-label="Language switch">
@@ -387,21 +279,21 @@ export function HomeProjectIndexPage() {
           </nav>
         </header>
 
-        <aside className="editorial-project-list" aria-label="Industry template list">
-          {industryShowcaseItems.map((project, index) => {
+        <aside className="editorial-project-list" aria-label="Template matrix list">
+          {templateMatrixItems.map((project, index) => {
             const projectCopy = getProjectCopy(project);
 
             return (
               <Link
                 key={project.slug}
-                href={`/work/${project.slug}`}
-                onClick={(event) => handleProjectOpen(event, project.slug)}
+                href={project.route}
+                onClick={(event) => handleProjectOpen(event, project.route)}
                 className={activeIndex === index ? "is-active" : ""}
               >
                 <span>{project.displayNumber}</span>
                 <span>
                   {projectCopy.title}
-                  <small>{projectCopy.subtypes.join(" / ")}</small>
+                  <small>{projectCopy.keywords.slice(0, 3).join(" / ")}</small>
                 </span>
               </Link>
             );
@@ -411,19 +303,23 @@ export function HomeProjectIndexPage() {
         <aside className="editorial-meta" aria-live="polite">
           <p className="editorial-meta__number">{activeProject.displayNumber}</p>
           <div>
-            <p>{isZh ? "类型" : "Category"}</p>
+            <p>{isZh ? "分类" : "Category"}</p>
             <span>{getProjectCopy(activeProject).category}</span>
           </div>
           <div>
-            <p>{isZh ? "服务" : "Service"}</p>
-            <span>{getProjectCopy(activeProject).service}</span>
+            <p>{isZh ? "目标客户" : "Target Customer"}</p>
+            <span>{getProjectCopy(activeProject).targetCustomer}</span>
           </div>
           <div>
-            <p>{isZh ? "行业" : "Industry"}</p>
-            <span>{getProjectCopy(activeProject).industry}</span>
+            <p>{isZh ? "视觉标签" : "Visual Tag"}</p>
+            <span>{getProjectCopy(activeProject).visualDirection}</span>
+          </div>
+          <div>
+            <p>{isZh ? "SEO关键词" : "SEO Keywords"}</p>
+            <span>{getProjectCopy(activeProject).keywords.slice(0, 4).join(" / ")}</span>
           </div>
           <p className="editorial-meta__description">
-            {getProjectCopy(activeProject).subtypes.join(" / ")}
+            {getProjectCopy(activeProject).keywords.join(" / ")}
           </p>
         </aside>
 
@@ -435,16 +331,16 @@ export function HomeProjectIndexPage() {
           <span>{isZh ? "网格" : "Grid"}</span>
         </div>
 
-        <p className="editorial-copyright">2026 TIIH. All rights reserved.</p>
+        <p className="editorial-copyright">2026 M-JJ Showcase Engine. All rights reserved.</p>
 
         <section
           ref={railRef}
           className="editorial-image-strip"
           data-lenis-prevent
-          aria-label="Industry template image stream"
+          aria-label="Template matrix image stream"
         >
           {loopedIndustryShowcaseItems.map((project, index) => {
-            const itemIndex = index % industryShowcaseItems.length;
+            const itemIndex = index % templateMatrixItems.length;
             const projectCopy = getProjectCopy(project);
 
             return (
@@ -458,12 +354,12 @@ export function HomeProjectIndexPage() {
                 ].join(" ")}
               >
               <Link
-                href={`/work/${project.slug}`}
-                onClick={(event) => handleProjectOpen(event, project.slug)}
+                href={project.route}
+                onClick={(event) => handleProjectOpen(event, project.route)}
                 className={`editorial-image-card editorial-image-card--${project.posterLayout}`}
               >
                   <div className="editorial-poster__number">
-                    <span>TIIH</span>
+                    <span>M-JJ</span>
                     <strong>{project.displayNumber}</strong>
                   </div>
                   <div className="editorial-poster__media">
@@ -481,13 +377,13 @@ export function HomeProjectIndexPage() {
                     />
                   </div>
                   <div className="editorial-poster__content">
-                    <p className="editorial-poster__kicker">{isZh ? "行业海报" : "PROJECT POSTER"}</p>
+                    <p className="editorial-poster__kicker">{isZh ? "模板海报" : "TEMPLATE POSTER"}</p>
                     <h2>{projectCopy.title}</h2>
                     <span>{project.posterStatement}</span>
                   </div>
                   <div className="editorial-poster__meta">
                     <em>{projectCopy.industry}</em>
-                    <strong>{projectCopy.subtypes[0]}</strong>
+                    <strong>{projectCopy.targetCustomer}</strong>
                   </div>
                   <div className="editorial-poster__tags">
                     {project.posterTags.map((tag) => (

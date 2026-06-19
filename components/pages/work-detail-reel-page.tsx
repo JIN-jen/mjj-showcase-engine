@@ -16,12 +16,16 @@ export type TemplateFrame = {
 };
 
 export type IndustryTemplate = {
+  cityKeywords?: { cn: string; en: string }[];
+  countryKeywords?: { cn: string; en: string }[];
   slug: string;
   number: string;
   title: string;
   titleZh: string;
   category: string;
   categoryZh: string;
+  targetCustomer?: string;
+  targetCustomerZh?: string;
   service: string;
   serviceZh: string;
   industry: string;
@@ -29,8 +33,25 @@ export type IndustryTemplate = {
   year: string;
   description: string;
   descriptionZh: string;
+  emailHref?: string;
+  emailSubject?: string;
+  heroSubtitle?: string;
+  heroSubtitleZh?: string;
+  keywords?: string[];
+  keywordsZh?: string[];
+  moduleTags?: string[];
+  moduleTagsZh?: string[];
   previewBackground: string;
+  seoDescription?: string;
+  seoDescriptionZh?: string;
+  seoTitle?: string;
+  seoTitleZh?: string;
+  whatsappHref?: string;
+  whatsappText?: string;
+  whatsappTextZh?: string;
   frames: TemplateFrame[];
+  visualDirection?: string;
+  visualDirectionZh?: string;
 };
 
 type WorkDetailReelPageProps = {
@@ -74,8 +95,7 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
   const [entered, setEntered] = useState(false);
   const [locale, setLocale] = useState<Locale>("en");
   const isZh = locale === "zh";
-  const isHospitality = project.slug === "hospitality";
-  const indexHref = isHospitality ? "/obys-lab" : "/";
+  const indexHref = "/";
 
   const frames = useMemo(
     () =>
@@ -93,9 +113,14 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
   const projectCopy = {
     title: isZh ? project.titleZh : project.title,
     category: isZh ? project.industryZh : project.industry,
-    service: isZh ? "网站设计" : "Web Design",
+    service: isZh ? project.serviceZh : project.service,
     industry: isZh ? project.industryZh : project.industry,
     description: isZh ? project.descriptionZh : project.description,
+    heroSubtitle: isZh ? project.heroSubtitleZh ?? project.descriptionZh : project.heroSubtitle ?? project.description,
+    keywords: isZh ? project.keywordsZh ?? [] : project.keywords ?? [],
+    moduleTags: isZh ? project.moduleTagsZh ?? [] : project.moduleTags ?? [],
+    targetCustomer: isZh ? project.targetCustomerZh : project.targetCustomer,
+    visualDirection: isZh ? project.visualDirectionZh : project.visualDirection,
   };
 
   useEffect(() => {
@@ -216,10 +241,10 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
         </div>
 
         <header className="work-reel-nav">
-          <Link href={indexHref}>TIIH</Link>
+          <Link href={indexHref}>M-JJ</Link>
           <nav aria-label="Work detail navigation">
-            <Link href={indexHref}>{isZh ? "索引" : "Index"}</Link>
-            <Link href="/work">{isZh ? "模板" : "Templates"}</Link>
+            <Link href={indexHref}>{isZh ? "首页" : "Home"}</Link>
+            <Link href="/">{isZh ? "矩阵" : "Matrix"}</Link>
             <Link href="/contact">{isZh ? "提交需求" : "Start Project"}</Link>
             <span className="language-switch" aria-label="Language switch">
               <button
@@ -244,7 +269,7 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
           <h1 lang={isZh ? "zh" : "en"}>{projectCopy.title}</h1>
           <p>{projectCopy.description}</p>
           <Link href={indexHref} className="work-reel-back">
-            {isZh ? "返回 Obys Lab" : "Back to Obys Lab"}
+            {isZh ? "返回首页" : "Back to Home"}
           </Link>
           <div className="work-frame-index" aria-label="Frame index">
             {frames.map((frame, index) => (
@@ -279,6 +304,38 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
               <dd>{projectCopy.service}</dd>
             </div>
           </dl>
+          <dl className="work-reel-meta__extra">
+            {projectCopy.targetCustomer ? (
+              <div>
+                <dt>{isZh ? "目标客户" : "Target Customer"}</dt>
+                <dd>{projectCopy.targetCustomer}</dd>
+              </div>
+            ) : null}
+            {projectCopy.visualDirection ? (
+              <div>
+                <dt>{isZh ? "视觉标签" : "Visual Direction"}</dt>
+                <dd>{projectCopy.visualDirection}</dd>
+              </div>
+            ) : null}
+            {projectCopy.keywords.length ? (
+              <div>
+                <dt>{isZh ? "SEO关键词" : "SEO Keywords"}</dt>
+                <dd>{projectCopy.keywords.slice(0, 4).join(" / ")}</dd>
+              </div>
+            ) : null}
+          </dl>
+          <div className="work-reel-cta" aria-label="Template contact actions">
+            {project.whatsappHref ? (
+              <Link href={project.whatsappHref}>
+                {isZh ? "通过 WhatsApp 咨询" : "Contact on WhatsApp"}
+              </Link>
+            ) : null}
+            {project.emailHref ? (
+              <Link href={project.emailHref}>
+                {isZh ? "发送资料获取报价" : "Send your brief for quotation"}
+              </Link>
+            ) : null}
+          </div>
         </aside>
 
         <ObysBracket className="work-reel-aim" />
@@ -291,9 +348,6 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
         >
           {loopedFrames.map((frame, index) => {
             const frameIndex = index % frames.length;
-            const demoLink =
-              isHospitality && frameIndex === 0 ? "/templates/hospitality/luxury-hotel" : null;
-
             return (
               <article
                 key={`${project.slug}-${frame.title}-${index}`}
@@ -320,13 +374,6 @@ export function WorkDetailReelPage({ project }: WorkDetailReelPageProps) {
                     <span>{projectCopy.category}</span>
                     <span>{projectCopy.service}</span>
                   </div>
-                  {demoLink ? (
-                    <Link
-                      href={demoLink}
-                      aria-label={isZh ? "查看完整演示" : "View Live Demo"}
-                      style={{ position: "absolute", inset: 0, zIndex: 4 }}
-                    />
-                  ) : null}
               </div>
             </article>
             );

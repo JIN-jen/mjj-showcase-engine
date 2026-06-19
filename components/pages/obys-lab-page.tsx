@@ -111,10 +111,12 @@ export function ObysLabPage() {
   const activeItem = obysLabItems[activeIndex] ?? obysLabItems[0];
   const copy = labCopy[language];
   const activeTitle = language === "cn" ? activeItem.titleCn : activeItem.title;
-  const activeIntelligence = industryIntelligenceBySlug[activeItem.slug];
-  const activeSubindustries =
+  const activeIntelligence =
+    industryIntelligenceBySlug[activeItem.slug as keyof typeof industryIntelligenceBySlug];
+  const activeSubindustries: string[] =
     language === "cn" ? activeIntelligence.subindustriesCn : activeIntelligence.subindustries;
-  const activeServices = language === "cn" ? activeIntelligence.servicesCn : activeIntelligence.services;
+  const activeServices: string[] =
+    language === "cn" ? activeIntelligence.servicesCn : activeIntelligence.services;
 
   useEffect(() => {
     setLanguage(getStoredLanguage());
