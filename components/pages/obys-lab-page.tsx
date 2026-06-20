@@ -118,6 +118,8 @@ export function ObysLabPage() {
   const activeSubindustries =
     language === "cn" ? activeIntelligence.subindustriesCn : activeIntelligence.subindustries;
   const activeServices = language === "cn" ? activeIntelligence.servicesCn : activeIntelligence.services;
+  const getIndustryEntryHref = (item: (typeof obysLabItems)[number]) =>
+    item.templates.find((template) => template.templateHref)?.templateHref ?? `/obys-lab/work/${item.slug}`;
 
   function setActiveIndexSafely(nextIndex: number) {
     if (activeIndexRef.current === nextIndex) {
@@ -258,7 +260,7 @@ export function ObysLabPage() {
         {obysLabItems.map((item, index) => (
           <Link
             key={item.number}
-            href={`/obys-lab/work/${item.slug}`}
+            href={getIndustryEntryHref(item)}
             className={activeIndex === index ? "is-active" : ""}
             onMouseEnter={() => setActiveIndexSafely(index)}
           >
@@ -272,19 +274,19 @@ export function ObysLabPage() {
         {loopedLabItems.map((item, index) => {
           const itemIndex = index % obysLabItems.length;
 
-          return (
-            <article
-              key={`${item.number}-${index}`}
-              data-lab-index={itemIndex}
-              className={activeIndex === itemIndex ? "is-active" : ""}
-              style={getRailPresetStyle(item.railPreset)}
-            >
-              <Link href={`/obys-lab/work/${item.slug}`} className="obys-lab-preview">
+            return (
+              <article
+                key={`${item.number}-${index}`}
+                data-lab-index={itemIndex}
+                className={activeIndex === itemIndex ? "is-active" : ""}
+                style={getRailPresetStyle(item.railPreset)}
+              >
+              <Link href={getIndustryEntryHref(item)} className="obys-lab-preview">
                 <ObysProjectStill item={item} mode="index" frameIndex={index} />
               </Link>
-            </article>
-          );
-        })}
+              </article>
+            );
+          })}
       </section>
 
       <aside className="obys-lab-meta" aria-live="polite">
