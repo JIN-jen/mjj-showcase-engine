@@ -4,6 +4,7 @@
   color: #111111;
   font-family: var(--font-geist-sans), Arial, sans-serif;
   letter-spacing: 0;
+  overflow-x: clip;
 }
 
 .page a {
@@ -587,7 +588,9 @@
   .location,
   .principles,
   .proposal {
-    width: min(100% - 32px, 680px);
+    width: 100%;
+    max-width: none;
+    padding-inline: 16px;
   }
 
   .intro,
@@ -624,11 +627,16 @@
   .booking figure,
   .gallery > div > figure,
   .about figure,
-  .location figure {
+  .location figure,
+  .proposal figure {
+    width: 100%;
+    max-width: 100%;
     min-height: 420px;
   }
 
   .mobile figure {
-    width: min(260px, 82vw);
+    width: min(260px, calc(100vw - 32px));
+    max-width: 100%;
+    margin-inline: auto;
   }
 }
